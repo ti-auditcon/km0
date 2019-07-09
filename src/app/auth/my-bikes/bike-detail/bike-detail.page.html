@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Detalle Bicicleta
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-icon class="notification-icon has" (click)="goToNotifications()" src="assets/icon/bell.svg"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="no-padding">
+
+  <section class="bike-detail">
+
+    <div class="header-image" style="background-image: url('/assets/img/bike-example.jpg')"></div>
+
+    <div class="bike-data">
+      <h4>Men's S-Works Epic</h4>
+      <p class="bike-brand">
+        SPECIALIZED <br>
+        Color Negro
+      </p>
+
+      <p class="description">
+        Con más títulos del Campeonato del Mundo, Medallas Olímpicas, y Cape Epic ganados de los que puedas contar, la S-Works Epic es realmente la bicicleta de XC más rápida del planeta. No importa el terreno, la Epic es la mejor herramienta para llevarte a la cima del podio.
+      </p>
+    </div>
+
+  </section>
+
+</ion-content>
+
+<ion-footer>
+  <ion-button>Borrar Bicicleta</ion-button>
+</ion-footer>

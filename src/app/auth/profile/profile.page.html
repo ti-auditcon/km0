@@ -1,0 +1,61 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        Mi Perfil
+      </ion-title>
+      <ion-buttons slot="end">
+        <ion-icon class="notification-icon has" (click)="goToNotifications()" src="assets/icon/bell.svg"></ion-icon>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+
+  <section class="profile">
+
+    <div class="profile-header">
+      <div class="img" style="background-image: url('assets/img/avatar-default-2.jpg')"></div>
+      <h4>Sebastían Henriquez</h4>
+      <p>Curicó, Chile</p>
+    </div>
+
+    <div class="dates profile-card">
+      <div class="card-info info">
+        <div class="profile-card-grid">
+          <div class="col-6">
+            <h6>RUT</h6>
+            <p>17.441.996-6</p>
+          </div>
+          <div class="col-6">
+            <h6>Teléfono</h6>
+            <p>98329250</p>
+          </div>
+          <div class="col-12">
+            <h6>Email</h6>
+            <p>shenriquez@gmail.com</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="profile-menu">
+      <div class="item item-bicicletas" (click)="goToMyBikes()">
+        <img class="menu-icon" src="assets/icon/process/1-bike.svg">
+        <p>Mis Bicicletas</p>
+        <img class="arrow" src="assets/icon/icon-arrow.svg">
+      </div>
+      <div class="item item-servicios" (click)="goToMyServices()">
+        <img class="menu-icon" src="assets/icon/process/2-service.svg">
+        <p>Historial de Servicios</p>
+        <img class="arrow" src="assets/icon/icon-arrow.svg">
+      </div>
+    </div>
+
+  </section>
+
+</ion-content>

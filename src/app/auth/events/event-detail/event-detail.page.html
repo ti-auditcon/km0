@@ -1,0 +1,109 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Detalle Evento
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-icon class="notification-icon has" (click)="goToNotifications()" src="assets/icon/bell.svg"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="no-padding">
+
+  <section class="event-detail">
+
+    <div class="event-detail-image" style="background-image: url('assets/img/event-default.jpg')"></div>
+
+    <div class="event-detail-info">
+      <div class="header">
+        <h4>Salida a las Buitreras</h4>
+        <p>Etiam ultricies vel metus sed sagittis. Ut endrerit, neque eu sodales maximus.</p>
+      </div>
+
+      <div class="specs">
+        <div class="item">
+          <h6>Fecha</h6>
+          <p>
+            8 de Septiembre de 2019 - 09:30hrs
+          </p>
+        </div>
+        <div class="item">
+          <h6>Cupos</h6>
+          <p>
+            29 Disponibles<br>
+            1 Reservado
+          </p>
+        </div>
+        <div class="item">
+          <h6>Punto de Encuentro</h6>
+          <p>
+            Potrero Grande Km 8
+          </p>
+        </div>
+        <div class="item">
+          <h6>Llegada</h6>
+          <p>
+            Potrero Grande Km 8
+          </p>
+        </div>
+      </div>
+
+      <div class="separator"></div>
+
+      <div class="assistants">
+        <h1 class="title-section">Asistentes</h1>
+        <div class="item">
+          <div class="img" style="background-image: url('assets/img/avatar-default.jpg')"></div>
+          <div class="data">
+            <h6>Raul Berrios</h6>
+            <p>Curicó, Chile</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="img" style="background-image: url('assets/img/avatar-default-2.jpg')"></div>
+          <div class="data">
+            <h6>Rodrigo Vasquez</h6>
+            <p>Curicó, Chile</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="img" style="background-image: url('assets/img/avatar-default-3.jpg')"></div>
+          <div class="data">
+            <h6>Sebastián Henriquez</h6>
+            <p>Curicó, Chile</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="img" style="background-image: url('assets/img/avatar-default-4.jpg')"></div>
+          <div class="data">
+            <h6>Pedro Matus Marin</h6>
+            <p>Curicó, Chile</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="separator"></div>
+
+      <div class="gallery">
+        <h1 class="title-section">Galería</h1>
+        <div class="gallery-content">
+          <div class="item" style="background-image: url('assets/img/event-default.jpg')"></div>
+          <div class="item" style="background-image: url('assets/img/event-default.jpg')"></div>
+          <div class="item" style="background-image: url('assets/img/event-default.jpg')"></div>
+          <div class="item" style="background-image: url('assets/img/event-default.jpg')"></div>
+          <div class="item" style="background-image: url('assets/img/event-default.jpg')"></div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+</ion-content>
+
+<ion-footer>
+  <ion-button>Reservar mi cupo</ion-button>
+</ion-footer>

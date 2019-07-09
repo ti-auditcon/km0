@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Nueva Reserva
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-icon class="notification-icon has" (click)="goToNotifications()" src="assets/icon/bell.svg"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <app-booking-process class="process-1"></app-booking-process>
+
+  <section class="bike-select">
+
+    <h1 class="title-section">Selecciona tu Bicicleta</h1>
+
+    <div class="card-button" (click)="goToService()">
+      <div class="single-bike-grid">
+        <div class="img" style="background-image: url('assets/img/bike-example.jpg')"></div>
+        <div class="data">
+          <h4>Men's S-Works Epic</h4>
+          <p>
+            SPECIALIZED <br>
+            Color Negro
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-info data">
+      <img class="the-icon" src="assets/icon/icon-add.svg">
+      <h4>Agregar Nueva Bicicleta</h4>
+      <p class="explain">
+        Agrega tu bicicleta para poder reservar un Servicio
+      </p>
+    </div>
+
+    <div class="card-info data">
+      <img class="the-icon" src="assets/icon/icon-add.svg">
+      <h4>Agregar Otra Bicicleta</h4>
+      <p class="explain">
+        Asocia otra bicicleta con las que puedes reservar servicios.
+      </p>
+    </div>
+
+    <div class="card-info data">
+      <img class="the-icon" src="assets/icon/icon-part.svg">
+      <h4>Tengo Solo la Pieza</h4>
+      <p class="explain">
+        La pieza no se podrá asociar a tus bicicletas
+      </p>
+    </div>
+
+  </section>
+
+  <div class="separator"></div>
+
+  <section class="office-select">
+    <div class="data">
+      <h4>Sucursal Curicó</h4>
+      <p>Argomedo 30</p>
+    </div>
+    <div class="button-wrapper">
+      <ion-button>Cambiar</ion-button>
+    </div>
+  </section>
+
+</ion-content>
+
+<!-- <ion-footer>
+  <ion-button (click)="goToService()">Elegir Bicicleta</ion-button>
+</ion-footer> -->

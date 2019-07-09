@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Notificaciones
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <section class="notifications">
+
+    <div class="card-button notification-grid office-message" (click)="goToChat()">
+      <div class="icon">
+        <img src="assets/icon/n-message.svg">
+      </div>
+      <div class="data">
+        <h5>Nuevo Mensaje de Sucursal</h5>
+        <p>
+          Orden Nº 1240794<br>
+          SPECIALIZED Allez Sprint
+        </p>
+      </div>
+    </div>
+
+    <div class="card-button notification-grid state-message" (click)="goToStatus()">
+      <div class="icon">
+        <img src="assets/icon/process/1-bike.svg">
+      </div>
+      <div class="data">
+        <h5>Tu reserva ha cambiado de estado</h5>
+        <p>
+          En Taller
+        </p>
+      </div>
+    </div>
+
+    <div class="card-button notification-grid special-message" (click)="goToSpecialMessage()">
+      <div class="icon">
+        <img src="assets/icon/n-special.svg">
+      </div>
+      <div class="data">
+        <h5>In gravida vestibulum erat vel ultricies massa</h5>
+        <p>
+          Curabitur non erat eget risus fringilla vestibulum. Cras at...
+        </p>
+      </div>
+    </div>
+
+  </section>
+
+</ion-content>

@@ -1,0 +1,7 @@
+{
+  "appId": "com.asomic.km0",
+  "appName": "Km0",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}

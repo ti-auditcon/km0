@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Detalle Reserva
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-icon class="notification-icon has" (click)="goToNotifications()" src="assets/icon/bell.svg"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <app-status-process class="status-1"></app-status-process>
+
+  <section class="status-card">
+    <div class="card-info status">
+      <h4>Esperando la Bicicleta</h4>
+      <p>
+        Estámos esperando tu bicicleta en nuestra sucursal.
+      </p>
+      <h4>Fecha límite de Entrega</h4>
+      <p>
+        Martes 8 de Julio - 10:00 hrs
+      </p>
+      <p class="add-info">
+        Quién entrega: Raul Berrios
+      </p>
+    </div>
+  </section>
+
+  <div class="separator"></div>
+
+  <section class="summary">
+    <h1 class="title-section">Resumen de Servicios</h1>
+    <div class="ticket">
+      <h4>SPECIALIZED Allez Sprint</h4>
+      <div class="services-wrapper">
+          <div class="services">
+              <div class="service-detail">
+                <p>Mantención Full</p>
+                <p>$22.990</p>
+              </div>
+              <div class="service-detail">
+                <p>Pinchao'</p>
+                <p>$1.990</p>
+              </div>
+              <div class="service-detail">
+                <p>Doble Mantención Full</p>
+                <p>$23.990</p>
+              </div>
+              <div class="service-detail">
+                <p>Descuento por Reserva</p>
+                <p>-$2.990</p>
+              </div>
+              <div class="total-detail">
+                <div class="service-detail big">
+                  <p><b>TOTAL</b></p>
+                  <p><b>$44.990</b></p>
+                </div>
+              </div>
+          </div>
+          </div>
+    </div>
+  </section>
+
+</ion-content>
+
+<ion-footer>
+  <ion-button (click)="goToChat()">Hablar con la Sucursal</ion-button>
+</ion-footer>

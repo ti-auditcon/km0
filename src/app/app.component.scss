@@ -1,0 +1,24 @@
+.ion-color-vibrant {
+    --ion-color-base: #ED1C24;
+    // --ion-color-base-rgb: 255,255,0;
+    // --ion-color-contrast: #000000;
+    // --ion-color-contrast-rgb: 0,0,0;
+    // --ion-color-shade: #e0e000;
+    // --ion-color-tint: #ffff1a;
+}
+
+ion-content {
+    --padding-start: 0px;
+    --padding-end: 0px;
+}
+
+ion-item {
+  --color: var(--text-color-light);
+  --background: var(--body-background);
+  --border-color: var(--card-background-noclick) !important;
+  --background-activated: var(--body-background);
+}
+
+ion-icon {
+    --color: var(--highlighten-color);
+}

@@ -1,5 +1,7 @@
 {
   "name": "km0",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }

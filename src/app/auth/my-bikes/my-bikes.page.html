@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Mis Bicicletas
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-icon class="notification-icon has" (click)="goToNotifications()" src="assets/icon/bell.svg"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <section class="my-bikes">
+
+    <div class="card-button" (click)="goToBikeDetail()">
+      <div class="single-bike-grid">
+        <div class="img" style="background-image: url('assets/img/bike-example.jpg')"></div>
+        <div class="data">
+          <h4>Men's S-Works Epic</h4>
+          <p>
+            SPECIALIZED <br>
+            Color Negro
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-button" (click)="goToBikeDetail()">
+      <div class="single-bike-grid">
+        <div class="img" style="background-image: url('assets/img/bike-example.jpg')"></div>
+        <div class="data">
+          <h4>Men's S-Works Epic</h4>
+          <p>
+            SPECIALIZED <br>
+            Color Negro
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+</ion-content>

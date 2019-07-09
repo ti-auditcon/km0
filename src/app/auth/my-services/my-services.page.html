@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Historial de Servicios
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-icon class="notification-icon has" (click)="goToNotifications()" src="assets/icon/bell.svg"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <section class="service-historial">
+
+    <div class="card-button" (click)="goToServiceDetail()">
+      <h3>SPECIALIZED Allez Sprint</h3>
+      <p class="detail">
+        Orden Nº 1240926<br>
+        Finalizada el 23 de Mayo de 2019
+      </p>
+      <img class="arrow" src="assets/icon/icon-arrow.svg">
+    </div>
+
+    <div class="card-button" (click)="goToServiceDetail()">
+      <h3>SPECIALIZED Allez Sprint</h3>
+      <p class="detail">
+        Orden Nº 1240926<br>
+        Finalizada el 23 de Mayo de 2019
+      </p>
+      <img class="arrow" src="assets/icon/icon-arrow.svg">
+    </div>
+
+  </section>
+
+</ion-content>

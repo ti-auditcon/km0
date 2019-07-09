@@ -7,16 +7,29 @@
         </ion-toolbar>
       </ion-header>
       <ion-content>
-        <ion-list>
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
-            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
-              <ion-icon slot="start" [name]="p.icon"></ion-icon>
-              <ion-label>
+
+        <section class="split-content">
+
+          <ion-menu-toggle class="the-menu" auto-hide="false" *ngFor="let p of appPages">
+            <div class="item" [routerDirection]="'root'" [routerLink]="[p.url]">
+              <ion-icon slot="start" [name]="p.icon" color="vibrant"></ion-icon>
+              <p>
                 {{p.title}}
-              </ion-label>
-            </ion-item>
+              </p>
+            </div>
           </ion-menu-toggle>
-        </ion-list>
+          <ion-menu-toggle>
+            <div class="bottom-split" (click)="goToProfile()">
+              <div class="avatar" style="background-image: url('assets/img/avatar-default-2.jpg')"></div>
+              <div class="data">
+                <h6>Sebastian Henriquez</h6>
+                <p>Curicó, Chile</p>
+              </div>
+            </div>
+          </ion-menu-toggle>
+
+        </section>
+
       </ion-content>
     </ion-menu>
     <ion-router-outlet main></ion-router-outlet>

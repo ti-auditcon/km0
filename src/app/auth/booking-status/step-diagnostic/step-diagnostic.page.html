@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Detalle Reserva
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-icon class="notification-icon has" (click)="goToNotifications()" src="assets/icon/bell.svg"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <app-status-process class="status-2"></app-status-process>
+
+  <section class="status-card">
+    <div class="card-info status">
+      <h4>Aceptar Diagnóstico</h4>
+      <p>
+        Hemos actualizado los servicios con los elementos que faltaban para que tu bicicleta quede en perfectas condiciones.
+      </p>
+    </div>
+  </section>
+
+  <div class="separator"></div>
+
+  <section class="summary">
+    <h1 class="title-section">Resumen de Servicios</h1>
+    <div class="ticket">
+      <h4>SPECIALIZED Allez Sprint</h4>
+      <div class="services-wrapper">
+          <div class="services">
+              <div class="service-detail">
+                <p>Mantención Full</p>
+                <p>$22.990</p>
+              </div>
+              <div class="service-detail">
+                <p>Pinchao'</p>
+                <p>$1.990</p>
+              </div>
+              <div class="service-detail">
+                <p>Doble Mantención Full</p>
+                <p>$23.990</p>
+              </div>
+              <div class="service-detail">
+                <p class="highlighten-price">Rueda MARCA</p>
+                <p class="highlighten-price">$30.990</p>
+              </div>
+              <div class="service-detail">
+                <p>Descuento por Reserva</p>
+                <p>-$2.990</p>
+              </div>
+              <div class="total-detail">
+                <div class="service-detail big">
+                  <p class="highlighten-price">
+                    <b>NUEVO TOTAL</b>
+                  </p>
+                  <p class="highlighten-price">
+                    <b>$75.980</b>
+                  </p>
+                </div>
+              </div>
+          </div>
+          </div>
+    </div>
+  </section>
+
+</ion-content>
+
+<ion-footer>
+  <ion-button (click)="goToChat()">Hablar con la Sucursal</ion-button>
+  <ion-button>Aceptar Diagnostico</ion-button>
+</ion-footer>

@@ -1,0 +1,124 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <div class="brand">
+      <img class="logo" src="assets/img/logo.png">
+    </div>
+    <ion-buttons slot="end">
+      <ion-icon class="notification-icon has" (click)="goToNotifications()" src="assets/icon/bell.svg"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <section class="home-actions">
+    <div class="card-home-actions ion-text-center" (click)="goToBooking()">
+        <img class="the-icon" src="assets/icon/icon-reservar.svg">
+        <h4>Reservar Servicio</h4>
+    </div>
+    <div class="card-home-actions ion-text-center" (click)="goToEvents()">
+        <img class="the-icon" src="assets/icon/icon-eventos.svg">
+        <h4>Ver Eventos</h4>
+    </div>
+  </section>
+
+  <div class="separator"></div>
+
+  <section class="booked-services">
+    <h1 class="title-section">Servicios Reservados</h1>
+    <div class="card-info no-data">
+        <img class="the-icon" src="assets/icon/icon-nobooked.svg">
+        <h4>No tienes Servicios Reservados</h4>
+    </div>
+    <div class="card-button" (click)="goToBookingStatus()">
+      <h3>SPECIALIZED Allez Sprint</h3>
+      <p class="detail">Orden Nº 1240926</p>
+      <div class="status">
+        <p>Esperando la Bicicleta</p>
+      </div>
+      <img class="arrow" src="assets/icon/icon-arrow.svg">
+    </div>
+    <div class="card-button" (click)="goToBookingStatus()">
+      <h3>SPECIALIZED Allez Sprint</h3>
+      <p class="detail">Orden Nº 1240926</p>
+      <div class="status">
+        <p>Esperando la Bicicleta</p>
+      </div>
+      <img class="arrow" src="assets/icon/icon-arrow.svg">
+    </div>
+  </section>
+
+  <div class="separator"></div>
+
+  <section class="next-events">
+    <h1 class="title-section">Próximos Eventos</h1>
+    <div class="card-info no-data">
+        <img class="the-icon" src="assets/icon/icon-noevents.svg">
+        <h4>No hay eventos Próximos por el momento</h4>
+    </div>
+    <div class="card-button" (click)="goToEventDetail()">
+      <div class="calendar-grid">
+        <div class="date">
+          <div class="day">
+            <h2>12</h2>
+          </div>
+          <div class="month">
+            <h6>Jul</h6>
+          </div>
+        </div>
+        <div class="data">
+          <h3>Salida a las Buitreras</h3>
+          <p class="detail">
+              Potrero Grande Km. 8 <br>
+              29 Disponibles
+          </p>
+        </div>
+      </div>
+      <img class="arrow" src="assets/icon/icon-arrow.svg">
+    </div>
+    <div class="card-button" (click)="goToEventDetail()">
+        <div class="calendar-grid">
+          <div class="date">
+            <div class="day">
+              <h2>12</h2>
+            </div>
+            <div class="month">
+              <h6>Jul</h6>
+            </div>
+          </div>
+          <div class="data">
+            <h3>Salida a las Buitreras</h3>
+            <p class="detail">
+                Potrero Grande Km. 8 <br>
+                29 Disponibles
+            </p>
+          </div>
+        </div>
+        <img class="arrow" src="assets/icon/icon-arrow.svg">
+      </div>
+      <div class="card-button" (click)="goToEventDetail()">
+          <div class="calendar-grid">
+            <div class="date">
+              <div class="day">
+                <h2>12</h2>
+              </div>
+              <div class="month">
+                <h6>Jul</h6>
+              </div>
+            </div>
+            <div class="data">
+              <h3>Salida a las Buitreras</h3>
+              <p class="detail">
+                  Potrero Grande Km. 8 <br>
+                  29 Disponibles
+              </p>
+            </div>
+          </div>
+          <img class="arrow" src="assets/icon/icon-arrow.svg">
+        </div>
+  </section>
+
+</ion-content>

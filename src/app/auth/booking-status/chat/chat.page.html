@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Conversación
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-icon class="notification-icon has" (click)="goToNotifications()" src="assets/icon/bell.svg"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content #content>
+
+  <section class="order-info">
+    <div class="card-info order-info">
+      <h3>SPECIALIZED Allez Sprint</h3>
+      <p class="detail">Orden Nº 1240926</p>
+      <div class="status">
+        <p>Esperando la Bicicleta</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="conversation">
+
+    <div class="balloon sucursal-message">
+      <p>
+        Hola! ¿Tienes algo que avisarnos sobre algun servicio reservado o alguna duda al respecto? Escribenos aquí.
+      </p>
+    </div>
+
+    <div class="balloon user-message">
+      <p>
+        Si, quería avisar que la bicicleta que mandaré está dañada en la parte del freno
+      </p>
+    </div>
+
+    <div class="balloon sucursal-message">
+      <p>
+        Ok, no hay problema ¿Quieres que agreguemos el servicio de reparación de frenos?
+      </p>
+    </div>
+
+    <div class="balloon user-message">
+      <p>
+        ¿Qué valor tiene?
+      </p>
+    </div>
+
+    <div class="balloon sucursal-message">
+      <p>
+        La reparación de frenos tiene un valor de $4990 adicionales a lo que reservó.
+      </p>
+    </div>
+
+    <div class="balloon user-message">
+      <p>
+        Ok, agréguelo
+      </p>
+    </div>
+
+    <div class="balloon sucursal-message">
+      <p>
+        Listo, se ha agregado al total de los servicios. Estamos a su disposición
+      </p>
+    </div>
+
+    <div class="balloon user-message">
+      <p>
+        Muchas gracias
+      </p>
+    </div>
+
+  </section>
+
+</ion-content>
+
+<ion-footer class="chat-footer">
+  <ion-input value="custom"></ion-input>
+  <ion-button>Enviar</ion-button>
+</ion-footer>

@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Nueva Reserva
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-icon class="notification-icon has" (click)="goToNotifications()" src="assets/icon/bell.svg"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <app-booking-process class="process-2"></app-booking-process>
+
+  <section class="service-select">
+    <h1 class="title-section">Elige uno o más Servicios</h1>
+    <div class="card-button">
+      <div class="service-item">
+        <div class="icon">
+          <img src="/assets/icon/services/icon-bike.svg">
+        </div>
+        <div class="data">
+          <h4>Full Bicicleta</h4>
+          <p>
+            Incluye Lavado, regulación de cambios y engrase de trasmisión,
+            frenos, engrasado todos los rodamientos.
+          </p>
+          <h4>$22.000</h4>
+        </div>
+      </div>
+    </div>
+    <div class="card-button">
+      <div class="service-item">
+        <div class="icon">
+          <img src="/assets/icon/services/icon-bike.svg">
+        </div>
+        <div class="data">
+          <h4>General Bicicleta</h4>
+          <p>
+            Etiam ultricies vel metus sed sagittis. Ut hendrerit, neque eu sodales maximus.
+          </p>
+          <h4>$10.000</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</ion-content>
+
+<ion-footer>
+  <ion-button (click)="goToDate()">Listo</ion-button>
+</ion-footer>
