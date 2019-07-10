@@ -732,10 +732,10 @@ ion-toggle {
 // PROCESS
 @keyframes fill {
   0% {
-    width: 0;
+    left: -80px;
   }
   100% {
-    width: 100%;
+    left: 0;
   }
 }
 
@@ -839,11 +839,11 @@ ion-toggle {
       background: var(--body-background);
       .icon-background {
         background: var(--highlighten-color);
-        width: 50%;
+        width: 100%;
         height: 100%;
         margin: auto;
         top: 0;
-        left: 0;
+        left: -80px;
         bottom: 0;
         position: absolute;
         z-index: 3;
