@@ -837,21 +837,9 @@ ion-toggle {
       overflow: hidden;
       box-sizing: border-box;
       background: var(--body-background);
-      // &:before {
-      //   content: '';
-      //   background: var(--highlighten-color);
-      //   width: 0%;
-      //   height: 100%;
-      //   margin: auto;
-      //   top: 0;
-      //   left: 0;
-      //   bottom: 0;
-      //   position: absolute;
-      //   z-index: 3;
-      // }
       .icon-background {
         background: var(--highlighten-color);
-        width: 0%;
+        width: 50%;
         height: 100%;
         margin: auto;
         top: 0;
