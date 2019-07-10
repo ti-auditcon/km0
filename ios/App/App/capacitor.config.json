@@ -1,6 +1,6 @@
 {
   "appId": "com.asomic.km0",
-  "appName": "km0",
+  "appName": "Kilometro Cero",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www"
