@@ -7,7 +7,7 @@
       Detalle Reserva
     </ion-title>
     <ion-buttons slot="end">
-      <ion-icon class="notification-icon has" (click)="goToNotifications()" src="assets/icon/bell.svg"></ion-icon>
+      <ion-icon class="notification-icon has" [routerLink]="['/notifications']" src="assets/icon/bell.svg"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -70,7 +70,7 @@
 
 </ion-content>
 
-<ion-footer>
+<ion-footer class="flex">
   <ion-button (click)="goToChat()">Hablar con la Sucursal</ion-button>
-  <ion-button>Aceptar Diagnostico</ion-button>
+  <ion-button>Aceptar</ion-button>
 </ion-footer>

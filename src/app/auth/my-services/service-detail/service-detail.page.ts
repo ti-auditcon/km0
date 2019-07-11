@@ -15,8 +15,4 @@ export class ServiceDetailPage implements OnInit {
   ngOnInit() {
   }
 
-  goToNotifications(){
-    this.router.navigate(['/notifications']);
-  }
-
 }

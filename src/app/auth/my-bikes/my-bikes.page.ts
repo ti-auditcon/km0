@@ -15,10 +15,6 @@ export class MyBikesPage implements OnInit {
   ngOnInit() {
   }
 
-  goToNotifications(){
-    this.router.navigate(['/notifications']);
-  }
-
   goToBikeDetail(){
     this.router.navigate(['/bike-detail']);
   }

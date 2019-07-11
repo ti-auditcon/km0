@@ -15,10 +15,6 @@ export class StepServicePage implements OnInit {
   ngOnInit() {
   }
 
-  goToNotifications(){
-    this.router.navigate(['/notifications']);
-  }
-
   goToDate(){
     this.router.navigate(['/step-dates']);
   }

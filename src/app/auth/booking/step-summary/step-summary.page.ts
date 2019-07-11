@@ -15,10 +15,6 @@ export class StepSummaryPage implements OnInit {
   ngOnInit() {
   }
 
-  goToNotifications(){
-    this.router.navigate(['/notifications']);
-  }
-
   goToPay() {
     this.router.navigate(['/step-pay']);
   }

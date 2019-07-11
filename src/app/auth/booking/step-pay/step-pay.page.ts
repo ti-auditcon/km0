@@ -14,9 +14,5 @@ export class StepPayPage implements OnInit {
 
   ngOnInit() {
   }
-
-  goToNotifications(){
-    this.router.navigate(['/notifications']);
-  }
-
+  
 }

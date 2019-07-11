@@ -7,7 +7,7 @@
       Conversación
     </ion-title>
     <ion-buttons slot="end">
-      <ion-icon class="notification-icon has" (click)="goToNotifications()" src="assets/icon/bell.svg"></ion-icon>
+      <ion-icon class="notification-icon has" [routerLink]="['/notifications']" src="assets/icon/bell.svg"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -79,6 +79,6 @@
 </ion-content>
 
 <ion-footer class="chat-footer">
-  <ion-input value="custom"></ion-input>
+  <ion-input placeholder="Escribe tu Mensaje"></ion-input>
   <ion-button>Enviar</ion-button>
 </ion-footer>

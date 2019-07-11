@@ -14,9 +14,5 @@ export class EventDetailPage implements OnInit {
 
   ngOnInit() {
   }
-
-  goToNotifications(){
-    this.router.navigate(['/notifications']);
-  }
-
+  
 }

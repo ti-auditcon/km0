@@ -15,10 +15,6 @@ export class StepBikePage implements OnInit {
   ngOnInit() {
   }
 
-  goToNotifications(){
-    this.router.navigate(['/notifications']);
-  }
-
   goToService(){
     this.router.navigate(['/step-service']);
   }

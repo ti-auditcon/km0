@@ -15,10 +15,6 @@ export class DashboardPage implements OnInit {
   ngOnInit() {
   }
 
-  goToNotifications(){
-    this.router.navigate(['/notifications']);
-  }
-
   goToBooking(){
     this.router.navigate(['/step-bike']);
   }

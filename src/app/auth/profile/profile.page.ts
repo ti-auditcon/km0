@@ -15,10 +15,6 @@ export class ProfilePage implements OnInit {
   ngOnInit() {
   }
 
-  goToNotifications(){
-    this.router.navigate(['/notifications']);
-  }
-
   goToMyBikes(){
     this.router.navigate(['/my-bikes']);
   }

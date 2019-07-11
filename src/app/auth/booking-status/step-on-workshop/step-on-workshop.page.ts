@@ -15,10 +15,6 @@ export class StepOnWorkshopPage implements OnInit {
   ngOnInit() {
   }
 
-  goToNotifications(){
-    this.router.navigate(['/notifications']);
-  }
-
   goToChat(){
     this.router.navigate(['/chat']);
   }

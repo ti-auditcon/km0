@@ -1,13 +1,13 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
       Nueva Reserva
     </ion-title>
     <ion-buttons slot="end">
-      <ion-icon class="notification-icon has" (click)="goToNotifications()" src="assets/icon/bell.svg"></ion-icon>
+      <ion-icon class="notification-icon has" [routerLink]="['/notifications']" src="assets/icon/bell.svg"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>

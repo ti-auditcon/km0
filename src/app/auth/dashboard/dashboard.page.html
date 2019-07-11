@@ -7,7 +7,7 @@
       <img class="logo" src="assets/img/logo.png">
     </div>
     <ion-buttons slot="end">
-      <ion-icon class="notification-icon has" (click)="goToNotifications()" src="assets/icon/bell.svg"></ion-icon>
+      <ion-icon class="notification-icon has" [routerLink]="['/notifications']" src="assets/icon/bell.svg"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -59,7 +59,7 @@
         <img class="the-icon" src="assets/icon/icon-noevents.svg">
         <h4>No hay eventos Próximos por el momento</h4>
     </div>
-    <div class="card-button" (click)="goToEventDetail()">
+    <div class="card-calendar" (click)="goToEventDetail()">
       <div class="calendar-grid">
         <div class="date">
           <div class="day">
@@ -77,9 +77,8 @@
           </p>
         </div>
       </div>
-      <img class="arrow" src="assets/icon/icon-arrow.svg">
     </div>
-    <div class="card-button" (click)="goToEventDetail()">
+    <div class="card-calendar" (click)="goToEventDetail()">
         <div class="calendar-grid">
           <div class="date">
             <div class="day">
@@ -97,9 +96,12 @@
             </p>
           </div>
         </div>
-        <img class="arrow" src="assets/icon/icon-arrow.svg">
+        <!-- @if esta reservado -->
+        <div class="reserved">
+          <p>Evento Reservado</p>
+        </div>
       </div>
-      <div class="card-button" (click)="goToEventDetail()">
+      <div class="card-calendar" (click)="goToEventDetail()">
           <div class="calendar-grid">
             <div class="date">
               <div class="day">
@@ -117,7 +119,6 @@
               </p>
             </div>
           </div>
-          <img class="arrow" src="assets/icon/icon-arrow.svg">
         </div>
   </section>
 

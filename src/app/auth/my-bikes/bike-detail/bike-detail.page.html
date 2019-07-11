@@ -7,7 +7,7 @@
       Detalle Bicicleta
     </ion-title>
     <ion-buttons slot="end">
-      <ion-icon class="notification-icon has" (click)="goToNotifications()" src="assets/icon/bell.svg"></ion-icon>
+      <ion-icon class="notification-icon has" [routerLink]="['/notifications']" src="assets/icon/bell.svg"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -35,5 +35,5 @@
 </ion-content>
 
 <ion-footer>
-  <ion-button>Borrar Bicicleta</ion-button>
+  <ion-button class="delete" expand="block">Borrar Bicicleta</ion-button>
 </ion-footer>

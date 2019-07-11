@@ -7,7 +7,7 @@
       Nueva Reserva
     </ion-title>
     <ion-buttons slot="end">
-      <ion-icon class="notification-icon has" (click)="goToNotifications()" src="assets/icon/bell.svg"></ion-icon>
+      <ion-icon class="notification-icon has" [routerLink]="['/notifications']" src="assets/icon/bell.svg"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -53,7 +53,8 @@
         </div>
         <div class="actions-wrapper">
           <div class="discount-action">
-            <input type="text">
+            <!-- <input type="text"> -->
+            <ion-input placeholder="Ingresa el código"></ion-input>
             <ion-button>Aplicar</ion-button>
           </div>
         </div>
@@ -63,5 +64,5 @@
 </ion-content>
 
 <ion-footer>
-  <ion-button (click)="goToSummary()">Listo</ion-button>
+  <ion-button expand="block" (click)="goToSummary()">Listo</ion-button>
 </ion-footer>

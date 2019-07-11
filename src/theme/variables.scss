@@ -78,10 +78,11 @@
   .ion-color-km {
     --ion-color-base: #ED1C24;
     --ion-color-base-rgb: 237,28,36;
-    --ion-color-contrast: #ffffff;
-    --ion-color-contrast-rgb: 255,255,255;
+    --ion-color-contrast: #000000;
+    --ion-color-contrast-rgb: 0,0,0;
     --ion-color-shade: #d11920;
     --ion-color-tint: #ef333a;
+    --ion-color-step-50: var(--alt-background);
   }
 
   // Fondos y Cards
@@ -97,6 +98,7 @@
 
   // Highlighten
   --highlighten-color: #ED1C24;
+  --highlighten-dark-color: #D5161D;
 
   // Calendario
   --calendar-light-background: #E7E9F4;
@@ -190,15 +192,54 @@ ion-back-button {
   --color: var(--text-color-light) !important;
 }
 
+ion-button {
+  --border-radius: 4px;
+  --background: var(--highlighten-color);
+  --background-activated: var(--highlighten-dark-color);
+  --background-focused: var(--highlighten-color);
+  --background-hovered: var(--highlighten-color);
+  // --padding-top: ;
+  // --padding-bottom: ;
+  &.delete {
+    --background: var(--navbar-background);
+    --background-activated: var(--menu-sidebar-background);
+    --background-focused: var(--navbar-background);
+    --background-hovered: var(--navbar-background);
+  }
+}
+
 // Footer
 ion-footer {
   padding: 12px 22px;
   background: var(--body-background);
+  &.flex {
+    display: flex;
+    justify-content: space-between;
+    ion-button {
+      width: 100%;
+      &:nth-child(1) {
+        margin-right: 8px;
+      }
+      &:nth-child(2) {
+        width: auto;
+      }
+    }
+  }
 }
 
 ion-toggle {
   --background: var(--alt-background);
 }
+
+// ion-input {
+//   --background: var(--highlighten-color);
+// }
+
+
+.toggle-icon:host {
+  background: blue !important;
+}
+
 
 // Split Pane
 .split-content {
@@ -222,7 +263,7 @@ ion-toggle {
     }
     &:nth-child(n+2){
       .item {
-        margin-top: 20px;
+        margin-top: 22px;
       }
     }
   }
@@ -338,54 +379,6 @@ ion-toggle {
     top: 0;
     bottom: 0;
   }
-  .calendar-grid {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    .date {
-      width: 22%;
-      .day {
-        background: var(--calendar-light-background);
-        color: var(--body-background);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 2px 2px 0px 0px;
-        padding-top: 2px;
-        h2 {
-          margin: 0;
-          font-family: 'Roboto Condensed';
-          font-weight: 700;
-          font-size: 40px;
-          line-height: 47px;
-        }
-      }
-      .month {
-        background: var(--highlighten-color);
-        color: var(--text-color-light);
-        padding: 4px 0;
-        border-radius: 2px 2px 0px 0px;
-        h6 {
-          margin: 0;
-          font-weight: 700;
-          font-size: 16px;
-          line-height: 20px;
-          text-align: center;
-          text-transform: uppercase;
-        }
-      }
-      .month-past {
-        background: var(--calendar-dark-background);
-        color: var(--body-background);
-      }
-    }
-    .data {
-      width: 71%;
-      display: flex;
-      flex-wrap: wrap;
-      align-content: space-between;
-    }
-  }
   &.notification-grid {
     display: flex;
     justify-content: space-between;
@@ -482,7 +475,7 @@ ion-toggle {
     }
   }
   &:nth-child(n+2){
-    margin-top: 12px;
+    margin-top: 14px;
   }
 }
 
@@ -655,6 +648,117 @@ ion-toggle {
   }
 }
 
+.card-calendar {
+  background: var(--card-background-click);
+  // padding: 22px 25px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  position: relative;
+  border-radius: 3px;
+  h3 {
+    color: var(--clickable-text);
+    font-family: 'Roboto Condensed';
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    margin: 0;
+    margin-bottom: 4px;
+  }
+  p.detail {
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 15px;
+    margin: 0;
+    color: var(--text-color-dark);
+  }
+  .status {
+    background: var(--card-background-noclick);
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: 2px;
+    margin-top: 20px;
+    p {
+      font-family: Roboto;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 13px;
+      text-align: center;
+      margin: 0;
+    }
+  }
+  .arrow {
+    position: absolute;
+    right: 15px;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+  }
+  .calendar-grid {
+    display: flex;
+    justify-content: space-between;
+    padding: 22px 25px;
+    width: 100%;
+    .date {
+      width: 22%;
+      .day {
+        background: var(--calendar-light-background);
+        color: var(--body-background);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 2px 2px 0px 0px;
+        padding-top: 2px;
+        h2 {
+          margin: 0;
+          font-family: 'Roboto Condensed';
+          font-weight: 700;
+          font-size: 40px;
+          line-height: 47px;
+        }
+      }
+      .month {
+        background: var(--highlighten-color);
+        color: var(--text-color-light);
+        padding: 4px 0;
+        border-radius: 2px 2px 0px 0px;
+        h6 {
+          margin: 0;
+          font-weight: 700;
+          font-size: 16px;
+          line-height: 20px;
+          text-align: center;
+          text-transform: uppercase;
+        }
+      }
+      .month-past {
+        background: var(--calendar-dark-background);
+        color: var(--body-background);
+      }
+    }
+    .data {
+      width: 71%;
+      display: flex;
+      flex-wrap: wrap;
+      align-content: space-between;
+    }
+  }
+  .reserved {
+    display: flex;
+    justify-content: center;
+    background: var(--card-background-noclick);
+    padding: 10px 14px;
+    p {
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 13px;
+      text-align: center;
+      margin: 0;
+    }
+  }
+  &:nth-child(n+2){
+    margin-top: 14px;
+  }
+}
+
 .card-feature {
   background: var(--card-background-click);
   overflow: hidden;
@@ -726,6 +830,22 @@ ion-toggle {
         color: var(--text-color-dark);
       }
     }
+  }
+  .reserved {
+    display: flex;
+    justify-content: center;
+    background: var(--card-background-noclick);
+    padding: 10px 14px;
+    p {
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 13px;
+      text-align: center;
+      margin: 0;
+    }
+  }
+  &:nth-child(n+2){
+    margin-top: 14px;
   }
 }
 
@@ -1391,6 +1511,8 @@ ion-toggle {
 .office-select {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  align-content: center;
   .data {
     h4 {
       font-family: 'Roboto Condensed';
@@ -1411,9 +1533,7 @@ ion-toggle {
       color: var(--text-color-dark);
     }
   }
-  .button-wrapper {
-
-  }
+  .button-wrapper {}
 }
 
 // Opciones
@@ -1440,12 +1560,29 @@ ion-toggle {
   }
   .actions-wrapper {
     padding: 16px 0;
+    // &:nth-child(n+2) {
+    //   padding-top: 16px;
+    // }
     .discount-action {
       display: flex;
+      align-items: center;
+      align-content: center;
+      justify-content: space-between;
       flex-wrap: nowrap;
       width: 100%;
-      input {
-        width: 100%;
+      ion-input {
+        --color: var(--text-color-light);
+        --background: var(--body-background);
+        --padding-bottom: 0px;
+        --padding-end: 12px;
+        --padding-start: 12px;
+        --padding-top: 0px;
+        border-radius: 2px;
+        border: solid 1px var(--noclickable-text);
+        height: 44px;
+      }
+      ion-button {
+        margin-left: 10px;
       }
     }
   }
@@ -1557,9 +1694,21 @@ ion-toggle {
 
 .chat-footer {
   display: flex;
+  align-items: center;
+  align-content: center;
   ion-input {
-    border: solid 1px var(--text-color-dark);
     --color: var(--text-color-light);
+    --background: var(--body-background);
+    --padding-bottom: 0px;
+    --padding-end: 12px;
+    --padding-start: 12px;
+    --padding-top: 0px;
+    border-radius: 2px;
+    border: solid 1px var(--noclickable-text);
+    height: 44px;
+  }
+  ion-button {
+    margin-left: 10px;
   }
 }
 
@@ -1627,6 +1776,8 @@ ion-toggle {
     .item {
       position: relative;
       display: flex;
+      align-items: center;
+      align-content: center;
       cursor: pointer;
       &:nth-child(n+2){
         margin-top: 22px;

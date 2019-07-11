@@ -14,11 +14,7 @@ export class MyServicesPage implements OnInit {
 
   ngOnInit() {
   }
-
-  goToNotifications(){
-    this.router.navigate(['/notifications']);
-  }
-
+  
   goToServiceDetail() {
     this.router.navigate(['/service-detail']);
   }

@@ -15,10 +15,6 @@ export class ChatPage {
     private router: Router
   ) { }
 
-  goToNotifications(){
-    this.router.navigate(['/notifications']);
-  }
-
   ionViewDidEnter() {
     let that = this;
     this.content.scrollToBottom(200);
