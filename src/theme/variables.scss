@@ -840,8 +840,8 @@ ion-toggle {
       box-sizing: border-box;
       // background: transparent;
       background: var(--body-background);
-      &:before {
-        content: '';
+      .icon-background {
+        // content: '';
         background: var(--highlighten-color);
         width: 100%;
         height: 100%;
@@ -868,8 +868,8 @@ ion-toggle {
       border-bottom: solid 2px var(--highlighten-color);
       width: 100%;
       height: 10px;
-      &:before {
-        content: '';
+      .connector-background {
+        // content: '';
         width: 0%;
         height: 8px;
         position: absolute;
@@ -927,7 +927,7 @@ ion-toggle {
 .process-1 {
   .booking-process {
     .icon:nth-child(1) {
-      &:before {
+      .icon-background {
         animation: fill 0.3s forwards;
         animation-delay: 0.7s;
       }
@@ -939,7 +939,7 @@ ion-toggle {
       }
     }
     .connector {
-      &:before {
+      .connector-background {
         animation: "fill-process-1" 0.4s forwards linear;
         animation-delay: 0.7s;
       }
@@ -950,7 +950,7 @@ ion-toggle {
 .process-2 {
   .booking-process {
     .icon:nth-child(1) {
-      &:before {
+      .icon-background {
         animation: fill 0.3s forwards;
         animation-delay: 0.7s;
       }
@@ -962,7 +962,7 @@ ion-toggle {
       }
     }
     .icon:nth-child(2) {
-      &:before {
+      .icon-background {
         animation: fill 0.3s forwards;
         animation-delay: 1s;
       }
@@ -974,7 +974,7 @@ ion-toggle {
       }
     }
     .connector {
-      &:before {
+      .connector-background {
         animation: "fill-process-2" 0.8s forwards linear;
         animation-delay: 0.7s;
       }
@@ -985,7 +985,7 @@ ion-toggle {
 .process-3 {
   .booking-process {
     .icon:nth-child(1) {
-      &:before {
+      .icon-background {
         animation: fill 0.3s forwards;
         animation-delay: 0.7s;
       }
@@ -997,7 +997,7 @@ ion-toggle {
       }
     }
     .icon:nth-child(2) {
-      &:before {
+      .icon-background {
         animation: fill 0.3s forwards;
         animation-delay: 1s;
       }
@@ -1009,7 +1009,7 @@ ion-toggle {
       }
     }
     .icon:nth-child(3) {
-      &:before {
+      .icon-background {
         animation: fill 0.3s forwards;
         animation-delay: 1.2s;
       }
@@ -1021,7 +1021,7 @@ ion-toggle {
       }
     }
     .connector {
-      &:before {
+      .connector-background {
         animation: "fill-process-3" 0.85s forwards linear;
         animation-delay: 0.7s;
       }
@@ -1032,7 +1032,7 @@ ion-toggle {
 .process-4 {
   .booking-process {
     .icon:nth-child(1) {
-      &:before {
+      .icon-background {
         animation: fill 0.3s forwards;
         animation-delay: 0.7s;
       }
@@ -1044,7 +1044,7 @@ ion-toggle {
       }
     }
     .icon:nth-child(2) {
-      &:before {
+      .icon-background {
         animation: fill 0.3s forwards;
         animation-delay: 1s;
       }
@@ -1056,7 +1056,7 @@ ion-toggle {
       }
     }
     .icon:nth-child(3) {
-      &:before {
+      .icon-background {
         animation: fill 0.3s forwards;
         animation-delay: 1.2s;
       }
@@ -1068,7 +1068,7 @@ ion-toggle {
       }
     }
     .icon:nth-child(4) {
-      &:before {
+      .icon-background {
         animation: fill 0.3s forwards;
         animation-delay: 1.5s;
       }
@@ -1080,7 +1080,7 @@ ion-toggle {
       }
     }
     .connector {
-      &:before {
+      .connector-background {
         animation: "fill-process-4" 1.1s forwards linear;
         animation-delay: 0.7s;
       }
@@ -1091,7 +1091,7 @@ ion-toggle {
 .process-5 {
   .booking-process {
     .icon:nth-child(1) {
-      &:before {
+      .icon-background {
         animation: fill 0.3s forwards;
         animation-delay: 0.7s;
       }
@@ -1103,7 +1103,7 @@ ion-toggle {
       }
     }
     .icon:nth-child(2) {
-      &:before {
+      .icon-background {
         animation: fill 0.3s forwards;
         animation-delay: 1s;
       }
@@ -1115,7 +1115,7 @@ ion-toggle {
       }
     }
     .icon:nth-child(3) {
-      &:before {
+      .icon-background {
         animation: fill 0.3s forwards;
         animation-delay: 1.2s;
       }
@@ -1127,7 +1127,7 @@ ion-toggle {
       }
     }
     .icon:nth-child(4) {
-      &:before {
+      .icon-background {
         animation: fill 0.3s forwards;
         animation-delay: 1.5s;
       }
@@ -1139,7 +1139,7 @@ ion-toggle {
       }
     }
     .icon:nth-child(5) {
-      &:before {
+      .icon-background {
         animation: fill 0.3s forwards;
         animation-delay: 1.7s;
       }
@@ -1151,7 +1151,7 @@ ion-toggle {
       }
     }
     .connector {
-      &:before {
+      .connector-background {
         animation: "fill-process-4" 1.1s forwards linear;
         animation-delay: 0.7s;
       }
