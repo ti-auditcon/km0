@@ -833,7 +833,7 @@ ion-toggle {
       align-items: center;
       align-content: center;
       position: relative;
-      z-index: 2;
+      z-index: 2 !important;
       overflow: hidden;
       box-sizing: border-box;
       background: var(--body-background);
@@ -847,17 +847,17 @@ ion-toggle {
         left: 0;
         bottom: 0;
         position: absolute;
-        z-index: 3;
+        z-index: 3 !important;
       }
       svg {
-        z-index: 4;
+        z-index: 4 !important;
         path {
           fill: var(--highlighten-color);
         }
       }
     }
     .connector {
-      z-index: 1;
+      z-index: 1 !important;
       position: absolute;
       background: transparent;
       border-top: solid 2px var(--highlighten-color);
@@ -1177,7 +1177,7 @@ ion-toggle {
     align-content: center;
     position: relative;
     overflow: hidden;
-    z-index: 2;
+    z-index: 2 !important;
     box-sizing: border-box;
     background: var(--body-background);
     &:before {
@@ -1190,17 +1190,17 @@ ion-toggle {
       left: 0;
       bottom: 0;
       position: absolute;
-      z-index: 3;
+      z-index: 3 !important;
     }
     svg {
-      z-index: 4;
+      z-index: 4 !important;
       path {
         fill: var(--highlighten-color);
       }
     }
   }
   .connector {
-    z-index: 1;
+    z-index: 1 !important;
     position: absolute;
     background: transparent;
     border-top: solid 2px var(--highlighten-color);
