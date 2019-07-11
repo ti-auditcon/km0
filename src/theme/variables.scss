@@ -836,7 +836,7 @@ ion-toggle {
       z-index: 2 !important;
       overflow: hidden;
       box-sizing: border-box;
-      background: var(--body-background);
+      // background: var(--body-background);
       &:before {
         content: '';
         background: var(--highlighten-color);
