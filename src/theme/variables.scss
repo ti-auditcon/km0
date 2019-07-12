@@ -491,6 +491,11 @@ ion-toggle {
   }
 }
 
+.card-button.selected {
+  box-shadow: none;
+  border: solid 1px var(--highlighten-color);
+}
+
 .card-info {
   // box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
   position: relative;

@@ -18,35 +18,22 @@
 
   <section class="service-select">
     <h1 class="title-section">Elige uno o más Servicios</h1>
-    <div class="card-button">
+
+    <div class="card-button" *ngFor="let service of services; let i = index" [ngClass]="'selected'">
       <div class="service-item">
         <div class="icon">
-          <img src="/assets/icon/services/icon-bike.svg">
+          <img src="/assets/icon/services/{{service.icon}}">
         </div>
         <div class="data">
-          <h4>Full Bicicleta</h4>
+          <h4>{{service.title}}</h4>
           <p>
-            Incluye Lavado, regulación de cambios y engrase de trasmisión,
-            frenos, engrasado todos los rodamientos.
+            {{service.description}}
           </p>
-          <h4>$22.000</h4>
+          <h4>${{service.price}}</h4>
         </div>
       </div>
     </div>
-    <div class="card-button">
-      <div class="service-item">
-        <div class="icon">
-          <img src="/assets/icon/services/icon-bike.svg">
-        </div>
-        <div class="data">
-          <h4>General Bicicleta</h4>
-          <p>
-            Etiam ultricies vel metus sed sagittis. Ut hendrerit, neque eu sodales maximus.
-          </p>
-          <h4>$10.000</h4>
-        </div>
-      </div>
-    </div>
+
   </section>
 
 </ion-content>
