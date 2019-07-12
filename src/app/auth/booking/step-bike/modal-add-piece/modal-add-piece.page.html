@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <!-- <ion-menu-button></ion-menu-button> -->
+    </ion-buttons>
+    <ion-title>
+      Agregar Pieza
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()" class="no-background">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <section class="add-bike modal-section">
+
+    <h1 class="title-section">Ingresa una Pieza</h1>
+
+    <ion-item class="modal-item">
+      <ion-label>Tipo de Pieza</ion-label>
+      <ion-select value="Seleccionar" okText="Ok" cancelText="Cancelar">
+        <ion-select-option value="manubrio">Manubrio</ion-select-option>
+        <ion-select-option value="Rueda">Rueda</ion-select-option>
+        <ion-select-option value="Freno">Freno</ion-select-option>
+        <!-- <ion-select-option value="otro">Otro</ion-select-option> -->
+      </ion-select>
+    </ion-item>
+
+    <ion-item class="modal-item">
+      <ion-label>Marca</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item class="modal-item">
+      <ion-label>Modelo (Opcional)</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+
+  </section>
+
+</ion-content>
+
+
+<ion-footer>
+  <ion-button expand="block">Agregar Pieza</ion-button>
+</ion-footer>

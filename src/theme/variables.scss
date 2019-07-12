@@ -184,6 +184,11 @@ ion-toolbar {
   }
 }
 
+.info-text {
+  color: var(--text-color-dark);
+  margin-top: 0;
+}
+
 ion-menu-button {
   --color: var(--text-color-light);
 }
@@ -205,6 +210,13 @@ ion-button {
     --background-activated: var(--menu-sidebar-background);
     --background-focused: var(--navbar-background);
     --background-hovered: var(--navbar-background);
+  }
+  &.no-background {
+    color: white;
+    --background: transparent;
+    --background-activated: transparent;
+    --background-focused: transparent;
+    --background-hovered: transparent;
   }
 }
 
@@ -1601,11 +1613,20 @@ ion-toggle {
       .services {
         .service-detail {
           display: flex;
+          align-items: center;
+          align-content: center;
           justify-content: space-between;
           margin-bottom: 4px;
           p {
             color: var(--text-color-dark);
             margin: 0;
+            ion-badge {
+              text-transform: none;
+              font-style: italic;
+              --background: var(--alt-background);
+              --color: var(--clickable-text);
+              font-family: serif;
+            }
           }
         }
         .total-detail {
@@ -1709,6 +1730,40 @@ ion-toggle {
   }
   ion-button {
     margin-left: 10px;
+  }
+}
+
+.modal-section {
+  ion-item.modal-item {
+    --background: var(--body-background);
+    --background-activated: var(--card-background-click);
+    --background-focused: var(--card-background-click);
+    --background-hovered: var(--card-background-click);
+    --color: var(--text-color-light);
+    --border-color: var(--alt-background);
+    --padding-start: 0;
+    --padding-end: 0;
+  }
+  ion-label {
+    font-family: "Roboto Condensed";
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 22px;
+    --color: var(--clickable-text);
+  }
+  ion-select {
+    font-size: 16px;
+    line-height: 19px;
+    color: var(--text-color-dark);
+    font-weight: 300;
+  }
+  ion-input {
+    font-size: 16px;
+    line-height: 19px;
+    text-align: right;
+    --placeholder-font-weight: 300;
+    --color: var(--text-color-dark);
+    --padding-start: 20px;
   }
 }
 

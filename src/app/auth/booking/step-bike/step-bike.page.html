@@ -33,7 +33,7 @@
       </div>
     </div>
 
-    <div class="card-info data">
+    <div class="card-info data" (click)="addBicicleModal()">
       <img class="the-icon" src="assets/icon/icon-add.svg">
       <h4>Agregar Nueva Bicicleta</h4>
       <p class="explain">
@@ -41,7 +41,7 @@
       </p>
     </div>
 
-    <div class="card-info data">
+    <div class="card-info data" (click)="addBicicleModal()">
       <img class="the-icon" src="assets/icon/icon-add.svg">
       <h4>Agregar Otra Bicicleta</h4>
       <p class="explain">
@@ -49,7 +49,7 @@
       </p>
     </div>
 
-    <div class="card-info data">
+    <div class="card-info data" (click)="addPieceModal()">
       <img class="the-icon" src="assets/icon/icon-part.svg">
       <h4>Tengo Solo la Pieza</h4>
       <p class="explain">
@@ -67,12 +67,8 @@
       <p>Argomedo 30</p>
     </div>
     <div class="button-wrapper">
-      <ion-button>Cambiar</ion-button>
+      <ion-button (click)="changeOfficeModal()">Cambiar</ion-button>
     </div>
   </section>
 
 </ion-content>
-
-<!-- <ion-footer>
-  <ion-button (click)="goToService()">Elegir Bicicleta</ion-button>
-</ion-footer> -->

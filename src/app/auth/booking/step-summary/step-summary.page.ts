@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
+import { ModalInfoPricePage } from './modal-info-price/modal-info-price.page';
 
 @Component({
   selector: 'app-step-summary',
@@ -9,10 +11,18 @@ import { Router } from '@angular/router';
 export class StepSummaryPage implements OnInit {
 
   constructor(
-    private router: Router
+    private router: Router,
+    public modalController: ModalController
   ) { }
 
   ngOnInit() {
+  }
+
+  async infoPriceModal() {
+    const modal = await this.modalController.create({
+      component: ModalInfoPricePage
+    });
+    return await modal.present();
   }
 
   goToPay() {

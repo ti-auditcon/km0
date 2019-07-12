@@ -8,6 +8,9 @@ import { Router } from '@angular/router';
 })
 export class StepDatesPage implements OnInit {
 
+  public discount:boolean;
+  public retiro:boolean;
+
   constructor(
     private router: Router
   ) { }

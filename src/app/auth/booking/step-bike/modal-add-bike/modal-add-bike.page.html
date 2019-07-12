@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <!-- <ion-menu-button></ion-menu-button> -->
+    </ion-buttons>
+    <ion-title>
+      Agregar Bicicleta
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()" class="no-background">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <section class="add-bike modal-section">
+
+    <h1 class="title-section">Ingresa tu Bicicleta</h1>
+
+    <ion-item class="modal-item">
+      <ion-label>Marca</ion-label>
+      <ion-select value="Seleccionar" okText="Ok" cancelText="Cancelar">
+        <ion-select-option value="specialized">SPECIALIZED</ion-select-option>
+        <ion-select-option value="otra">Otra</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <!-- En el caso de Elegir otra marca -->
+    <ion-item class="modal-item">
+      <ion-label>Ingresa la Marca</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item class="modal-item">
+      <ion-label>Ingresa el Modelo</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <!-- Solo en el caso de elegir specialized -->
+    <ion-item class="modal-item">
+      <ion-label>Año</ion-label>
+      <ion-select value="Seleccionar" okText="Ok" cancelText="Cancelar">
+        <ion-select-option value="2019">2019</ion-select-option>
+        <ion-select-option value="2018">2018</ion-select-option>
+        <ion-select-option value="2017">2018</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item class="modal-item">
+      <ion-label>Modelo</ion-label>
+      <ion-select value="Seleccionar" okText="Ok" cancelText="Cancelar">
+        <ion-select-option value="2019">Epic Comp Alloy</ion-select-option>
+        <ion-select-option value="2018">Epic Comp Alloy</ion-select-option>
+        <ion-select-option value="2017">Epic Comp Alloy</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+  </section>
+
+</ion-content>
+
+
+<ion-footer>
+  <ion-button expand="block">Guardar Bicicleta</ion-button>
+</ion-footer>

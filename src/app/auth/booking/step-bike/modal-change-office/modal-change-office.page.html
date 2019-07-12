@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <!-- <ion-menu-button></ion-menu-button> -->
+    </ion-buttons>
+    <ion-title>
+      Elegir Sucursal
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()" class="no-background">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <section class="add-bike modal-section">
+
+    <h1 class="title-section">Elegir Sucursal</h1>
+
+    <ion-item class="modal-item">
+      <ion-label>Sucursal</ion-label>
+      <ion-select value="Seleccionar" okText="Ok" cancelText="Cancelar">
+        <ion-select-option value="curico">
+          Curicó
+        </ion-select-option>
+        <ion-select-option value="santa-cruz">
+          Santa Cruz
+        </ion-select-option>
+        <ion-select-option value="temuco">
+          Temuco
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+  </section>
+
+</ion-content>
+
+
+<ion-footer>
+  <ion-button expand="block">Cambiar Sucursal</ion-button>
+</ion-footer>

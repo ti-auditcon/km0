@@ -28,14 +28,15 @@
 
     <section class="services-options">
       <h1 class="title-section">Opciones</h1>
+      <!-- Retiro en Domicilio -->
       <div class="options home-option">
         <div class="toggle-wrapper">
           <div class="the-toggle">
-            <ion-toggle color="km"></ion-toggle>
+            <ion-toggle class="retiro-toggle" color="km" [(ngModel)]="retiro"></ion-toggle>
           </div>
           <h5>Retiro en Domicilio</h5>
         </div>
-        <div class="actions-wrapper">
+        <div class="actions-wrapper" *ngIf="retiro">
           <div class="card-info info">
             <p>
               <span>Retiro el Lunes 7 de Julio</span><br>
@@ -44,14 +45,15 @@
           </div>
         </div>
       </div>
+      <!-- Codigo de Descuento -->
       <div class="options discount-option">
         <div class="toggle-wrapper">
           <div class="the-toggle">
-            <ion-toggle color="km"></ion-toggle>
+            <ion-toggle class="codigo-toggle" color="km" [(ngModel)]="discount"></ion-toggle>
           </div>
           <h5>¿Código de Descuento?</h5>
         </div>
-        <div class="actions-wrapper">
+        <div class="actions-wrapper" *ngIf="discount">
           <div class="discount-action">
             <!-- <input type="text"> -->
             <ion-input placeholder="Ingresa el código"></ion-input>
