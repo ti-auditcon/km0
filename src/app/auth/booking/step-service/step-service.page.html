@@ -19,7 +19,11 @@
   <section class="service-select">
     <h1 class="title-section">Elige uno o más Servicios</h1>
 
-    <div class="card-button" *ngFor="let service of services; let i = index" [ngClass]="'selected'">
+    <div class="card-button border-button" *ngFor="let service of services; let i = index"
+      [attr.data-selected]="false"
+      (click)="hightlightStatus[i]=!hightlightStatus[i]"
+      [class.selected]="hightlightStatus[i]"
+    >
       <div class="service-item">
         <div class="icon">
           <img src="/assets/icon/services/{{service.icon}}">
@@ -41,3 +45,19 @@
 <ion-footer>
   <ion-button expand="block" (click)="goToDate()">Listo</ion-button>
 </ion-footer>
+
+  <!--
+
+
+
+
+
+
+
+
+
+
+
+
+
+   -->

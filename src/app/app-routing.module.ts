@@ -42,11 +42,11 @@ const routes: Routes = [
   { path: 'modal-add-bike', loadChildren: './auth/booking/step-bike/modal-add-bike/modal-add-bike.module#ModalAddBikePageModule' },
   { path: 'modal-add-piece', loadChildren: './auth/booking/step-bike/modal-add-piece/modal-add-piece.module#ModalAddPiecePageModule' },
   { path: 'modal-change-office', loadChildren: './auth/booking/step-bike/modal-change-office/modal-change-office.module#ModalChangeOfficePageModule' },
+  { path: 'modal-change-office', loadChildren: './auth/booking/step-bike/modal-change-office/modal-change-office.module#ModalChangeOfficePageModule' },
+  { path: 'modal-info-price', loadChildren: './auth/booking/step-summary/modal-info-price/modal-info-price.module#ModalInfoPricePageModule' },
   // PUBLIC
   { path: 'login', loadChildren: './public/login/login.module#LoginPageModule' },
   { path: 'forget', loadChildren: './public/forget/forget.module#ForgetPageModule' },
-  { path: 'modal-change-office', loadChildren: './auth/booking/step-bike/modal-change-office/modal-change-office.module#ModalChangeOfficePageModule' },
-  { path: 'modal-info-price', loadChildren: './auth/booking/step-summary/modal-info-price/modal-info-price.module#ModalInfoPricePageModule' },
 ];
 
 @NgModule({

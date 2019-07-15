@@ -149,6 +149,10 @@ ion-content.no-padding {
   --padding-end: 0;
 }
 
+:focus {
+  outline: none;
+}
+
 // Navbar
 ion-toolbar {
   --background: var(--navbar-background);
@@ -489,6 +493,10 @@ ion-toggle {
   &:nth-child(n+2){
     margin-top: 14px;
   }
+}
+
+.card-button.border-button {
+  border: solid 1px transparent;
 }
 
 .card-button.selected {
@@ -1573,6 +1581,9 @@ ion-toggle {
         line-height: 25px;
         color: var(--clickable-text);
       }
+    }
+    &:nth-child(n+2) {
+      margin-top: 14px;
     }
   }
   .actions-wrapper {

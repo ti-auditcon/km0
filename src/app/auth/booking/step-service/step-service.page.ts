@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
 export class StepServicePage implements OnInit {
 
   // status: boolean = false;
-  // selected: boolean = false;
+  hightlightStatus: Array<boolean> = [];
+  item:any;
   services:any = [
     {
       title: 'Full Bicicleta',
@@ -38,9 +39,10 @@ export class StepServicePage implements OnInit {
   ngOnInit() {
   }
 
-  // clickChange(i) {
-  //   this.status =! this.status;
-  // }
+  wasClicked = false;
+  onClick() {
+    this.wasClicked= !this.wasClicked;
+  }
 
   goToDate(){
     this.router.navigate(['/step-dates']);

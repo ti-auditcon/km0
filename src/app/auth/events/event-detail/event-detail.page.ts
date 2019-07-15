@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
+
+// import { File } from '@ionic-native/file/ngx';
+// import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 
 @Component({
   selector: 'app-event-detail',
@@ -9,10 +13,11 @@ import { Router } from '@angular/router';
 export class EventDetailPage implements OnInit {
 
   constructor(
-    private router: Router
+    private router: Router,
+    private modalController: ModalController
   ) { }
 
   ngOnInit() {
   }
-  
+
 }
