@@ -91,7 +91,7 @@
       <div class="gallery">
         <h1 class="title-section">Galería</h1>
         <div class="gallery-content">
-          <div class="item" *ngFor="let image of images" [ngStyle]="{'background-image':'url('+image.url+')'}" (click)="openImage()">
+          <div class="item" *ngFor="let image of images" [ngStyle]="{'background-image':'url('+image.url+')'}" (click)="viewPhoto()">
           </div>
         </div>
       </div>
