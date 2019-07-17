@@ -287,6 +287,73 @@ ion-toggle {
 }
 
 
+// Login
+.auth-inner {
+  width: 100%;
+  height: 100%;
+  align-items: flex-end;
+  align-content: flex-end;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  .logo-auth-container {
+    text-align: center;
+    .logo-auth {
+      width: 52%;
+      margin-bottom: 75px;
+    }
+  }
+  form {
+    width: 100%;
+    .form-inner {
+      .a-input {
+        .text-input {
+          display: block;
+          font-size: 16px;
+          line-height: 22px;
+          margin-bottom: 21px;
+          color: var(--text-color-dark);
+        }
+        ion-input {
+          --background: var(--card-background-click);
+          // --background-activated: ;
+          // --background-focused: ;
+          // --background-hover: ;
+          --color: var(--clickable-text);
+          // --color-activated: ;
+          // --color-focused: ;
+          // --color-hover: ;
+          --padding-top: 16px;
+          --padding-end: 18px;
+          --padding-bottom: 16px;
+          --padding-start: 12px;
+          img {
+            margin-left: 18px;
+          }
+          &:nth-child(n+2) {
+            margin-top: 12px;
+          }
+        }
+      }
+    }
+    .signup-col {
+      margin-top: 18px;
+    }
+    .login-options {
+      text-align: center;
+      padding-top: 37px;
+      padding-bottom: 20px;
+      a {
+        color: var(--clickable-text);
+        font-size: 15px;
+        line-height: 19px;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+
 // Split Pane
 .split-content {
   padding-left: 22px;

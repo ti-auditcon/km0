@@ -1,9 +1,35 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <div class="auth-inner">
 
+    <div class="logo-auth-container">
+      <img class="logo-auth" src="assets/img/logo_login.png">
+    </div>
+
+    <form (ngSubmit)="login()" #registerForm="ngForm">
+      <div class="form-inner">
+
+        <div class="a-input">
+          <span class="icon-input-auth icon-auth-mail"></span>
+          <ion-input type="email" placeholder="correo@correo.com" class="input-email" name="email" required>
+            <img src="assets/img/email.svg">
+          </ion-input>
+        </div>
+
+        <div class="a-input">
+          <span class="icon-input-auth icon-auth-pass"></span>
+          <ion-input type="password" placeholder="Contraseña" class="input-pass" name="password" required>
+            <img src="assets/img/lock.svg">
+          </ion-input>
+        </div>
+
+      </div>
+      <div class="signup-col">
+        <ion-button class="submit-login-auth" full type="submit" expand="block">Ingresar</ion-button>
+      </div>
+      <div class="login-options">
+        <a class="link-forget" [routerLink]="['/forget']">¿Olvidaste tu Contraseña?</a>
+      </div>
+    </form>
+
+  </div>
 </ion-content>

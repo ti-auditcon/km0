@@ -1,9 +1,31 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>forget</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <div class="auth-inner">
 
+    <div class="logo-auth-container">
+      <img class="logo-auth" src="assets/img/logo_login.png">
+    </div>
+
+    <form (ngSubmit)="login()" #registerForm="ngForm">
+      <div class="form-inner">
+
+        <div class="a-input">
+          <span class="text-input">
+            Ingresa tu correo y te enviaremos un link para reestablecer tu contraseña:
+          </span>
+          <span class="icon-input-auth icon-auth-mail"></span>
+          <ion-input type="email" placeholder="correo@correo.com" class="input-email" name="email" required>
+            <img src="assets/img/email.svg">
+          </ion-input>
+        </div>
+
+      </div>
+      <div class="signup-col">
+        <ion-button class="submit-login-auth" full type="submit" expand="block">Ingresar</ion-button>
+      </div>
+      <div class="login-options">
+        <a class="link-forget" [routerLink]="['/login']" routerDirection="back">Atrás</a>
+      </div>
+    </form>
+
+  </div>
 </ion-content>
