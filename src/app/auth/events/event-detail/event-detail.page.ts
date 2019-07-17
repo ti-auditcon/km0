@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { ModalImagePage } from './modal-image/modal-image.page'
-import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 
 @Component({
   selector: 'app-event-detail',
@@ -34,15 +33,10 @@ export class EventDetailPage implements OnInit {
 
   constructor(
     private router: Router,
-    private modalController: ModalController,
-    private photoViewer: PhotoViewer
+    private modalController: ModalController
   ) { }
 
   ngOnInit() {
-  }
-
-  viewPhoto(){
-    this.photoViewer.show('assets/img/event-default.jpg', '', {share: true});
   }
 
   async openImage() {

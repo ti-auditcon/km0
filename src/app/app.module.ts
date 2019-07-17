@@ -14,8 +14,6 @@ import { ModalChangeOfficePageModule } from './auth/booking/step-bike/modal-chan
 import { ModalInfoPricePageModule } from './auth/booking/step-summary/modal-info-price/modal-info-price.module';
 import { ModalImagePageModule } from './auth/events/event-detail/modal-image/modal-image.module';
 
-import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
-
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -31,7 +29,6 @@ import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
   ],
   providers: [
     StatusBar,
-    PhotoViewer,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
