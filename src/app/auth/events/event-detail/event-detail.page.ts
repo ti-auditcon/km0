@@ -31,6 +31,13 @@ export class EventDetailPage implements OnInit {
     },
   ]
 
+  sliderOpts = {
+    zoom: false,
+    slidesPerView: 1.5,
+    spaceBetween: 20,
+    centeredSlides: true
+  };
+
   constructor(
     private router: Router,
     private modalController: ModalController
@@ -39,11 +46,22 @@ export class EventDetailPage implements OnInit {
   ngOnInit() {
   }
 
-  async openImage() {
-    const modal = await this.modalController.create({
-      component: ModalImagePage
+  openPreview(img) {
+    this.modalController.create({
+      component: ModalImagePage,
+      componentProps: {
+        img: img
+      }
+    }).then(modal => {
+      modal.present();
     });
-    return await modal.present();
   }
+
+  // async openImage() {
+  //   const modal = await this.modalController.create({
+  //     component: ModalImagePage
+  //   });
+  //   return await modal.present();
+  // }
 
 }
