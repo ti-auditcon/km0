@@ -12,6 +12,7 @@ import { ModalAddBikePageModule } from './auth/booking/step-bike/modal-add-bike/
 import { ModalAddPiecePageModule } from './auth/booking/step-bike/modal-add-piece/modal-add-piece.module';
 import { ModalChangeOfficePageModule } from './auth/booking/step-bike/modal-change-office/modal-change-office.module';
 import { ModalInfoPricePageModule } from './auth/booking/step-summary/modal-info-price/modal-info-price.module';
+import { ModalImagePageModule } from './auth/events/event-detail/modal-image/modal-image.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +24,8 @@ import { ModalInfoPricePageModule } from './auth/booking/step-summary/modal-info
     ModalAddBikePageModule,
     ModalAddPiecePageModule,
     ModalChangeOfficePageModule,
-    ModalInfoPricePageModule
+    ModalInfoPricePageModule,
+    ModalImagePageModule
   ],
   providers: [
     StatusBar,

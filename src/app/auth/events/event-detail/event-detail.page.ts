@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
-
-// import { File } from '@ionic-native/file/ngx';
-// import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
+import { ModalImagePage } from './modal-image/modal-image.page'
 
 @Component({
   selector: 'app-event-detail',
@@ -12,12 +10,40 @@ import { ModalController } from '@ionic/angular';
 })
 export class EventDetailPage implements OnInit {
 
+  images = [
+    {
+      url: 'assets/img/event-default.jpg'
+    },
+    {
+      url: 'assets/img/event-default.jpg'
+    },
+    {
+      url: 'assets/img/event-default.jpg'
+    },
+    {
+      url: 'assets/img/event-default.jpg'
+    },
+    {
+      url: 'assets/img/event-default.jpg'
+    },
+    {
+      url: 'assets/img/event-default.jpg'
+    },
+  ]
+
   constructor(
     private router: Router,
     private modalController: ModalController
   ) { }
 
   ngOnInit() {
+  }
+
+  async openImage() {
+    const modal = await this.modalController.create({
+      component: ModalImagePage
+    });
+    return await modal.present();
   }
 
 }

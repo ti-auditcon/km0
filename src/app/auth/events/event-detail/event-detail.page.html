@@ -91,11 +91,8 @@
       <div class="gallery">
         <h1 class="title-section">Galería</h1>
         <div class="gallery-content">
-          <div class="item" style="background-image: url('assets/img/event-default.jpg')"></div>
-          <div class="item" style="background-image: url('assets/img/event-default.jpg')"></div>
-          <div class="item" style="background-image: url('assets/img/event-default.jpg')"></div>
-          <div class="item" style="background-image: url('assets/img/event-default.jpg')"></div>
-          <div class="item" style="background-image: url('assets/img/event-default.jpg')"></div>
+          <div class="item" *ngFor="let image of images" [ngStyle]="{'background-image':'url('+image.url+')'}" (click)="openImage()">
+          </div>
         </div>
       </div>
     </div>
@@ -107,3 +104,27 @@
 <ion-footer>
   <ion-button expand="block">Reservar mi Cupo</ion-button>
 </ion-footer>
+
+<!--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ -->

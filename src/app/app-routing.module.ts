@@ -47,6 +47,7 @@ const routes: Routes = [
   // PUBLIC
   { path: 'login', loadChildren: './public/login/login.module#LoginPageModule' },
   { path: 'forget', loadChildren: './public/forget/forget.module#ForgetPageModule' },
+  { path: 'modal-image', loadChildren: './auth/events/event-detail/modal-image/modal-image.module#ModalImagePageModule' },
 ];
 
 @NgModule({
