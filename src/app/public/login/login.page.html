@@ -10,14 +10,14 @@
 
         <div class="a-input">
           <span class="icon-input-auth icon-auth-mail"></span>
-          <ion-input type="email" placeholder="correo@correo.com" class="input-email" name="email" required>
+          <ion-input type="email" placeholder="correo@correo.com" class="input-email" name="email" required [(ngModel)]="registerCredentials.email" >
             <img src="assets/img/email.svg">
           </ion-input>
         </div>
 
         <div class="a-input">
           <span class="icon-input-auth icon-auth-pass"></span>
-          <ion-input type="password" placeholder="Contraseña" class="input-pass" name="password" required>
+          <ion-input type="password" placeholder="Contraseña" class="input-pass" name="password" required [(ngModel)]="registerCredentials.password" >
             <img src="assets/img/lock.svg">
           </ion-input>
         </div>

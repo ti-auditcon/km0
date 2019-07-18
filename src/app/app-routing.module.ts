@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuardService } from './services/auth-guard.service';
+
 
 const routes: Routes = [
   {
     path: '',
     redirectTo: 'dashboard',
-    pathMatch: 'full'
+    pathMatch: 'full',
+    canActivate: [AuthGuardService]
   },
   {
     path: 'list',
@@ -28,7 +31,7 @@ const routes: Routes = [
   { path: 'chat', loadChildren: './auth/booking-status/chat/chat.module#ChatPageModule' },
   // Eventos
   { path: 'events', loadChildren: './auth/events/events.module#EventsPageModule' },
-  { path: 'event-detail', loadChildren: './auth/events/event-detail/event-detail.module#EventDetailPageModule' },
+  { path: 'events/:id', loadChildren: './auth/events/event-detail/event-detail.module#EventDetailPageModule' },
   // Perfil
   { path: 'profile', loadChildren: './auth/profile/profile.module#ProfilePageModule' },
   { path: 'my-bikes', loadChildren: './auth/my-bikes/my-bikes.module#MyBikesPageModule' },

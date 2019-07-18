@@ -55,71 +55,46 @@
 
   <section class="next-events">
     <h1 class="title-section">Próximos Eventos</h1>
-    <div class="card-info no-data">
+    <div class="card-info no-data" *ngIf="eventMeta?.pagination.total == 0">
         <img class="the-icon" src="assets/icon/icon-noevents.svg">
         <h4>No hay eventos Próximos por el momento</h4>
     </div>
-    <div class="card-calendar" (click)="goToEventDetail()">
+    <div class="card-calendar" (click)="goToEvent(event.id)" *ngFor="let event of events">
       <div class="calendar-grid">
         <div class="date">
           <div class="day">
-            <h2>12</h2>
+            <h2>{{event.day}}</h2>
           </div>
           <div class="month">
-            <h6>Jul</h6>
+            <h6>{{event.month}}</h6>
           </div>
         </div>
         <div class="data">
-          <h3>Salida a las Buitreras</h3>
+          <h3>{{event.name}}</h3>
           <p class="detail">
               Potrero Grande Km. 8 <br>
-              29 Disponibles
+              {{event.available}} Disponibles
           </p>
         </div>
       </div>
-    </div>
-    <div class="card-calendar" (click)="goToEventDetail()">
-        <div class="calendar-grid">
-          <div class="date">
-            <div class="day">
-              <h2>12</h2>
-            </div>
-            <div class="month">
-              <h6>Jul</h6>
-            </div>
-          </div>
-          <div class="data">
-            <h3>Salida a las Buitreras</h3>
-            <p class="detail">
-                Potrero Grande Km. 8 <br>
-                29 Disponibles
-            </p>
-          </div>
-        </div>
-        <!-- @if esta reservado -->
-        <div class="reserved">
-          <p>Evento Reservado</p>
-        </div>
+      <div class="reserved" *ngIf="event.rels.auth.reserved" >
+        <p>Evento Reservado</p>
       </div>
-      <div class="card-calendar" (click)="goToEventDetail()">
-          <div class="calendar-grid">
-            <div class="date">
-              <div class="day">
-                <h2>12</h2>
-              </div>
-              <div class="month">
-                <h6>Jul</h6>
-              </div>
-            </div>
-            <div class="data">
-              <h3>Salida a las Buitreras</h3>
-              <p class="detail">
-                  Potrero Grande Km. 8 <br>
-                  29 Disponibles
-              </p>
-            </div>
-          </div>
-        </div>
+    </div>
+
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMoreEvents($event)">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="Cargando Eventos proximos...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
   </section>
+  <!-- <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMoreEvents($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll> -->
 
 </ion-content>

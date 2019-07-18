@@ -1,7 +1,13 @@
+
+//env
+import { environment, SERVER_URL} from '../../../../environments/environment';
+//imports
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ModalController } from '@ionic/angular';
-import { ModalImagePage } from './modal-image/modal-image.page'
+import { ModalImagePage } from './modal-image/modal-image.page';
+import { Storage } from '@ionic/storage';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-event-detail',
@@ -9,6 +15,9 @@ import { ModalImagePage } from './modal-image/modal-image.page'
   styleUrls: ['./event-detail.page.scss'],
 })
 export class EventDetailPage implements OnInit {
+
+  event:any = '';
+  httpOptions:any;
 
   images = [
     {
@@ -32,11 +41,34 @@ export class EventDetailPage implements OnInit {
   ]
 
   constructor(
+    public activatedRoute: ActivatedRoute,
     private router: Router,
-    private modalController: ModalController
+    private modalController: ModalController,
+    private storage: Storage,
+    private http:HttpClient
   ) { }
 
   ngOnInit() {
+  }
+  ionViewDidEnter() {
+    this.storage.get('auth-token').then((value) => {
+      
+      let Bearer = value;
+      let id = this.activatedRoute.snapshot.paramMap.get('id');
+
+      this.httpOptions = {
+        headers: new HttpHeaders({
+          'Authorization': 'Bearer '+ Bearer//updated
+        })};
+
+        this.http.get(SERVER_URL+"api/events/"+id, this.httpOptions)
+        .subscribe((result: any) => {
+          console.log(result);
+
+        });
+
+
+    });
   }
 
   async openImage() {

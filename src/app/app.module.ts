@@ -13,6 +13,8 @@ import { ModalAddPiecePageModule } from './auth/booking/step-bike/modal-add-piec
 import { ModalChangeOfficePageModule } from './auth/booking/step-bike/modal-change-office/modal-change-office.module';
 import { ModalInfoPricePageModule } from './auth/booking/step-summary/modal-info-price/modal-info-price.module';
 import { ModalImagePageModule } from './auth/events/event-detail/modal-image/modal-image.module';
+import { HttpClientModule} from "@angular/common/http";
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,7 +22,9 @@ import { ModalImagePageModule } from './auth/events/event-detail/modal-image/mod
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
+    IonicStorageModule.forRoot(),
     AppRoutingModule,
+    HttpClientModule,
     ModalAddBikePageModule,
     ModalAddPiecePageModule,
     ModalChangeOfficePageModule,

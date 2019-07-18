@@ -6,6 +6,9 @@ export const environment = {
   production: false
 };
 
+export const SERVER_URL = 'http://km0-api.test/';
+export const API_KEY = 'V6LC9Ks2Ashb6UtpVc3ef9LUVoAFokF479P2E5xG';
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
