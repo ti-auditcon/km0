@@ -14,10 +14,10 @@
 
 <ion-content>
 
-  <section class="next-events">
+  <section class="next-events" >
     <h1 class="title-section">Próximos Eventos</h1>
-    <div class="card-feature" (click)="goToEventDetail()">
-      <div class="img" style="background-image: url('assets/img/event-default.jpg')"></div>
+    <div class="card-feature" (click)="goToEvent(event.id)" *ngFor="let event of nextEvents">
+      <div class="img" [style.backgroundImage]="'url('+ event.img +')'"></div>
       <div class="data">
         <div class="calendar">
           <div class="day">
@@ -28,15 +28,15 @@
           </div>
         </div>
         <div class="info-event">
-          <h3>Salida a las Buitreras</h3>
+          <h3>{{event.name}}</h3>
           <p class="detail">
-              Potrero Grande Km. 8 <br>
-              29 Disponibles
+            {{event.startLocation}} <br>
+              {{event.available}} Disponibles
           </p>
         </div>
       </div>
       <!-- @if esta reservado -->
-      <div class="reserved">
+      <div class="reserved" *ngIf="event.rels.auth.reserved" >
         <p>Evento Reservado</p>
       </div>
     </div>

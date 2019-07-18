@@ -34,6 +34,7 @@ export class DashboardPage implements OnInit {
   }
 
   ionViewDidEnter() {
+    this.page = 1
     this.storage.get('auth-token').then((value) => {
       
       let Bearer = value;

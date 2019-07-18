@@ -27,14 +27,14 @@
         <div class="item">
           <h6>Fecha</h6>
           <p>
-            {{event.dateHuman}} - {{event.timeHuman}}hrs
+            {{event.dateHuman}} {{event.timeHuman}}hrs
           </p>
         </div>
         <div class="item">
           <h6>Cupos</h6>
           <p>
-            {{event.quota}} Disponibles<br>
-            1 Reservado
+            {{event.available}} Disponibles<br>
+            {{event.quota - event.available}} Reservado
           </p>
         </div>
         <div class="item">
@@ -55,31 +55,10 @@
 
       <div class="assistants">
         <h1 class="title-section">Asistentes</h1>
-        <div class="item" (click)="goToPublicProfile()">
+        <div class="item" (click)="goToPublicProfile()" *ngFor="let user of users">
           <div class="img" style="background-image: url('assets/img/avatar-default.jpg')"></div>
           <div class="data">
-            <h6>Raul Berrios</h6>
-            <p>Curicó, Chile</p>
-          </div>
-        </div>
-        <div class="item" (click)="goToPublicProfile()">
-          <div class="img" style="background-image: url('assets/img/avatar-default-2.jpg')"></div>
-          <div class="data">
-            <h6>Rodrigo Vasquez</h6>
-            <p>Curicó, Chile</p>
-          </div>
-        </div>
-        <div class="item" (click)="goToPublicProfile()">
-          <div class="img" style="background-image: url('assets/img/avatar-default-3.jpg')"></div>
-          <div class="data">
-            <h6>Sebastián Henriquez</h6>
-            <p>Curicó, Chile</p>
-          </div>
-        </div>
-        <div class="item" (click)="goToPublicProfile()">
-          <div class="img" style="background-image: url('assets/img/avatar-default-4.jpg')"></div>
-          <div class="data">
-            <h6>Pedro Matus Marin</h6>
+            <h6>{{user?.fullName}}</h6>
             <p>Curicó, Chile</p>
           </div>
         </div>
@@ -94,6 +73,12 @@
           *ngFor="let image of images" [ngStyle]="{'background-image':'url('+image.url+')'}"
           (click)="openPreview(image.url)">
           </div>
+          <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMoreImages($event)">
+            <ion-infinite-scroll-content
+              loadingSpinner="bubbles"
+              loadingText="Cargando imagenes...">
+            </ion-infinite-scroll-content>
+          </ion-infinite-scroll>
         </div>
       </div>
     </div>
@@ -101,8 +86,9 @@
 
 </ion-content>
 
-<ion-footer>
-  <ion-button expand="block">Reservar mi Cupo</ion-button>
+<ion-footer >
+  <ion-button expand="block" *ngIf="canReserve" (click)="attach()">Reservar mi Cupo</ion-button>
+  <ion-button expand="block" *ngIf="!canReserve" (click)="detach()">Ceder Cupo</ion-button>
 </ion-footer>
 
 <!--
