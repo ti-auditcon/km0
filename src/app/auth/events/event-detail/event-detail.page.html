@@ -15,38 +15,38 @@
 <ion-content class="no-padding">
 
   <section class="event-detail">
-    <div class="event-detail-image" style="background-image: url('assets/img/event-default.jpg')"></div>
+    <div class="event-detail-image" [style.backgroundImage]="'url('+ event.img +')'"></div>
 
     <div class="event-detail-info">
       <div class="header">
-        <h4>Salida a las Buitreras</h4>
-        <p>Etiam ultricies vel metus sed sagittis. Ut endrerit, neque eu sodales maximus.</p>
+        <h4>{{event.name}}</h4>
+        <p>{{event.description}}</p>
       </div>
 
       <div class="specs">
         <div class="item">
           <h6>Fecha</h6>
           <p>
-            8 de Septiembre de 2019 - 09:30hrs
+            {{event.dateHuman}} - {{event.timeHuman}}hrs
           </p>
         </div>
         <div class="item">
           <h6>Cupos</h6>
           <p>
-            29 Disponibles<br>
+            {{event.quota}} Disponibles<br>
             1 Reservado
           </p>
         </div>
         <div class="item">
           <h6>Punto de Encuentro</h6>
           <p>
-            Potrero Grande Km 8
+            {{event.startLocation}}
           </p>
         </div>
         <div class="item">
           <h6>Llegada</h6>
           <p>
-            Potrero Grande Km 8
+            {{event.endLocation}}
           </p>
         </div>
       </div>

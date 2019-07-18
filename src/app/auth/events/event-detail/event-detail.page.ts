@@ -71,7 +71,9 @@ export class EventDetailPage implements OnInit {
         this.http.get(SERVER_URL+"api/events/"+id, this.httpOptions)
         .subscribe((result: any) => {
           console.log(result);
-
+          
+          this.event = result.data;
+          
         });
 
 
