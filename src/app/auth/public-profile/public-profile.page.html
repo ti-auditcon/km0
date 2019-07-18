@@ -1,0 +1,75 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title>
+        Perfil
+      </ion-title>
+      <ion-buttons slot="end">
+        <ion-icon class="notification-icon has" [routerLink]="['/notifications']" src="assets/icon/bell.svg"></ion-icon>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+
+  <section class="profile">
+    <div class="profile-header no-pd-b">
+      <div class="img" style="background-image: url('assets/img/avatar-default-2.jpg')" (click)="viewPhoto()"></div>
+      <h4>Sebastían Henriquez</h4>
+      <p>
+        Curicó, Chile<br>
+        28 años
+      </p>
+    </div>
+
+    <div class="separator"></div>
+
+    <section class="past-events">
+      <h1 class="title-section">Eventos Asistidos</h1>
+
+      <div class="card-calendar">
+        <div class="calendar-grid">
+          <div class="date">
+            <div class="day">
+              <h2>12</h2>
+            </div>
+            <div class="month month-past">
+              <h6>Jul</h6>
+            </div>
+          </div>
+          <div class="data">
+            <h3>Salida a las Buitreras</h3>
+            <p class="detail">
+                Potrero Grande Km. 8 <br>
+                29 Asistentes
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-calendar">
+        <div class="calendar-grid">
+          <div class="date">
+            <div class="day">
+              <h2>12</h2>
+            </div>
+            <div class="month month-past">
+              <h6>Jul</h6>
+            </div>
+          </div>
+          <div class="data">
+            <h3>Salida a las Buitreras</h3>
+            <p class="detail">
+                Potrero Grande Km. 8 <br>
+                29 Asistentes
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </section>
+
+</ion-content>

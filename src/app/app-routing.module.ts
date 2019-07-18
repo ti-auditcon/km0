@@ -38,6 +38,7 @@ const routes: Routes = [
   { path: 'bike-detail', loadChildren: './auth/my-bikes/bike-detail/bike-detail.module#BikeDetailPageModule' },
   { path: 'my-services', loadChildren: './auth/my-services/my-services.module#MyServicesPageModule' },
   { path: 'service-detail', loadChildren: './auth/my-services/service-detail/service-detail.module#ServiceDetailPageModule' },
+  { path: 'public-profile', loadChildren: './auth/public-profile/public-profile.module#PublicProfilePageModule' },
   //Notificaciones
   { path: 'notifications', loadChildren: './auth/notifications/notifications.module#NotificationsPageModule' },
   { path: 'special-message', loadChildren: './auth/notifications/special-message/special-message.module#SpecialMessagePageModule' },
@@ -47,6 +48,7 @@ const routes: Routes = [
   { path: 'modal-change-office', loadChildren: './auth/booking/step-bike/modal-change-office/modal-change-office.module#ModalChangeOfficePageModule' },
   { path: 'modal-change-office', loadChildren: './auth/booking/step-bike/modal-change-office/modal-change-office.module#ModalChangeOfficePageModule' },
   { path: 'modal-info-price', loadChildren: './auth/booking/step-summary/modal-info-price/modal-info-price.module#ModalInfoPricePageModule' },
+  { path: 'modal-public-image', loadChildren: './auth/public-profile/modal-public-image/modal-public-image.module#ModalPublicImagePageModule' },
   // PUBLIC
   { path: 'login', loadChildren: './public/login/login.module#LoginPageModule' },
   { path: 'forget', loadChildren: './public/forget/forget.module#ForgetPageModule' },

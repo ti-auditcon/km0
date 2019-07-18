@@ -40,6 +40,13 @@ export class EventDetailPage implements OnInit {
     },
   ]
 
+  sliderOpts = {
+    zoom: false,
+    slidesPerView: 1.5,
+    spaceBetween: 20,
+    centeredSlides: true
+  };
+
   constructor(
     public activatedRoute: ActivatedRoute,
     private router: Router,
@@ -71,11 +78,26 @@ export class EventDetailPage implements OnInit {
     });
   }
 
-  async openImage() {
-    const modal = await this.modalController.create({
-      component: ModalImagePage
-    });
-    return await modal.present();
+  goToPublicProfile() {
+    this.router.navigate(['/public-profile']);
   }
+
+  openPreview(img) {
+    this.modalController.create({
+      component: ModalImagePage,
+      componentProps: {
+        img: img
+      }
+    }).then(modal => {
+      modal.present();
+    });
+  }
+
+  // async openImage() {
+  //   const modal = await this.modalController.create({
+  //     component: ModalImagePage
+  //   });
+  //   return await modal.present();
+  // }
 
 }

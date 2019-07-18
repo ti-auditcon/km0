@@ -1,0 +1,36 @@
+.close-fake {
+  // display: flex;
+  // width: 100%;
+  --background: transparent;
+  z-index: 100;
+  font-size: 15px;
+  ion-icon {
+      font-size: 2rem;
+  }
+  margin-top: 6px;
+}
+
+ion-content {
+
+}
+
+ion-item {
+  position: absolute;
+}
+
+ion-slides {
+    height: 100%;
+    top: 0;
+    z-index: 10;
+    position: absolute;
+}
+
+ion-icon {
+  margin-right: 0;
+}
+
+ion-button {
+  p {
+    font-size: 15px;
+  }
+}
