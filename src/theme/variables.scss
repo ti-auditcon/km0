@@ -120,6 +120,14 @@
   background: #373A45;
 }
 
+.separator-profile {
+  height: 2px;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  background: #373A45;
+}
+
 .title-section {
   font-family: Oswald;
   font-weight: 600;
@@ -424,6 +432,28 @@ ion-toggle {
 .home-actions {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  .card-home-welcome {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 30px;
+    p {
+      margin: 0;
+      font-size: 40px;
+      margin-bottom: 12px;
+    }
+    h4 {
+      font-family: "Roboto Condensed";
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 24px;
+      margin: 0;
+      color: var(--clickable-text);
+      span {
+        font-weight: 400;
+      }
+    }
+  }
   .card-home-actions {
     width: 48%;
     border-radius: 3px;
@@ -1910,6 +1940,9 @@ ion-toggle {
       font-size: 15px;
       line-height: 19px;
     }
+    &.no-pd-b {
+      padding-bottom: 0;
+    }
   }
   .profile-card {
     .profile-card-grid {
@@ -2070,6 +2103,7 @@ ion-toggle {
       .item {
         display: flex;
         justify-content: flex-start;
+        cursor: pointer;
         &:nth-child(n+2){
           margin-top: 18px;
         }

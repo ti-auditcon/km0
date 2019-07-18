@@ -46,6 +46,10 @@ export class EventDetailPage implements OnInit {
   ngOnInit() {
   }
 
+  goToPublicProfile() {
+    this.router.navigate(['/public-profile']);
+  }
+
   openPreview(img) {
     this.modalController.create({
       component: ModalImagePage,

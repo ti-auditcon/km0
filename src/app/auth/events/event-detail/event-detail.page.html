@@ -15,7 +15,6 @@
 <ion-content class="no-padding">
 
   <section class="event-detail">
-
     <div class="event-detail-image" style="background-image: url('assets/img/event-default.jpg')"></div>
 
     <div class="event-detail-info">
@@ -56,28 +55,28 @@
 
       <div class="assistants">
         <h1 class="title-section">Asistentes</h1>
-        <div class="item">
+        <div class="item" (click)="goToPublicProfile()">
           <div class="img" style="background-image: url('assets/img/avatar-default.jpg')"></div>
           <div class="data">
             <h6>Raul Berrios</h6>
             <p>Curicó, Chile</p>
           </div>
         </div>
-        <div class="item">
+        <div class="item" (click)="goToPublicProfile()">
           <div class="img" style="background-image: url('assets/img/avatar-default-2.jpg')"></div>
           <div class="data">
             <h6>Rodrigo Vasquez</h6>
             <p>Curicó, Chile</p>
           </div>
         </div>
-        <div class="item">
+        <div class="item" (click)="goToPublicProfile()">
           <div class="img" style="background-image: url('assets/img/avatar-default-3.jpg')"></div>
           <div class="data">
             <h6>Sebastián Henriquez</h6>
             <p>Curicó, Chile</p>
           </div>
         </div>
-        <div class="item">
+        <div class="item" (click)="goToPublicProfile()">
           <div class="img" style="background-image: url('assets/img/avatar-default-4.jpg')"></div>
           <div class="data">
             <h6>Pedro Matus Marin</h6>
@@ -97,15 +96,7 @@
           </div>
         </div>
       </div>
-
-      <!-- <ion-slides [options]="sliderOpts">
-        <ion-slide *ngFor="let img of [1, 2, 3]">
-          <img src="assets/img/{{ img }}.jpg" tappable (click)="openPreview(img)">
-        </ion-slide>
-      </ion-slides> -->
-
     </div>
-
   </section>
 
 </ion-content>
