@@ -16,31 +16,19 @@
 
   <section class="my-bikes">
 
-    <div class="card-button" (click)="goToBikeDetail()">
+    <div class="card-button" (click)="goToBikeDetail(bike.id)" *ngFor="let bike of bikes">
       <div class="single-bike-grid">
         <div class="img" style="background-image: url('assets/img/bike-example.jpg')"></div>
         <div class="data">
-          <h4>Men's S-Works Epic</h4>
+          <h4>{{bike.model}}</h4>
           <p>
-            SPECIALIZED<br>
-            Color Negro
+              {{bike.brand}}<br>
+              {{bike.year}}
           </p>
         </div>
       </div>
     </div>
 
-    <div class="card-button" (click)="goToBikeDetail()">
-      <div class="single-bike-grid">
-        <div class="img" style="background-image: url('assets/img/bike-example.jpg')"></div>
-        <div class="data">
-          <h4>Men's S-Works Epic</h4>
-          <p>
-            SPECIALIZED <br>
-            Color Negro
-          </p>
-        </div>
-      </div>
-    </div>
 
   </section>
 

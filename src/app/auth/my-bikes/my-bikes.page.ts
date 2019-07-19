@@ -53,8 +53,8 @@ export class MyBikesPage implements OnInit {
     });
   }
 
-  goToBikeDetail(){
-    this.router.navigate(['/profile/bikes/1']);
+  goToBikeDetail(id:number){
+    this.router.navigate(['/profile/bikes/'+id]);
   }
 
   async addBike() {
