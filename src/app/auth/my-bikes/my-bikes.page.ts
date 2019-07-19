@@ -1,4 +1,3 @@
-
 //env
 import { environment, SERVER_URL} from '../../../environments/environment';
 //imports
@@ -6,6 +5,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { ModalController } from '@ionic/angular';
+import { ModalAddBikeProfilePage } from './modal-add-bike-profile/modal-add-bike-profile.page';
 
 @Component({
   selector: 'app-my-bikes',
@@ -19,17 +20,18 @@ export class MyBikesPage implements OnInit {
 
   constructor(
     private router: Router,
+    private modalController: ModalController,
     private storage: Storage,
     private http:HttpClient
   ) { }
 
   ngOnInit() {
-    
+
   }
 
   ionViewDidEnter() {
     this.storage.get('auth-token').then((value) => {
-      
+
       let Bearer = value;
       this.httpOptions = {
         headers: new HttpHeaders({
@@ -44,17 +46,22 @@ export class MyBikesPage implements OnInit {
           .subscribe((result: any) => {
             console.log(result.data);
             this.bikes = result.data;
-  
+
           });
-
         });
-
 
     });
   }
 
   goToBikeDetail(){
     this.router.navigate(['/profile/bikes/1']);
+  }
+
+  async addBike() {
+    const modal = await this.modalController.create({
+      component: ModalAddBikeProfilePage
+    });
+    return await modal.present();
   }
 
 }

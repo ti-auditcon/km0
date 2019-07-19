@@ -13,8 +13,7 @@ export class ModalAddBikePage implements OnInit {
     public modalController: ModalController
   ) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   dismiss() {
     this.modalController.dismiss({

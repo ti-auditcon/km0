@@ -49,10 +49,12 @@ const routes: Routes = [
   { path: 'modal-change-office', loadChildren: './auth/booking/step-bike/modal-change-office/modal-change-office.module#ModalChangeOfficePageModule' },
   { path: 'modal-info-price', loadChildren: './auth/booking/step-summary/modal-info-price/modal-info-price.module#ModalInfoPricePageModule' },
   { path: 'modal-public-image', loadChildren: './auth/public-profile/modal-public-image/modal-public-image.module#ModalPublicImagePageModule' },
+  { path: 'modal-image', loadChildren: './auth/events/event-detail/modal-image/modal-image.module#ModalImagePageModule' },
+  { path: 'modal-add-bike-profile', loadChildren: './auth/my-bikes/modal-add-bike-profile/modal-add-bike-profile.module#ModalAddBikeProfilePageModule' },
   // PUBLIC
   { path: 'login', loadChildren: './public/login/login.module#LoginPageModule' },
   { path: 'forget', loadChildren: './public/forget/forget.module#ForgetPageModule' },
-  { path: 'modal-image', loadChildren: './auth/events/event-detail/modal-image/modal-image.module#ModalImagePageModule' },
+
 ];
 
 @NgModule({

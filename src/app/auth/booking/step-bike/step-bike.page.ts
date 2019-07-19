@@ -17,8 +17,7 @@ export class StepBikePage implements OnInit {
     public modalController: ModalController
   ) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   async addBicicleModal() {
     const modal = await this.modalController.create({
