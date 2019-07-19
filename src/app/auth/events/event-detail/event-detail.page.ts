@@ -23,7 +23,8 @@ export class EventDetailPage implements OnInit {
   users:any = '';
   images:any = '';
   imagesPage:any = 1;
-  canReserve:any = false;
+  reserved:any = false;
+  closed:any = true;
   httpOptions:any;
 
 
@@ -46,6 +47,7 @@ export class EventDetailPage implements OnInit {
   ngOnInit() {
   }
   ionViewDidEnter() {
+    this.closed = true;
     this.imagesPage = 1
     this.storage.get('auth-token').then((value) => {
       
@@ -63,8 +65,9 @@ export class EventDetailPage implements OnInit {
 
           this.event = result.data;
           if(!this.event.rels.auth.reserved){
-            this.canReserve = true;
+            this.reserved = true;
           }
+          this.closed = this.event.closed;
           
         });
         //users
@@ -114,7 +117,7 @@ export class EventDetailPage implements OnInit {
         .subscribe((result: any) => {
           console.log('attach');
           this.ionViewDidEnter();
-          this.canReserve = false;
+          this.reserved = false;
         },
         err => {
           console.log('error reservar');
@@ -128,7 +131,7 @@ export class EventDetailPage implements OnInit {
         .subscribe((result: any) => {
           console.log('detach');
           this.ionViewDidEnter();
-          this.canReserve = true;
+          this.reserved = true;
         },
         err => {
           console.log('error ceder');

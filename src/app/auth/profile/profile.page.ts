@@ -1,5 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+
+//env
+import { environment, SERVER_URL} from '../../../environments/environment';
+//imports
+import { Component, OnInit, ViewChild  } from '@angular/core';
 import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
+
+import { AuthenticationService } from '../../services/authentication.service';
+
 
 @Component({
   selector: 'app-profile',
@@ -7,20 +16,46 @@ import { Router } from '@angular/router';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-
+  profile:any = '';
+  httpOptions:any;
   constructor(
-    private router:Router
+    private router: Router,
+    private storage: Storage,
+    private authenticationService: AuthenticationService,
+    private http:HttpClient
   ) { }
 
   ngOnInit() {
   }
+  ionViewDidEnter() {
+    this.storage.get('auth-token').then((value) => {
+      
+      let Bearer = value;
+      this.httpOptions = {
+        headers: new HttpHeaders({
+          'Authorization': 'Bearer '+ Bearer//updated
+        })};
+
+        this.http.get(SERVER_URL+"api/profile", this.httpOptions)
+        .subscribe((result: any) => {
+          
+          this.profile = result.data;
+
+        });
+
+
+    });
+  }
 
   goToMyBikes(){
-    this.router.navigate(['/my-bikes']);
+    this.router.navigate(['/profile/bikes']);
   }
 
   goToMyServices(){
-    this.router.navigate(['/my-services']);
+    this.router.navigate(['/profile/services']);
+  }
+  logout() {
+    this.authenticationService.logout();
   }
 
 }

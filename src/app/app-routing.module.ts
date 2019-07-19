@@ -34,10 +34,10 @@ const routes: Routes = [
   { path: 'events/:id', loadChildren: './auth/events/event-detail/event-detail.module#EventDetailPageModule' },
   // Perfil
   { path: 'profile', loadChildren: './auth/profile/profile.module#ProfilePageModule' },
-  { path: 'my-bikes', loadChildren: './auth/my-bikes/my-bikes.module#MyBikesPageModule' },
-  { path: 'bike-detail', loadChildren: './auth/my-bikes/bike-detail/bike-detail.module#BikeDetailPageModule' },
-  { path: 'my-services', loadChildren: './auth/my-services/my-services.module#MyServicesPageModule' },
-  { path: 'service-detail', loadChildren: './auth/my-services/service-detail/service-detail.module#ServiceDetailPageModule' },
+  { path: 'profile/bikes', loadChildren: './auth/my-bikes/my-bikes.module#MyBikesPageModule' },
+  { path: 'profile/bikes/:id', loadChildren: './auth/my-bikes/bike-detail/bike-detail.module#BikeDetailPageModule' },
+  { path: 'profile/services', loadChildren: './auth/my-services/my-services.module#MyServicesPageModule' },
+  { path: 'profile/services/:id', loadChildren: './auth/my-services/service-detail/service-detail.module#ServiceDetailPageModule' },
   { path: 'public-profile', loadChildren: './auth/public-profile/public-profile.module#PublicProfilePageModule' },
   //Notificaciones
   { path: 'notifications', loadChildren: './auth/notifications/notifications.module#NotificationsPageModule' },

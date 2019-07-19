@@ -62,10 +62,8 @@ export class AppComponent {
     });
   }
 
-  logout() {
-    this.authenticationService.logout();
-  }
+
   goToProfile() {
-    this.authenticationService.logout();
+    this.router.navigate(['profile']);
   }
 }

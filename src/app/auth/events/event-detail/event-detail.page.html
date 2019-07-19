@@ -66,7 +66,7 @@
 
       <div class="separator"></div>
 
-      <div class="gallery">
+      <div class="gallery" *ngIf="closed">
         <h1 class="title-section">Galería</h1>
         <div class="gallery-content">
           <div class="item"
@@ -86,9 +86,9 @@
 
 </ion-content>
 
-<ion-footer >
-  <ion-button expand="block" *ngIf="canReserve" (click)="attach()">Reservar mi Cupo</ion-button>
-  <ion-button expand="block" *ngIf="!canReserve" (click)="detach()">Ceder Cupo</ion-button>
+<ion-footer *ngIf="!closed">
+  <ion-button expand="block" *ngIf="!reserved" (click)="attach()">Reservar mi Cupo</ion-button>
+  <ion-button expand="block" *ngIf="reserved" (click)="detach()">Ceder Cupo</ion-button>
 </ion-footer>
 
 <!--

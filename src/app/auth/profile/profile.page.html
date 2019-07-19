@@ -18,8 +18,8 @@
 
     <div class="profile-header">
       <div class="img" style="background-image: url('assets/img/avatar-default-2.jpg')"></div>
-      <h4>Sebastían Henriquez</h4>
-      <p>Curicó, Chile</p>
+      <h4>{{profile.fullName}}</h4>
+      <p>{{profile.city}}, Chile</p>
     </div>
 
     <div class="dates profile-card">
@@ -31,17 +31,18 @@
           </div>
           <div class="col-6">
             <h6>Teléfono</h6>
-            <p>98329250</p>
+            <p>{{profile.phone}}</p>
           </div>
           <div class="col-12">
             <h6>Email</h6>
-            <p>shenriquez@gmail.com</p>
+            <p>{{profile.email}}</p>
           </div>
         </div>
       </div>
     </div>
 
     <div class="separator"></div>
+    
 
     <div class="profile-menu">
       <div class="item item-bicicletas" (click)="goToMyBikes()">
@@ -55,6 +56,8 @@
         <img class="arrow" src="assets/icon/icon-arrow.svg">
       </div>
     </div>
+    <ion-button expand="block"  (click)="logout()">Logout</ion-button>
+
 
   </section>
 

@@ -16,7 +16,7 @@ export class MyServicesPage implements OnInit {
   }
   
   goToServiceDetail() {
-    this.router.navigate(['/service-detail']);
+    this.router.navigate(['/profile/services/1']);
   }
 
 }
