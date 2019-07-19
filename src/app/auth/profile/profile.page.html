@@ -42,7 +42,6 @@
     </div>
 
     <div class="separator"></div>
-    
 
     <div class="profile-menu">
       <div class="item item-bicicletas" (click)="goToMyBikes()">
@@ -56,9 +55,10 @@
         <img class="arrow" src="assets/icon/icon-arrow.svg">
       </div>
     </div>
-    <ion-button expand="block"  (click)="logout()">Logout</ion-button>
-
 
   </section>
 
 </ion-content>
+<ion-footer>
+  <ion-button expand="block" (click)="logout()">Logout</ion-button>
+</ion-footer>

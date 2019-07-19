@@ -92,6 +92,7 @@
   --card-background-noclick: #30333F;
   --menu-sidebar-background: #1F222D;
   --alt-background: #4D5263;
+  --o-alt-background: #3C4152;
 
   --clickable-text: #D3D5E0;
   --noclickable-text: #747885;
@@ -189,6 +190,10 @@ ion-content.image-modal {
 
 :focus {
   outline: none;
+}
+
+ion-infinite-scroll {
+  margin-top: 30px;
 }
 
 // Navbar
@@ -476,6 +481,10 @@ ion-toggle {
     font-family: 'Roboto Condensed', sans-serif;
     font-weight: 700;
   }
+  &:focus,
+  &:active {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0);
+  }
 }
 
 .card-button {
@@ -620,6 +629,10 @@ ion-toggle {
   &:nth-child(n+2){
     margin-top: 14px;
   }
+  &:focus,
+  &:active {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0);
+  }
 }
 
 .card-button.border-button {
@@ -632,7 +645,6 @@ ion-toggle {
 }
 
 .card-info {
-  // box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
   position: relative;
   border-radius: 3px;
   &.order-info {
@@ -768,6 +780,7 @@ ion-toggle {
     flex-wrap: wrap;
     justify-content: center;
     align-content: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
     .the-icon {
       margin: auto;
       margin-bottom: 12px;
@@ -794,6 +807,10 @@ ion-toggle {
       text-align: center;
       margin-bottom: 0;
     }
+    &:focus,
+    &:active {
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0);
+    }
   }
   &:nth-child(n+2){
     margin-top: 10px;
@@ -802,10 +819,10 @@ ion-toggle {
 
 .card-calendar {
   background: var(--card-background-click);
-  // padding: 22px 25px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
   position: relative;
   border-radius: 3px;
+  overflow: hidden;
   h3 {
     color: var(--clickable-text);
     font-family: 'Roboto Condensed';
@@ -896,7 +913,8 @@ ion-toggle {
   .reserved {
     display: flex;
     justify-content: center;
-    background: var(--card-background-noclick);
+    color: var(--text-color-light);
+    background: var(--o-alt-background);
     padding: 10px 14px;
     p {
       font-weight: 700;
@@ -909,12 +927,18 @@ ion-toggle {
   &:nth-child(n+2){
     margin-top: 14px;
   }
+  &:focus,
+  &:active {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0);
+  }
 }
 
 .card-feature {
   background: var(--card-background-click);
   overflow: hidden;
   border-radius: 3px;
+  overflow: hidden;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
   .img {
     background-position: center;
     background-size: cover;
@@ -986,7 +1010,8 @@ ion-toggle {
   .reserved {
     display: flex;
     justify-content: center;
-    background: var(--card-background-noclick);
+    color: var(--text-color-light);
+    background: var(--o-alt-background);
     padding: 10px 14px;
     p {
       font-weight: 700;
@@ -998,6 +1023,10 @@ ion-toggle {
   }
   &:nth-child(n+2){
     margin-top: 14px;
+  }
+  &:focus,
+  &:active {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0);
   }
 }
 
