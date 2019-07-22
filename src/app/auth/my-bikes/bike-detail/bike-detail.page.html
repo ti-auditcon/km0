@@ -19,10 +19,10 @@
     <div class="header-image" style="background-image: url('/assets/img/bike-example.jpg')"></div>
 
     <div class="bike-data">
-      <h4>Men's S-Works Epic</h4>
+      <h4>{{bike.model}}</h4>
       <p class="bike-brand">
-        SPECIALIZED <br>
-        Color Negro
+        {{bike.brand}} <br>
+        {{bike.year}}
       </p>
 
       <p class="description">
@@ -35,5 +35,5 @@
 </ion-content>
 
 <ion-footer>
-  <ion-button class="delete" expand="block">Borrar Bicicleta</ion-button>
+  <ion-button class="delete" expand="block" (click)= "presentAlert()">Borrar Bicicleta</ion-button>
 </ion-footer>
