@@ -65,6 +65,7 @@ export class BikeDetailPage implements OnInit {
           cssClass: 'danger',
           handler: () => {
             console.log('borrar');
+            this.delete();
           }
         }
       ]

@@ -1,5 +1,11 @@
+//env
+import { environment, SERVER_URL} from '../../../../environments/environment';
+//imports
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute} from '@angular/router';
+import { Storage } from '@ionic/storage';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
+//modals
 import { ModalController } from '@ionic/angular';
 import { ModalAddBikePage } from './modal-add-bike/modal-add-bike.page';
 import { ModalAddPiecePage } from './modal-add-piece/modal-add-piece.page';
@@ -11,13 +17,38 @@ import { ModalChangeOfficePage } from './modal-change-office/modal-change-office
   styleUrls: ['./step-bike.page.scss'],
 })
 export class StepBikePage implements OnInit {
+  bikes:any = '';
+  httpOptions:any;
 
   constructor(
+    public activatedRoute: ActivatedRoute,
     private router: Router,
-    public modalController: ModalController
+    public modalController: ModalController,
+    private storage: Storage,
+    private http:HttpClient
   ) { }
 
   ngOnInit() {}
+
+  ionViewDidEnter() {
+    this.storage.get('auth-token').then((value) => {
+
+      let Bearer = value;
+      let id = this.activatedRoute.snapshot.paramMap.get('id');
+
+      this.httpOptions = {
+        headers: new HttpHeaders({
+          'Authorization': 'Bearer '+ Bearer//updated
+        })};
+
+        this.http.get(SERVER_URL+"api/profile/bikes/", this.httpOptions)
+        .subscribe((result: any) => {
+          this.bikes = result.data;
+          console.log(this.bikes);
+        });
+
+    });
+  }
 
   async addBicicleModal() {
     const modal = await this.modalController.create({

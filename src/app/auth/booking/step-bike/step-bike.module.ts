@@ -8,6 +8,8 @@ import { IonicModule } from '@ionic/angular';
 import { StepBikePage } from './step-bike.page';
 import { BookingProcessModule } from '../../components/booking-process/booking-process.module';
 
+
+
 const routes: Routes = [
   {
     path: '',
