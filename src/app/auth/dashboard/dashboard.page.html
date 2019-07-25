@@ -7,12 +7,12 @@
       <img class="logo" src="assets/img/logo.png">
     </div>
     <ion-buttons slot="end">
-      <ion-icon class="notification-icon has" [routerLink]="['/notifications']" src="assets/icon/bell.svg"></ion-icon>
+      <ion-icon class="notification-icon" [routerLink]="['/notifications']" src="assets/icon/bell.svg"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="only-events">
 
   <section class="home-actions">
     <div class="card-home-welcome">
@@ -22,7 +22,7 @@
         <span>¿Qué quieres hacer hoy?</span>
       </h4>
     </div>
-    <div class="card-home-actions ion-text-center" (click)="goToBooking()">
+    <div class="card-home-actions disabled ion-text-center" (click)="goToBooking()">
         <img class="the-icon" src="assets/icon/icon-reservar.svg">
         <h4>Reservar Servicio</h4>
     </div>
@@ -32,21 +32,13 @@
     </div>
   </section>
 
-  <div class="separator"></div>
+  <div class="separator ion-hide"></div>
 
-  <section class="booked-services">
+  <section class="booked-services ion-hide">
     <h1 class="title-section">Servicios Reservados</h1>
     <div class="card-info no-data">
         <img class="the-icon" src="assets/icon/icon-nobooked.svg">
         <h4>No tienes Servicios Reservados</h4>
-    </div>
-    <div class="card-button" (click)="goToBookingStatus()">
-      <h3>SPECIALIZED Allez Sprint</h3>
-      <p class="detail">Orden Nº 1240926</p>
-      <div class="status">
-        <p>Esperando la Bicicleta</p>
-      </div>
-      <img class="arrow" src="assets/icon/icon-arrow.svg">
     </div>
     <div class="card-button" (click)="goToBookingStatus()">
       <h3>SPECIALIZED Allez Sprint</h3>

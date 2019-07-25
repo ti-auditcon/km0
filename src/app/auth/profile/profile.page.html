@@ -7,12 +7,12 @@
         Mi Perfil
       </ion-title>
       <ion-buttons slot="end">
-        <ion-icon class="notification-icon has" [routerLink]="['/notifications']" src="assets/icon/bell.svg"></ion-icon>
+        <ion-icon class="notification-icon" [routerLink]="['/notifications']" src="assets/icon/bell.svg"></ion-icon>
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
 
-<ion-content>
+<ion-content class="only-events">
 
   <section class="profile">
 
@@ -49,7 +49,7 @@
         <p>Mis Bicicletas</p>
         <img class="arrow" src="assets/icon/icon-arrow.svg">
       </div>
-      <div class="item item-servicios" (click)="goToMyServices()">
+      <div class="item item-servicios disabled" (click)="goToMyServices()">
         <img class="menu-icon" src="assets/icon/process/2-service.svg">
         <p>Historial de Servicios</p>
         <img class="arrow" src="assets/icon/icon-arrow.svg">
@@ -60,5 +60,5 @@
 
 </ion-content>
 <ion-footer>
-  <ion-button expand="block" (click)="logout()">Logout</ion-button>
+  <ion-button expand="block" (click)="logout()">Cerrar Sesión</ion-button>
 </ion-footer>

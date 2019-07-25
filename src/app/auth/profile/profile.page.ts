@@ -1,4 +1,3 @@
-
 //env
 import { environment, SERVER_URL} from '../../../environments/environment';
 //imports
@@ -9,15 +8,16 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 
 import { AuthenticationService } from '../../services/authentication.service';
 
-
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
+
   profile:any = '';
   httpOptions:any;
+
   constructor(
     private router: Router,
     private storage: Storage,
@@ -27,23 +27,19 @@ export class ProfilePage implements OnInit {
 
   ngOnInit() {
   }
+
   ionViewDidEnter() {
     this.storage.get('auth-token').then((value) => {
-      
+
       let Bearer = value;
       this.httpOptions = {
         headers: new HttpHeaders({
           'Authorization': 'Bearer '+ Bearer//updated
         })};
-
         this.http.get(SERVER_URL+"api/profile", this.httpOptions)
         .subscribe((result: any) => {
-          
           this.profile = result.data;
-
         });
-
-
     });
   }
 
