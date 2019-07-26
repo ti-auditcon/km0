@@ -22,8 +22,7 @@
     <div class="card-button border-button" *ngFor="let service of services; let i = index"
       [attr.data-selected]="false"
       (click)="hightlightStatus[i]=!hightlightStatus[i]"
-      [class.selected]="hightlightStatus[i]"
-    >
+      [class.selected]="hightlightStatus[i]">
       <div class="service-item">
         <div class="icon">
           <img src="/assets/icon/services/{{service.icon}}">

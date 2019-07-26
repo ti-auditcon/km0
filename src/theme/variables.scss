@@ -624,12 +624,46 @@ ion-toggle {
         color: var(--clickable-text);
       }
       p {
-        font-family: Roboto;
+        font-family: "Roboto";
         font-weight: 400;
         font-size: 15px;
         line-height: 19px;
         color: var(--text-color-dark);
         margin: 13px 0;
+      }
+    }
+  }
+  .bike-item {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0;
+    .img {
+      width: 32%;
+      height: 80px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      border-radius: 3px;
+    }
+    .data {
+      width: 68%;
+      padding-left: 18px;
+      h4 {
+        font-family: 'Roboto Condensed';
+        font-weight: 700;
+        font-size: 22px;
+        line-height: 26px;
+        margin: 0;
+        color: var(--clickable-text);
+      }
+      p {
+        font-family: "Roboto";
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 19px;
+        color: var(--text-color-dark);
+        margin: 10px 0 0;
       }
     }
   }

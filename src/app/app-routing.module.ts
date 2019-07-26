@@ -51,9 +51,11 @@ const routes: Routes = [
   { path: 'modal-public-image', loadChildren: './auth/public-profile/modal-public-image/modal-public-image.module#ModalPublicImagePageModule' },
   { path: 'modal-image', loadChildren: './auth/events/event-detail/modal-image/modal-image.module#ModalImagePageModule' },
   { path: 'modal-add-bike-profile', loadChildren: './auth/my-bikes/modal-add-bike-profile/modal-add-bike-profile.module#ModalAddBikeProfilePageModule' },
+  { path: 'modal-add-specialized', loadChildren: './auth/my-bikes/modal-add-specialized/modal-add-specialized.module#ModalAddSpecializedPageModule' },
   // PUBLIC
   { path: 'login', loadChildren: './public/login/login.module#LoginPageModule' },
   { path: 'forget', loadChildren: './public/forget/forget.module#ForgetPageModule' },
+
 
 ];
 

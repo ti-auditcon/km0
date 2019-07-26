@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <!-- <ion-menu-button></ion-menu-button> -->
+    </ion-buttons>
+    <ion-title>
+      Agregar Bicicleta
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()" class="no-background">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <section class="add-bike modal-section">
+
+    <h1 class="title-section">Selecciona un Modelo</h1>
+
+    <div class="card-button border-button" *ngFor="let bike of bikes; let i = index" (click)="hightlightStatus[i]=!hightlightStatus[i]" [class.selected]="hightlightStatus[i]">
+      <div class="bike-item">
+        <div class="img" [ngStyle]="{'background-image': 'url('+bike.img+')'}"></div>
+        <div class="data">
+          <h4>{{bike.title}}</h4>
+          <p>{{bike.year}}</p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+</ion-content>
+
+<ion-footer>
+  <ion-button expand="block">Guardar Bicicleta</ion-button>
+</ion-footer>

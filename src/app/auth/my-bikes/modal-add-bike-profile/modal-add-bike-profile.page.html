@@ -35,34 +35,8 @@
       <ion-input></ion-input>
     </ion-item>
     <!-- Solo en el caso de elegir specialized -->
-    <!-- <ion-item class="modal-item" *ngIf="selSpecialized">
-      <ion-label>Año</ion-label>
-      <ion-select name="year" okText="Ok" cancelText="Cancelar">
-        <ion-select-option value="2019">2019</ion-select-option>
-        <ion-select-option value="2018">2018</ion-select-option>
-        <ion-select-option value="2017">2017</ion-select-option>
-      </ion-select>
-    </ion-item>
     <ion-item class="modal-item" *ngIf="selSpecialized">
-      <ion-label>Tipo</ion-label>
-      <ion-select name="type" okText="Ok" cancelText="Cancelar">
-        <ion-select-option value="Ruta">Ruta</ion-select-option>
-        <ion-select-option value="XC">XC</ion-select-option>
-        <ion-select-option value="Trail">Trail</ion-select-option>
-        <ion-select-option value="Enduro">Enduro</ion-select-option>
-        <ion-select-option value="DH">DH</ion-select-option>
-        <ion-select-option value="Tri/Contrareloj">Tri/Contrareloj</ion-select-option>
-        <ion-select-option value="Turbo">Turbo</ion-select-option>
-        <ion-select-option value="Urban">Urban</ion-select-option>
-        <ion-select-option value="Multiuso">Multiuso</ion-select-option>
-        <ion-select-option value="Niños">Niños</ion-select-option>
-      </ion-select>
-    </ion-item> -->
-    <ion-item class="modal-item" *ngIf="selSpecialized" >
-      <ion-label>Modelo</ion-label>
-      <ion-select name="model"  okText="Ok" cancelText="Cancelar" >
-        <ion-select-option value="spe.id" *ngFor="let spe of specializeds" >{{spe.model}} - {{spe.year}} </ion-select-option>
-      </ion-select>
+      <ion-label (click)="selectSpecialized()">Modelo</ion-label>
     </ion-item>
 
   </section>

@@ -7,6 +7,8 @@ import { Storage } from '@ionic/storage';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { ModalController } from '@ionic/angular';
 
+import { ModalAddSpecializedPage } from '../modal-add-specialized/modal-add-specialized.page';
+
 @Component({
   selector: 'app-modal-add-bike-profile',
   templateUrl: './modal-add-bike-profile.page.html',
@@ -60,13 +62,20 @@ export class ModalAddBikeProfilePage implements OnInit {
   }
 
   storeBike(){
-    
+
   }
 
   dismiss() {
     this.modalController.dismiss({
       'dismissed': true
     });
+  }
+
+  async selectSpecialized() {
+    const modal = await this.modalController.create({
+      component: ModalAddSpecializedPage
+    });
+    return await modal.present();
   }
 
 }
