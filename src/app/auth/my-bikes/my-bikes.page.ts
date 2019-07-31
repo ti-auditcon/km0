@@ -61,7 +61,14 @@ export class MyBikesPage implements OnInit {
     const modal = await this.modalController.create({
       component: ModalAddBikeProfilePage
     });
-    return await modal.present();
+    await modal.present();
+    const { data } = await modal.onDidDismiss();
+    if(data){
+      console.log('cargar nuevamente')
+     this.ionViewDidEnter();
+    } else {
+      console.log('no hacer nada')
+    }
   }
 
 }

@@ -18,11 +18,13 @@
 
     <h1 class="title-section">Selecciona un Modelo</h1>
 
-    <div class="card-button border-button" *ngFor="let bike of bikes; let i = index" (click)="hightlightStatus[i]=!hightlightStatus[i]" [class.selected]="hightlightStatus[i]">
+    <ion-input name="param" (input)="onSearchChange($event.target.value)"></ion-input>
+
+    <div class="card-button border-button" *ngFor="let bike of spFiltered; let i = index" (click)="check(i,bike.id)" [class.selected]="hightlightStatus[i]">
       <div class="bike-item">
-        <div class="img" [ngStyle]="{'background-image': 'url('+bike.img+')'}"></div>
+        <div class="img" [ngStyle]="{'background-image': 'url(/assets/img/bike-example.jpg)'}"></div>
         <div class="data">
-          <h4>{{bike.title}}</h4>
+          <h4>{{bike.model}}</h4>
           <p>{{bike.year}}</p>
         </div>
       </div>
@@ -33,5 +35,6 @@
 </ion-content>
 
 <ion-footer>
-  <ion-button expand="block">Guardar Bicicleta</ion-button>
+  <ion-button expand="block" (click)="addBike()">Guardar Bicicleta</ion-button>
+
 </ion-footer>

@@ -52,10 +52,11 @@ export class ModalAddBikeProfilePage implements OnInit {
   onBrandChange($event){
 
     if($event.detail.value == "true"){
-      this.selSpecialized = true;
+
       this.selOther = false;
+      this.selectSpecialized();
     } else {
-      this.selSpecialized = false;
+
       this.selOther = true;
     }
 
@@ -64,18 +65,24 @@ export class ModalAddBikeProfilePage implements OnInit {
   storeBike(){
 
   }
-
   dismiss() {
-    this.modalController.dismiss({
-      'dismissed': true
-    });
+    this.modalController.dismiss(false);
   }
 
   async selectSpecialized() {
-    const modal = await this.modalController.create({
+    const  modal = await this.modalController.create({
       component: ModalAddSpecializedPage
     });
-    return await modal.present();
-  }
+    await modal.present();    
 
+    const { data } = await modal.onDidDismiss();
+    if(data){
+      console.log('salir')
+      this.modalController.dismiss(true);
+    } else {
+      console.log('error')
+    }
+    
+
+  }
 }
