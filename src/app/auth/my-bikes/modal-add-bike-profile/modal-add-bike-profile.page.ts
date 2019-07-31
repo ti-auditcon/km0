@@ -8,6 +8,7 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { ModalController } from '@ionic/angular';
 
 import { ModalAddSpecializedPage } from '../modal-add-specialized/modal-add-specialized.page';
+import {FormControl,FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-modal-add-bike-profile',
@@ -16,17 +17,31 @@ import { ModalAddSpecializedPage } from '../modal-add-specialized/modal-add-spec
 })
 export class ModalAddBikeProfilePage implements OnInit {
 
+  private bikeForm : FormGroup;
+
   selSpecialized:boolean = false;
   selOther:boolean = false;
   specializeds:any = '';
   httpOptions:any = '';
 
+
+
+
   constructor(
     private router: Router,
     private modalController: ModalController,
     private storage: Storage,
-    private http:HttpClient
-  ) { }
+    private http:HttpClient,
+    private formBuilder: FormBuilder
+
+  ) { 
+    this.bikeForm = this.formBuilder.group({
+      brand: ['', Validators.required],
+      model: [''],
+      year: ['',Validators.pattern("^[0-9]*$")],
+      type: [''],
+    });
+  }
 
   ngOnInit() {
   }
@@ -37,7 +52,8 @@ export class ModalAddBikeProfilePage implements OnInit {
       let Bearer = value;
       this.httpOptions = {
         headers: new HttpHeaders({
-          'Authorization': 'Bearer '+ Bearer//updated
+          'Authorization': 'Bearer '+ Bearer,//updated
+          'Content-Type': 'application/json', //updated
         })};
 
         this.http.get(SERVER_URL+"api/specializeds?all=true", this.httpOptions)
@@ -63,6 +79,24 @@ export class ModalAddBikeProfilePage implements OnInit {
   }
 
   storeBike(){
+
+    console.log(this.bikeForm.value);
+    this.storage.get('auth-token').then((value) => {
+      let data=JSON.stringify({
+        brand: this.bikeForm.value.brand,
+        model: this.bikeForm.value.model,
+        year: this.bikeForm.value.year,
+        type: this.bikeForm.value.type,
+      });
+      console.log(data);
+
+        this.http.post(SERVER_URL+"api/bikes",data, this.httpOptions)
+        .subscribe((result: any) => {
+          console.log(result.data);
+          this.modalController.dismiss(true);
+        });
+
+    });
 
   }
   dismiss() {

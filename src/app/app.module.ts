@@ -17,6 +17,7 @@ import { ModalInfoPricePageModule } from './auth/booking/step-summary/modal-info
 import { ModalImagePageModule } from './auth/events/event-detail/modal-image/modal-image.module';
 import { ModalAddBikeProfilePageModule } from './auth/my-bikes/modal-add-bike-profile/modal-add-bike-profile.module';
 import { ModalAddSpecializedPageModule } from './auth/my-bikes/modal-add-specialized/modal-add-specialized.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,7 +34,13 @@ import { ModalAddSpecializedPageModule } from './auth/my-bikes/modal-add-special
     ModalInfoPricePageModule,
     ModalImagePageModule,
     ModalAddBikeProfilePageModule,
-    ModalAddSpecializedPageModule
+    ModalAddSpecializedPageModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
+  exports: [
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     StatusBar,

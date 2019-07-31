@@ -26,23 +26,43 @@
       </ion-select>
     </ion-item>
     <!-- En el caso de Elegir otra marca -->
-    <ion-item class="modal-item" *ngIf="selOther">
-      <ion-label>Ingresa la Marca</ion-label>
-      <ion-input></ion-input>
-    </ion-item>
-    <ion-item class="modal-item" *ngIf="selOther">
-      <ion-label>Ingresa el Modelo</ion-label>
-      <ion-input></ion-input>
-    </ion-item>
-    <!-- Solo en el caso de elegir specialized -->
-    <ion-item class="modal-item" *ngIf="selSpecialized">
-      <ion-label (click)="selectSpecialized()">Modelo</ion-label>
-    </ion-item>
+    <form  id="bikeForm" *ngIf="selOther"  [formGroup]="bikeForm" >
+      <ion-item class="modal-item" >
+        <ion-label >Ingresa la Marca</ion-label>
+        <ion-input formControlName="brand" ></ion-input>
+      </ion-item>
+      <ion-item class="modal-item"  >
+        <ion-label>Ingresa el Modelo</ion-label>
+        <ion-input formControlName="model"></ion-input>
+      </ion-item>
+      <ion-item class="modal-item" >
+        <ion-label>Ingresa el Año </ion-label>
+        <ion-input  formControlName="year" type="number" ></ion-input>
+      </ion-item>
+      <ion-item class="modal-item">
+        <ion-label>Tipo</ion-label>
+        <ion-select okText="Ok" cancelText="Cancelar" formControlName="type"  >
+          <ion-select-option value="XC">XC</ion-select-option>
+          <ion-select-option value="Trail">Trail</ion-select-option>
+          <ion-select-option value="Enduro">Enduro</ion-select-option>
+          <ion-select-option value="DH">DH</ion-select-option>
+          <ion-select-option value="Ruta">Ruta</ion-select-option>
+          <ion-select-option value="Tri/Contrareloj">Tri/Contrareloj</ion-select-option>
+          <ion-select-option value="Turbo">Turbo</ion-select-option>
+          <ion-select-option value="Urban">Urban</ion-select-option>
+          <ion-select-option value="Multiuso">Multiuso</ion-select-option>
+          <ion-select-option value="Niños">Niños</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </form>
+
+
 
   </section>
 
 </ion-content>
 
-<ion-footer>
-  <ion-button expand="block">Guardar Bicicleta</ion-button>
+<ion-footer *ngIf="selOther"> 
+  <ion-button expand="block"  form="bikeForm"  type="submit" (click)="storeBike()"
+  [disabled]="!bikeForm.valid" >Guardar Bicicleta</ion-button>
 </ion-footer>
