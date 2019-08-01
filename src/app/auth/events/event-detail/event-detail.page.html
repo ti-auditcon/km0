@@ -87,8 +87,8 @@
 </ion-content>
 
 <ion-footer *ngIf="!closed">
-  <ion-button expand="block" *ngIf="!reserved" (click)="attach()">Reservar mi Cupo</ion-button>
-  <ion-button expand="block" *ngIf="reserved" (click)="detach()">Ceder Cupo</ion-button>
+  <ion-button expand="block" *ngIf="!event?.rels.auth.reserved" (click)="attach()">Reservar mi Cupo</ion-button>
+  <ion-button expand="block" *ngIf="event?.rels.auth.reserved" (click)="detach()">Ceder Cupo</ion-button>
 </ion-footer>
 
 <!--
