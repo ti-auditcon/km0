@@ -1978,6 +1978,18 @@ ion-toggle {
     --color: var(--text-color-dark);
     --padding-start: 20px;
   }
+  ion-input.align-left {
+    text-align: left;
+    --color: var(--text-color-light);
+    --background: var(--body-background);
+    --padding-bottom: 0px;
+    --padding-end: 12px;
+    --padding-start: 12px;
+    --padding-top: 0px;
+    border-radius: 2px;
+    border: solid 1px var(--noclickable-text);
+    height: 44px;
+  }
 }
 
 .profile {

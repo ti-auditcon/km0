@@ -18,7 +18,7 @@
 
     <h1 class="title-section">Selecciona un Modelo</h1>
 
-    <ion-input name="param" (input)="onSearchChange($event.target.value)"></ion-input>
+    <ion-input name="param" (input)="onSearchChange($event.target.value)" class="align-left"></ion-input>
 
     <div class="card-button border-button" *ngFor="let bike of spFiltered; let i = index" (click)="check(i,bike.id)" [class.selected]="hightlightStatus[i]">
       <div class="bike-item">
