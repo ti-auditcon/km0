@@ -64,11 +64,8 @@ export class EventDetailPage implements OnInit {
           console.log(result);
 
           this.event = result.data;
-          if(!this.event.rels.auth.reserved){
-            this.reserved = true;
-          }
           this.closed = this.event.closed;
-          
+
         });
         //users
         this.http.get(SERVER_URL+"api/events/"+id+"/users", this.httpOptions)
