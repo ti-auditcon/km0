@@ -460,9 +460,11 @@ ion-toggle {
       font-size: 20px;
       line-height: 24px;
       margin: 0;
+      text-transform: capitalize;
       color: var(--clickable-text);
       span {
         font-weight: 400;
+        text-transform: none;
       }
     }
   }
