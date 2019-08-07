@@ -56,7 +56,8 @@ export class ProfilePage implements OnInit {
       source: CameraSource.Camera
     });
 
-    this.photo = this.sanitizer.bypassSecurityTrustResourceUrl(image && (image.dataUrl));
+    // this.photo = this.sanitizer.bypassSecurityTrustResourceUrl(image && (image.dataUrl));
+    this.photo = this.sanitizer.bypassSecurityTrustResourceUrl(image.dataUrl);
     console.log("Aqui va la var photo: "+this.photo);
   }
 
