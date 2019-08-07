@@ -57,7 +57,7 @@ export class ProfilePage implements OnInit {
     });
 
     // this.photo = this.sanitizer.bypassSecurityTrustResourceUrl(image && (image.dataUrl));
-    this.photo = this.sanitizer.bypassSecurityTrustResourceUrl(image.dataUrl);
+    this.photo = this.sanitizer.bypassSecurityTrustResourceUrl("data:Image/*;base64,"+image.dataUrl);
     // console.log("Aqui va la var photo: "+this.photo);
   }
 
