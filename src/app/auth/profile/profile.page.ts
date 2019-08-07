@@ -57,7 +57,7 @@ export class ProfilePage implements OnInit {
     });
 
     this.photo = this.sanitizer.bypassSecurityTrustResourceUrl(image && (image.dataUrl));
-    console.log(this.photo);
+    console.log("Aqui va la var photo: "+this.photo);
   }
 
   goToMyBikes(){
