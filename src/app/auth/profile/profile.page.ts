@@ -52,13 +52,13 @@ export class ProfilePage implements OnInit {
     const image = await Plugins.Camera.getPhoto({
       quality: 100,
       allowEditing: false,
-      resultType: CameraResultType.Uri,
+      resultType: CameraResultType.DataUrl,
       source: CameraSource.Camera
     });
 
     // this.photo = this.sanitizer.bypassSecurityTrustResourceUrl(image && (image.dataUrl));
-    // this.photo = this.sanitizer.bypassSecurityTrustResourceUrl(image && (image.dataUrl));
-    this.photo = this.sanitizer.bypassSecurityTrustResourceUrl(image.webPath);
+    this.photo = this.sanitizer.bypassSecurityTrustResourceUrl(image && (image.dataUrl));
+    // this.photo = this.sanitizer.bypassSecurityTrustResourceUrl(image.webPath);
     // this.photo = this.sanitizer.bypassSecurityTrustResourceUrl("data:Image/*;base64,"+image.dataUrl);
     // console.log("Aqui va la var photo: "+this.photo);
   }
