@@ -17,10 +17,13 @@
   <section class="profile">
 
     <div class="profile-header">
-      <div class="img" (click)="takePicture()" [ngStyle]="{'background-image': 'url(' + photo + ')'}"></div>
+      <div class="img" (click)="takePicture()" [ngStyle]="{'background-image': 'url(' + 'assets/img/avatar-default.jpg' + ')'}"></div>
+      <!-- <div class="img" (click)="takePicture()" [ngStyle]="{'background-image': 'url(' + photo + ')'}"></div> -->
       <h4>{{profile.fullName}}</h4>
       <p>{{profile.city}}, Chile</p>
     </div>
+
+    <img [src]="photo">
 
     <div class="dates profile-card">
       <div class="card-info info">
