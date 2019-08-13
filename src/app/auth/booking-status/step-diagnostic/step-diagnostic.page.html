@@ -14,12 +14,13 @@
 
 <ion-content>
 
-  <app-status-process class="status-2"></app-status-process>
+  <app-status-process [class]="order?.status.class"></app-status-process>
 
   <section class="status-card">
     <div class="card-info status">
       <h4>Aceptar Diagnóstico</h4>
       <p>
+        {{order?.status.class}}
         Hemos actualizado los servicios con los elementos que faltaban para que tu bicicleta quede en perfectas condiciones.
       </p>
     </div>

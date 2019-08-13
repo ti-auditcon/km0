@@ -19,6 +19,7 @@ export class DashboardPage implements OnInit {
 
   profile:any = '';
   events:any = '';
+  orders:any = '';
   eventsMeta:any = '';
   httpOptions:any;
   public page = 1;
@@ -70,6 +71,16 @@ export class DashboardPage implements OnInit {
           } 
         });
 
+        this.http.get(SERVER_URL+"api/orders", this.httpOptions)
+        .subscribe((result: any) => {
+          if(result){
+
+            console.log(result.data);
+            this.orders = result.data;
+
+          } 
+        });
+
     });
   }
 
@@ -97,8 +108,8 @@ export class DashboardPage implements OnInit {
   goToBooking(){
     this.router.navigate(['/step-bike']);
   }
-  goToBookingStatus(){
-    this.router.navigate(['/step-on-waiting']);
+  goToOrder(id:number){
+    this.router.navigate(['/orders/'+id]);
   }
   goToEvents() {
     this.router.navigate(['/events']);

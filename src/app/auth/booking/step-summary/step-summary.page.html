@@ -19,31 +19,15 @@
   <section class="summary">
     <h1 class="title-section">Resumen de Servicios</h1>
     <div class="ticket">
-      <h4>SPECIALIZED Allez Sprint</h4>
+      <h4>{{bike?.brand}} {{bike?.model}}</h4>
       <div class="services-wrapper">
           <div class="services">
-              <div class="service-detail">
+              <div class="service-detail" *ngFor="let service of services">
                 <p>
-                  Mantención Full
+                    {{service.name}}
                 </p>
                 <p>
-                  $22.990
-                </p>
-              </div>
-              <div class="service-detail">
-                <p>
-                  Pinchao'
-                </p>
-                <p>
-                  $1.990
-                </p>
-              </div>
-              <div class="service-detail">
-                <p>
-                  Doble Mantención Full
-                </p>
-                <p>
-                  $23.990
+                    {{service.value}}
                 </p>
               </div>
               <div class="total-detail">
@@ -52,7 +36,7 @@
                         <b>TOTAL</b>
                       </p>
                       <p>
-                        <b>$47.980</b>
+                        <b>{{total}}</b>
                       </p>
                     </div>
                     <div class="service-detail big highlighten-price" (click)="infoPriceModal()">
@@ -61,7 +45,7 @@
                         <ion-badge>i</ion-badge>
                       </p>
                       <p>
-                        <b>$3.000</b>
+                        <b>{{total*0.1}}</b>
                       </p>
                     </div>
               </div>

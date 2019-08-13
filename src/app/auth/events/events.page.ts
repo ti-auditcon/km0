@@ -23,6 +23,7 @@ export class EventsPage implements OnInit {
   public page = 1;
 
   constructor(
+
     private router: Router,
     private storage: Storage,
     private http:HttpClient

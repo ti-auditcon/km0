@@ -10,6 +10,8 @@ import { ModalController } from '@ionic/angular';
 import { ModalAddBikePage } from './modal-add-bike/modal-add-bike.page';
 import { ModalAddPiecePage } from './modal-add-piece/modal-add-piece.page';
 import { ModalChangeOfficePage } from './modal-change-office/modal-change-office.page';
+//models
+import { Bike } from '../../../models/bike.model';
 
 @Component({
   selector: 'app-step-bike',
@@ -17,8 +19,12 @@ import { ModalChangeOfficePage } from './modal-change-office/modal-change-office
   styleUrls: ['./step-bike.page.scss'],
 })
 export class StepBikePage implements OnInit {
+  //public bike: Bike;
   bikes:any = '';
+  bikeSelected:Bike;
+  
   httpOptions:any;
+  bikesMeta:any = '';
 
   constructor(
     public activatedRoute: ActivatedRoute,
@@ -41,10 +47,12 @@ export class StepBikePage implements OnInit {
           'Authorization': 'Bearer '+ Bearer//updated
         })};
 
-        this.http.get(SERVER_URL+"api/profile/bikes/", this.httpOptions)
+        this.http.get(SERVER_URL+"api/profile/bikes", this.httpOptions)
         .subscribe((result: any) => {
           this.bikes = result.data;
           console.log(this.bikes);
+          this.bikesMeta = result.meta;
+          console.log(this.bikesMeta);
         });
 
     });
@@ -71,7 +79,16 @@ export class StepBikePage implements OnInit {
     return await modal.present();
   }
 
-  goToService(){
+  goToService(bike:any){
+    var bikeModel:Bike;
+
+    bikeModel = new Bike();
+    bikeModel.id = bike.id;
+    bikeModel.brand = bike.brand;
+    bikeModel.model = bike.model;
+
+    console.log(bikeModel);
+    this.storage.set('bike',bikeModel)
     this.router.navigate(['/step-service']);
   }
 
