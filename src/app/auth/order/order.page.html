@@ -47,6 +47,10 @@
       <p>
         Hemos actualizado los servicios con los elementos que faltaban para que tu bicicleta quede en perfectas condiciones.
       </p>
+      <h4>Diagnóstico</h4>
+      <p>
+        {{order.diagnose}}
+      </p>
     </div>
   </section>
 
@@ -54,24 +58,49 @@
       <div class="card-info status">
         <h4>Esperando taller</h4>
         <p>
-          Tu orden se esta preparando para ingresar al taller
-          (alguna fecha?)
+          Tu orden se esta preparando para ingresar al taller.
+          Podria estar lista para el {{order?.posibleReadyAt}}
+        </p>
+        <h4>Diagnóstico</h4>
+        <p>
+          {{order.diagnose}}
         </p>
       </div>
-    </section>
+  </section>
+
+  <section class="status-card" *ngIf="order?.status.id == 6 ">
+      <div class="card-info status">
+          <h4>Lista para Retiro</h4>
+          <p>
+            Tu bicicleta está lista para ser retirada. Puedes venir a buscarla a nuestra sucursal.
+          </p>
+          <h4>Diagnóstico</h4>
+          <p>
+            {{order.diagnose}}
+          </p>
+      </div>
+  </section>
 
   <div class="separator"></div>
 
   <section class="summary">
-    <h1 class="title-section">Resumen de Servicios</h1>
+    <h1 class="title-section">Resumen</h1>
     <div class="ticket">
       <h4>{{order?.rels.bike.brand}} {{order?.rels.bike.model}}</h4>
+      
       <div class="services-wrapper">
           <div class="services">
+              <h4>Servicios</h4>
               <div class="service-detail" *ngFor="let service of services">
                 <p [ngClass]="{'highlighten-price': !service.rels.pivot.confirmed}" >{{service.name}}</p>
                 <p [ngClass]="{'highlighten-price': !service.rels.pivot.confirmed}" >${{service.value}}</p>
               </div>
+              <h4>Repuestos</h4>
+              <div class="service-detail" *ngFor="let spare of spares">
+                <p [ngClass]="{'highlighten-price': !spare.rels.pivot.confirmed}" >{{spare.name}}</p>
+                <p [ngClass]="{'highlighten-price': !spare.rels.pivot.confirmed}" >${{spare.value}}</p>
+              </div>
+              <br>
               <!-- cambiar esto -->
               <div class="service-detail">
                 <p>Descuento por Reserva</p>
@@ -84,7 +113,7 @@
                 </div>
               </div>
           </div>
-          </div>
+      </div>
     </div>
   </section>
 
@@ -92,4 +121,6 @@
 
 <ion-footer>
   <ion-button expand="block" (click)="goToChat()">Hablar con la Sucursal</ion-button>
+  <ion-button *ngIf="order?.status.id == 4 " expand="block" (click)="approveOrder()"> Confirmar presupuesto</ion-button>
+  <ion-button *ngIf="order?.status.id == 8 " expand="block" (click)="approveOrder()"> Aprobar arreglos</ion-button>
 </ion-footer>

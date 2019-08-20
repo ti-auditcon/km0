@@ -17,6 +17,7 @@ export class OrderPage implements OnInit {
   httpOptions:any;
   order:any;
   services:any;
+  spares:any;
 
   constructor(
     public activatedRoute: ActivatedRoute,
@@ -51,8 +52,36 @@ export class OrderPage implements OnInit {
         this.services = result.data;
       });
 
+      this.http.get(SERVER_URL+"api/orders/"+id+"/spares", this.httpOptions)
+      .subscribe((result: any) => {
+        console.log(result.data);
+        this.spares = result.data;
+      });
+
 
     });
+  }
+
+  approveOrder() {
+    this.storage.get('auth-token').then((value) => {
+      
+      let Bearer = value;
+      let id = this.activatedRoute.snapshot.paramMap.get('id');
+
+      this.httpOptions = {
+        headers: new HttpHeaders({
+          'Authorization': 'Bearer '+ Bearer//updated
+        })};
+
+      this.http.get(SERVER_URL+"api/orders/"+id+"/approve", this.httpOptions)
+      .subscribe((result: any) => {
+        console.log(result.data);
+        this.services = result.data;
+        this.ionViewDidEnter();
+      });
+
+    });
+
   }
 
 

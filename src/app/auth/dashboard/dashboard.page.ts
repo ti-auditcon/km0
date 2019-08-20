@@ -21,6 +21,7 @@ export class DashboardPage implements OnInit {
   events:any = '';
   orders:any = '';
   eventsMeta:any = '';
+  ordersMeta:any = '';
   httpOptions:any;
   public page = 1;
 
@@ -77,6 +78,8 @@ export class DashboardPage implements OnInit {
 
             console.log(result.data);
             this.orders = result.data;
+            this.ordersMeta = result.meta;
+            console.log(result.meta);
 
           } 
         });
