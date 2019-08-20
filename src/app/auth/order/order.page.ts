@@ -84,5 +84,26 @@ export class OrderPage implements OnInit {
 
   }
 
+  review() {
+    this.storage.get('auth-token').then((value) => {
+      
+      let Bearer = value;
+      let id = this.activatedRoute.snapshot.paramMap.get('id');
+
+      this.httpOptions = {
+        headers: new HttpHeaders({
+          'Authorization': 'Bearer '+ Bearer//updated
+        })};
+
+      this.http.get(SERVER_URL+"api/orders/"+id+"/review", this.httpOptions)
+      .subscribe((result: any) => {
+        console.log(result.data);
+        this.services = result.data;
+        this.router.navigate(['/']);
+      });
+
+    });
+
+  }
 
 }

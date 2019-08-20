@@ -122,5 +122,5 @@
 <ion-footer>
   <ion-button expand="block" (click)="goToChat()">Hablar con la Sucursal</ion-button>
   <ion-button *ngIf="order?.status.id == 4 " expand="block" (click)="approveOrder()"> Confirmar presupuesto</ion-button>
-  <ion-button *ngIf="order?.status.id == 8 " expand="block" (click)="approveOrder()"> Aprobar arreglos</ion-button>
+  <ion-button *ngIf="order?.status.id == 8 " expand="block" (click)="review()"> Aprobar arreglos</ion-button>
 </ion-footer>
