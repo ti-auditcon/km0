@@ -29,6 +29,13 @@ export class OrderPage implements OnInit {
   ngOnInit() {
   }
 
+  doRefresh(event) {
+    this.ionViewDidEnter();
+    setTimeout(() => {
+      event.target.complete();
+    }, 2000);
+  }
+
   ionViewDidEnter() {
     this.storage.get('auth-token').then((value) => {
       

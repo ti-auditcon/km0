@@ -14,6 +14,15 @@
 
 <ion-content>
 
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content
+        pullingIcon="arrow-dropdown"
+        pullingText="Arrastra para actualizar"
+        refreshingSpinner="circles">
+      </ion-refresher-content>
+  
+    </ion-refresher>
+
   <app-status-process [class]="order?.status.class"></app-status-process>
 
   <section class="status-card" *ngIf="order?.status.id == 2 ">
@@ -68,12 +77,35 @@
       </div>
   </section>
 
-  <section class="status-card" *ngIf="order?.status.id == 6 ">
+  <section class="status-card" *ngIf="order?.status.id == 6 || order?.status.id == 7">
       <div class="card-info status">
           <h4>Lista para Retiro</h4>
           <p>
             Tu bicicleta está lista para ser retirada. Puedes venir a buscarla a nuestra sucursal.
           </p>
+          <h4>Diagnóstico</h4>
+          <p>
+            {{order.diagnose}}
+          </p>
+      </div>
+  </section>
+
+  <section class="status-card" *ngIf="order?.status.id == 8 ">
+      <div class="card-info status">
+          <h4>Aprueba el trabajo</h4>
+          <p>
+            Si los arreglos han sido satisfactorios por favor apruebarlos para cerrar la orden.
+            Gracias
+          </p>
+          <h4>Diagnóstico</h4>
+          <p>
+            {{order.diagnose}}
+          </p>
+      </div>
+  </section>
+
+  <section class="status-card" *ngIf="order?.status.id == 9 ">
+      <div class="card-info status">
           <h4>Diagnóstico</h4>
           <p>
             {{order.diagnose}}

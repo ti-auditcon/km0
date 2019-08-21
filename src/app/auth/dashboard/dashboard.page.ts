@@ -34,6 +34,12 @@ export class DashboardPage implements OnInit {
   ngOnInit() {
     console.log('entre a dashboard');
   }
+  doRefresh(event) {
+    this.ionViewDidEnter();
+    setTimeout(() => {
+      event.target.complete();
+    }, 2000);
+  }
 
   ionViewDidEnter() {
     this.page = 1
@@ -45,43 +51,27 @@ export class DashboardPage implements OnInit {
         headers: new HttpHeaders({
           'Authorization': 'Bearer '+ Bearer//updated
         })};
-
+        //profile
         this.http.get(SERVER_URL+"api/profile", this.httpOptions)
         .subscribe((result: any) => {
           
           this.profile = result.data;
-          //get next events
-          console.log('profile');
-          console.log(this.profile);
-          // this.http.get(this.profile.rels.events.href, httpOptions)
-          // .subscribe((result: any) => {
-          //   console.log('eventos');
-          //   console.log(result.data);
-          // });
 
         });
 
         this.http.get(SERVER_URL+"api/events/next?per_page=3&page="+this.page, this.httpOptions)
         .subscribe((result: any) => {
-          if(result){
-            console.log(result);
+
             this.events = result.data;
-            this.eventsMeta = result.meta;
-            console.log(this.eventsMeta);
             this.page++;
-          } 
+
         });
 
         this.http.get(SERVER_URL+"api/orders", this.httpOptions)
         .subscribe((result: any) => {
-          if(result){
-
-            console.log(result.data);
             this.orders = result.data;
-            this.ordersMeta = result.meta;
-            console.log(result.meta);
 
-          } 
+
         });
 
     });
