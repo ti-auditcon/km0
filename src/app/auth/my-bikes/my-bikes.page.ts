@@ -17,6 +17,7 @@ export class MyBikesPage implements OnInit {
   profile:any = '';
   bikes:any = '';
   httpOptions:any;
+  bikesMeta:any;
 
   constructor(
     private router: Router,
@@ -44,7 +45,7 @@ export class MyBikesPage implements OnInit {
           //bicicletas
           this.http.get(this.profile.rels.bikes.href, this.httpOptions)
           .subscribe((result: any) => {
-            console.log(result.data);
+           
             this.bikes = result.data;
 
           });

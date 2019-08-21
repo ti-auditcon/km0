@@ -18,9 +18,13 @@ export class DashboardPage implements OnInit {
   @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
 
   profile:any = '';
+ 
   events:any = '';
+  orders:any = '';
   eventsMeta:any = '';
+  ordersMeta:any = '';
   httpOptions:any;
+  hasNotifications:boolean = false;
   public page = 1;
 
   constructor(
@@ -31,6 +35,12 @@ export class DashboardPage implements OnInit {
 
   ngOnInit() {
     console.log('entre a dashboard');
+  }
+  doRefresh(event) {
+    this.ionViewDidEnter();
+    setTimeout(() => {
+      event.target.complete();
+    }, 2000);
   }
 
   ionViewDidEnter() {
@@ -43,32 +53,42 @@ export class DashboardPage implements OnInit {
         headers: new HttpHeaders({
           'Authorization': 'Bearer '+ Bearer//updated
         })};
-
+        //profile
         this.http.get(SERVER_URL+"api/profile", this.httpOptions)
         .subscribe((result: any) => {
           
           this.profile = result.data;
-          //get next events
-          console.log('profile');
-          console.log(this.profile);
-          // this.http.get(this.profile.rels.events.href, httpOptions)
-          // .subscribe((result: any) => {
-          //   console.log('eventos');
-          //   console.log(result.data);
-          // });
+          if(this.profile.hasNotifications == 1){
+            this.storage.set('has_notification',true);
+            this.storage.get('has_notification').then((value) => {
+              this.hasNotifications = value;
+            });
+          } else {
+            this.storage.set('has_notification',false);
+            this.storage.get('has_notification').then((value) => {
+              this.hasNotifications = value;
+            });
+          }
+
 
         });
 
         this.http.get(SERVER_URL+"api/events/next?per_page=3&page="+this.page, this.httpOptions)
         .subscribe((result: any) => {
-          if(result){
-            console.log(result);
+
             this.events = result.data;
-            this.eventsMeta = result.meta;
-            console.log(this.eventsMeta);
             this.page++;
-          } 
+
         });
+
+        this.http.get(SERVER_URL+"api/orders", this.httpOptions)
+        .subscribe((result: any) => {
+            this.orders = result.data;
+
+
+        });
+
+
 
     });
   }
@@ -97,8 +117,8 @@ export class DashboardPage implements OnInit {
   goToBooking(){
     this.router.navigate(['/step-bike']);
   }
-  goToBookingStatus(){
-    this.router.navigate(['/step-on-waiting']);
+  goToOrder(id:number){
+    this.router.navigate(['/orders/'+id]);
   }
   goToEvents() {
     this.router.navigate(['/events']);

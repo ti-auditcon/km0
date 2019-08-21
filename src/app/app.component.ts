@@ -27,11 +27,11 @@ export class AppComponent implements OnInit {
       url: '/dashboard',
       icon: 'home'
     },
-    // {
-    //   title: 'Reservar Servicios',
-    //   url: '/step-bike',
-    //   icon: 'bicycle'
-    // },
+    {
+      title: 'Reservar Servicios',
+      url: '/step-bike',
+      icon: 'bicycle'
+    },
     {
       title: 'Eventos',
       url: '/events',

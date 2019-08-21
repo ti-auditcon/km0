@@ -7,12 +7,20 @@
       <img class="logo" src="assets/img/logo.png">
     </div>
     <ion-buttons slot="end">
-      <ion-icon class="notification-icon" [routerLink]="['/notifications']" src="assets/icon/bell.svg"></ion-icon>
+      <ion-icon class="notification-icon " [routerLink]="['/notifications']" src="assets/icon/bell.svg" [ngClass]="{'has': hasNotifications}"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="only-events">
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+          pullingIcon="arrow-dropdown"
+          pullingText="Arrastra para actualizar"
+          refreshingSpinner="circles">
+        </ion-refresher-content>
+    
+      </ion-refresher>
 
   <section class="home-actions">
     <div class="card-home-welcome">
@@ -34,17 +42,17 @@
 
   <div class="separator ion-hide"></div>
 
-  <section class="booked-services ion-hide">
+  <section class="booked-services">
     <h1 class="title-section">Servicios Reservados</h1>
-    <div class="card-info no-data">
+    <div class="card-info no-data" *ngIf="orders==''">
         <img class="the-icon" src="assets/icon/icon-nobooked.svg">
         <h4>No tienes Servicios Reservados</h4>
     </div>
-    <div class="card-button" (click)="goToBookingStatus()">
-      <h3>SPECIALIZED Allez Sprint</h3>
-      <p class="detail">Orden Nº 1240926</p>
+    <div class="card-button" (click)="goToOrder(order.id)" *ngFor = "let order of orders">
+      <h3>{{order.rels.bike.brand}} {{order.rels.bike.model}}</h3>
+      <p class="detail">Orden Nº {{order.id}}</p>
       <div class="status">
-        <p>Esperando la Bicicleta</p>
+        <p>{{order.status.name}}</p>
       </div>
       <img class="arrow" src="assets/icon/icon-arrow.svg">
     </div>
@@ -54,7 +62,7 @@
 
   <section class="next-events">
     <h1 class="title-section">Próximos Eventos</h1>
-    <div class="card-info no-data" *ngIf="eventMeta?.pagination.total == 0">
+    <div class="card-info no-data" *ngIf="events==''">
         <img class="the-icon" src="assets/icon/icon-noevents.svg">
         <h4>No hay eventos Próximos por el momento</h4>
     </div>
@@ -81,7 +89,7 @@
       </div>
     </div>
 
-    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMoreEvents($event)">
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMoreEvents($event)" *ngIf="events!=''">
       <ion-infinite-scroll-content
         loadingSpinner="bubbles"
         loadingText="Cargando Eventos proximos...">

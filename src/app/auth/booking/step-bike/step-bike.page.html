@@ -20,7 +20,7 @@
 
     <h1 class="title-section">Selecciona tu Bicicleta</h1>
 
-    <div class="card-button" (click)="goToService()">
+    <!-- <div class="card-button" (click)="goToService()">
       <div class="single-bike-grid">
         <div class="img" style="background-image: url('assets/img/bike-example.jpg')"></div>
         <div class="data">
@@ -31,9 +31,21 @@
           </p>
         </div>
       </div>
+    </div> -->
+    <div class="card-button" (click)="goToService(bike)" *ngFor="let bike of bikes">
+      <div class="single-bike-grid">
+        <div class="img" style="background-image: url('assets/img/bike-example.jpg')"></div>
+        <div class="data">
+          <h4>{{bike.model}}</h4>
+          <p>
+              {{bike.brand}}<br>
+              {{bike.year}}
+          </p>
+        </div>
+      </div>
     </div>
 
-    <div class="card-info data" (click)="addBicicleModal()">
+    <div class="card-info data" (click)="addBicicleModal()" *ngIf="bikesMeta?.pagination?.total == 0">
       <img class="the-icon" src="assets/icon/icon-add.svg">
       <h4>Agregar Nueva Bicicleta</h4>
       <p class="explain">

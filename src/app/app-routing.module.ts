@@ -55,6 +55,9 @@ const routes: Routes = [
   // PUBLIC
   { path: 'login', loadChildren: './public/login/login.module#LoginPageModule' },
   { path: 'forget', loadChildren: './public/forget/forget.module#ForgetPageModule' },
+  //ORDERS
+  { path: 'orders/:id', loadChildren: './auth/order/order.module#OrderPageModule' },
+
 
 
 ];

@@ -22,17 +22,17 @@
     <div class="card-button border-button" *ngFor="let service of services; let i = index"
       [attr.data-selected]="false"
       (click)="hightlightStatus[i]=!hightlightStatus[i]"
-      [class.selected]="hightlightStatus[i]">
+      [class.selected]="hightlightStatus[i]" [attr.data-id]="service.id" [attr.data-name]="service.name"  [attr.data-value]="service.value">
       <div class="service-item">
         <div class="icon">
-          <img src="/assets/icon/services/{{service.icon}}">
+          <img src="/assets/icon/services/icon-bike.svg">
         </div>
         <div class="data">
-          <h4>{{service.title}}</h4>
-          <p>
+          <h4>{{service.name}}</h4>
+          <!-- <p>
             {{service.description}}
-          </p>
-          <h4>${{service.price}}</h4>
+          </p> -->
+          <h4>${{service.value}}</h4>
         </div>
       </div>
     </div>
