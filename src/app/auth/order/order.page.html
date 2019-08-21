@@ -23,7 +23,7 @@
   
     </ion-refresher>
 
-  <app-status-process [class]="order?.status.class"></app-status-process>
+  <app-status-process [class]="order?.status.class" *ngIf="order?.status.id != 9 "></app-status-process>
 
   <section class="status-card" *ngIf="order?.status.id == 2 ">
     <div class="card-info status">
@@ -35,9 +35,9 @@
       <p>
         Martes 8 de Julio - 10:00 hrs
       </p>
-      <p class="add-info">
+      <!-- <p class="add-info">
         Quién entrega: Raul Berrios
-      </p>
+      </p> -->
     </div>
   </section>
 
@@ -152,7 +152,7 @@
 </ion-content>
 
 <ion-footer>
-  <ion-button expand="block" (click)="goToChat()">Hablar con la Sucursal</ion-button>
+  <ion-button *ngIf="order?.status.id != 9 " expand="block" (click)="goToChat()">Hablar con la Sucursal</ion-button>
   <ion-button *ngIf="order?.status.id == 4 " expand="block" (click)="approveOrder()"> Confirmar presupuesto</ion-button>
   <ion-button *ngIf="order?.status.id == 8 " expand="block" (click)="review()"> Aprobar arreglos</ion-button>
 </ion-footer>

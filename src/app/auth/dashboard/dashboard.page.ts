@@ -18,11 +18,13 @@ export class DashboardPage implements OnInit {
   @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
 
   profile:any = '';
+ 
   events:any = '';
   orders:any = '';
   eventsMeta:any = '';
   ordersMeta:any = '';
   httpOptions:any;
+  hasNotifications:boolean = false;
   public page = 1;
 
   constructor(
@@ -56,6 +58,18 @@ export class DashboardPage implements OnInit {
         .subscribe((result: any) => {
           
           this.profile = result.data;
+          if(this.profile.hasNotifications == 1){
+            this.storage.set('has_notification',true);
+            this.storage.get('has_notification').then((value) => {
+              this.hasNotifications = value;
+            });
+          } else {
+            this.storage.set('has_notification',false);
+            this.storage.get('has_notification').then((value) => {
+              this.hasNotifications = value;
+            });
+          }
+
 
         });
 
@@ -73,6 +87,8 @@ export class DashboardPage implements OnInit {
 
 
         });
+
+
 
     });
   }

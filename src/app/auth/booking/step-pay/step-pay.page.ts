@@ -64,7 +64,7 @@ export class StepPayPage implements OnInit {
              .subscribe(
                  (result: any) => {
                      console.log('success refresh 200');
-                  //   console.log(JSON.parse(result));
+                     this.router.navigate(['dashboard']);
                  },
                  (err) => {
                    console.log('error refrersh 401:'+JSON.stringify(err));

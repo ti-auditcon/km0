@@ -12,8 +12,8 @@
 <ion-content>
 
   <section class="notifications">
-
-    <!-- <div class="card-button notification-grid office-message" (click)="goToChat()">
+<!-- 
+    <div class="card-button notification-grid office-message" (click)="goToChat()">
       <div class="icon">
         <img src="assets/icon/n-message.svg">
       </div>
@@ -26,17 +26,17 @@
       </div>
     </div> -->
 
-    <!-- <div class="card-button notification-grid state-message" (click)="goToStatus()">
+    <div class="card-button notification-grid " *ngFor = "let notification of notifications">
       <div class="icon">
-        <img src="assets/icon/process/1-bike.svg">
+        <img src="assets/icon/process/{{notification?.type.icon}}">
       </div>
       <div class="data">
-        <h5>Tu reserva ha cambiado de estado</h5>
+        <h5>{{notification?.type.title}}</h5>
         <p>
-          En Taller
+            {{notification?.text}}
         </p>
       </div>
-    </div> -->
+    </div> 
 
     <!-- <div class="card-button notification-grid special-message" (click)="goToSpecialMessage()">
       <div class="icon">
