@@ -509,7 +509,7 @@ ion-toggle {
     font-size: 20px;
     line-height: 24px;
     margin: 0;
-    margin-bottom: 4px;
+    margin-bottom: 14px;
   }
   p.detail {
     font-family: 'Roboto';
@@ -524,6 +524,7 @@ ion-toggle {
     padding: 8px 14px;
     border-radius: 2px;
     margin-top: 20px;
+    width: 100%;
     p {
       font-family: Roboto;
       font-weight: 700;
@@ -592,13 +593,15 @@ ion-toggle {
         font-weight: 700;
         font-size: 22px;
         line-height: 26px;
+        text-transform: capitalize;
         color: var(--clickable-text);
       }
       p {
         color: var(--text-color-dark);
-        font-family: 'Roboto Condensed';
+        font-family: 'Roboto';
         font-weight: 400;
-        font-size: 15px;
+        font-size: 14px;
+        line-height: 18px;
         line-height: 130%;
       }
     }
@@ -631,7 +634,15 @@ ion-toggle {
         font-size: 15px;
         line-height: 19px;
         color: var(--text-color-dark);
-        margin: 13px 0;
+        margin: 13px 0 13px;
+      }
+      h5 {
+        font-family: 'Roboto Condensed';
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 24px;
+        margin: 0;
+        color: var(--clickable-text);
       }
     }
   }
@@ -867,18 +878,20 @@ ion-toggle {
   border-radius: 3px;
   overflow: hidden;
   h3 {
-    color: var(--clickable-text);
+    color: var(--text-color-light);
     font-family: 'Roboto Condensed';
     font-weight: 700;
     font-size: 20px;
     line-height: 24px;
     margin: 0;
-    margin-bottom: 4px;
+    margin-bottom: 14px;
+    width: 100%;
   }
   p.detail {
     font-family: 'Roboto';
     font-weight: 400;
-    font-size: 15px;
+    font-size: 14px;
+    line-height: 18px;
     margin: 0;
     color: var(--text-color-dark);
   }
@@ -1039,12 +1052,14 @@ ion-toggle {
         font-size: 20px;
         line-height: 24px;
         margin: 0;
-        margin-bottom: 4px;
+        width: 100%;
+        margin-bottom: 14px;
       }
       p.detail {
         font-family: 'Roboto';
         font-weight: 400;
-        font-size: 15px;
+        font-size: 14px;
+        line-height: 18px;
         margin: 0;
         color: var(--text-color-dark);
       }
@@ -1163,7 +1178,7 @@ ion-toggle {
     justify-content: space-between;
     align-content: center;
     align-items: center;
-    margin-bottom: 27px;
+    margin-bottom: 32px;
     overflow: hidden;
     position: relative;
     width: 100%;
@@ -1508,7 +1523,7 @@ ion-toggle {
   justify-content: space-between;
   align-content: center;
   align-items: center;
-  margin-bottom: 27px;
+  margin-bottom: 30px;
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -1751,7 +1766,7 @@ ion-toggle {
       font-family: Roboto;
       font-style: normal;
       font-weight: normal;
-      font-size: 15px;
+      font-size: 14px;
       line-height: 18px;
       margin: 0;
       color: var(--text-color-dark);
@@ -1815,6 +1830,38 @@ ion-toggle {
   }
 }
 
+.list-bike {
+  .the-bike {
+    display: flex;
+    justify-content: space-between;
+    background: var(--card-background-noclick);
+    // border: #373A45 solid 1px;
+    padding: 26px 25px 25px;
+    border-radius: 3px;
+    .icon {
+      width: 20%;
+    }
+    .data {
+      width: 80%;
+      padding-left: 20px;
+      h4 {
+        margin-top: 0;
+        font-family: 'Roboto Condensed';
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 24px;
+        margin-bottom: 10px;
+        color: var(--clickable-text);
+      }
+      p {
+        color: var(--text-color-dark);
+        margin: 0;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
 .summary {
   .ticket {
     h4 {
@@ -1826,6 +1873,9 @@ ion-toggle {
     }
     .services-wrapper {
       .services {
+        // h4 {
+        //   margin-bottom: 4px;
+        // }
         .service-detail {
           display: flex;
           align-items: center;
@@ -2110,7 +2160,7 @@ ion-toggle {
       font-weight: 700;
       font-size: 23px;
       line-height: 27px;
-      // margin-bottom: ;
+      text-transform: capitalize;
     }
     p.bike-brand {
       margin: 0;

@@ -20,7 +20,7 @@
         pullingText="Arrastra para actualizar"
         refreshingSpinner="circles">
       </ion-refresher-content>
-  
+
     </ion-refresher>
 
   <app-status-process [class]="order?.status.class" *ngIf="order?.status.id != 9 "></app-status-process>
@@ -115,11 +115,25 @@
 
   <div class="separator"></div>
 
+  <section class="list-bike">
+    <h1 class="title-section">Bicicleta</h1>
+    <div class="the-bike">
+      <div class="icon">
+        <img src="/assets/icon/services/icon-bike.svg">
+      </div>
+      <div class="data">
+        <h4>{{order?.rels.bike.model}}</h4>
+        <p>{{order?.rels.bike.brand}}</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="separator"></div>
+
   <section class="summary">
     <h1 class="title-section">Resumen</h1>
     <div class="ticket">
-      <h4>{{order?.rels.bike.brand}} {{order?.rels.bike.model}}</h4>
-      
+
       <div class="services-wrapper">
           <div class="services">
               <h4>Servicios</h4>
