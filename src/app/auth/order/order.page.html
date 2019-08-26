@@ -135,30 +135,30 @@
     <div class="ticket">
 
       <div class="services-wrapper">
-          <div class="services">
-              <h4>Servicios</h4>
-              <div class="service-detail" *ngFor="let service of services">
-                <p [ngClass]="{'highlighten-price': !service.rels.pivot.confirmed}" >{{service.name}}</p>
-                <p [ngClass]="{'highlighten-price': !service.rels.pivot.confirmed}" >${{service.value}}</p>
+        <div class="services">
+            <h4 *ngIf="services">Servicios</h4>
+            <div class="service-detail" *ngFor="let service of services">
+              <p [ngClass]="{'highlighten-price': !service.rels.pivot.confirmed}" >{{service.name}}</p>
+              <p [ngClass]="{'highlighten-price': !service.rels.pivot.confirmed}" >${{service.value}}</p>
+            </div>
+            <h4 *ngIf="spares != 0">Repuestos</h4>
+            <div class="service-detail" *ngFor="let spare of spares">
+              <p [ngClass]="{'highlighten-price': !spare.rels.pivot.confirmed}" >{{spare.name}}</p>
+              <p [ngClass]="{'highlighten-price': !spare.rels.pivot.confirmed}" >${{spare.value}}</p>
+            </div>
+            <!-- <br> -->
+            <!-- cambiar esto -->
+            <div class="service-detail dscto">
+              <p>Descuento por Reserva</p>
+              <p>-{{order?.reserve}}</p>
+            </div>
+            <div class="total-detail">
+              <div class="service-detail big">
+                <p><b>TOTAL</b></p>
+                <p><b>${{order?.amount - order?.reserve }}</b></p>
               </div>
-              <h4>Repuestos</h4>
-              <div class="service-detail" *ngFor="let spare of spares">
-                <p [ngClass]="{'highlighten-price': !spare.rels.pivot.confirmed}" >{{spare.name}}</p>
-                <p [ngClass]="{'highlighten-price': !spare.rels.pivot.confirmed}" >${{spare.value}}</p>
-              </div>
-              <br>
-              <!-- cambiar esto -->
-              <div class="service-detail">
-                <p>Descuento por Reserva</p>
-                <p>-{{order?.reserve}}</p>
-              </div>
-              <div class="total-detail">
-                <div class="service-detail big">
-                  <p><b>TOTAL</b></p>
-                  <p><b>${{order?.amount - order?.reserve }}</b></p>
-                </div>
-              </div>
-          </div>
+            </div>
+        </div>
       </div>
     </div>
   </section>

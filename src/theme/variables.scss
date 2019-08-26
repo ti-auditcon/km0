@@ -88,6 +88,8 @@
   // Fondos y Cards
   --navbar-background: #141A29;
   --body-background: #272B37;
+  --ion-background-color: #272B37;
+
   --card-background-click: #1F2230;
   --card-background-noclick: #30333F;
   --menu-sidebar-background: #1F222D;
@@ -116,6 +118,15 @@ ion-content.only-events {
   .disabled {
     opacity: 0.6;
     pointer-events: none;
+  }
+}
+
+ion-refresher {
+  ion-icon {
+    color: white;
+  }
+  .refresher-pulling-text {
+    color: white !important;
   }
 }
 
@@ -1869,6 +1880,7 @@ ion-toggle {
       font-weight: 700;
       font-size: 20px;
       line-height: 24px;
+      text-transform: capitalize;
       color: var(--clickable-text);
     }
     .services-wrapper {
@@ -1885,6 +1897,7 @@ ion-toggle {
           p {
             color: var(--text-color-dark);
             margin: 0;
+            font-size: 15px;
             ion-badge {
               text-transform: none;
               font-style: italic;
@@ -1892,6 +1905,9 @@ ion-toggle {
               --color: var(--clickable-text);
               font-family: serif;
             }
+          }
+          &.dscto {
+            margin-top: 20px;
           }
         }
         .total-detail {

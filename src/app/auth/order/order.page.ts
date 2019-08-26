@@ -18,6 +18,7 @@ export class OrderPage implements OnInit {
   order:any;
   services:any;
   spares:any;
+  hola:boolean = true;
 
   constructor(
     public activatedRoute: ActivatedRoute,
@@ -38,7 +39,7 @@ export class OrderPage implements OnInit {
 
   ionViewDidEnter() {
     this.storage.get('auth-token').then((value) => {
-      
+
       let Bearer = value;
       let id = this.activatedRoute.snapshot.paramMap.get('id');
 
@@ -63,6 +64,7 @@ export class OrderPage implements OnInit {
       .subscribe((result: any) => {
         console.log(result.data);
         this.spares = result.data;
+        console.log('Tipo: '+typeof(this.spares));
       });
 
 
@@ -71,7 +73,7 @@ export class OrderPage implements OnInit {
 
   approveOrder() {
     this.storage.get('auth-token').then((value) => {
-      
+
       let Bearer = value;
       let id = this.activatedRoute.snapshot.paramMap.get('id');
 
@@ -93,7 +95,7 @@ export class OrderPage implements OnInit {
 
   review() {
     this.storage.get('auth-token').then((value) => {
-      
+
       let Bearer = value;
       let id = this.activatedRoute.snapshot.paramMap.get('id');
 
