@@ -42,7 +42,7 @@ export class NotificationsPage implements OnInit {
           console.log(result.data);
         });
 
-        this.http.get(SERVER_URL+"api/profile/notifications", this.httpOptions)
+        this.http.get(SERVER_URL+"api/profile/notifications?sort_by_desc=createdAt", this.httpOptions)
         .subscribe((result: any) => {
           console.log(result.data);
           this.notifications = result.data;
@@ -51,6 +51,12 @@ export class NotificationsPage implements OnInit {
 
 
     });
+  }
+
+  goTo(type:number, id:number){
+    if(type == 1 ){
+      this.router.navigate(['/orders/'+id]);
+    }
   }
 
   goToChat(){
@@ -64,5 +70,7 @@ export class NotificationsPage implements OnInit {
   goToSpecialMessage(){
     this.router.navigate(['/special-message']);
   }
+
+
 
 }

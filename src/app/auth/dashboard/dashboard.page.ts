@@ -8,12 +8,24 @@ import { Storage } from '@ionic/storage';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { IonInfiniteScroll } from '@ionic/angular';
 
+import {
+  Plugins,
+  PushNotification,
+  PushNotificationToken,
+  PushNotificationActionPerformed } from '@capacitor/core';
+
+const { PushNotifications } = Plugins;
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.page.html',
   styleUrls: ['./dashboard.page.scss'],
 })
+
+
 export class DashboardPage implements OnInit {
+
+  
 
   @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
 
@@ -33,9 +45,38 @@ export class DashboardPage implements OnInit {
     private http:HttpClient
   ) { }
 
+
   ngOnInit() {
-    console.log('entre a dashboard');
+      console.log('Initializing HomePage');
+
+      PushNotifications.register();
+
+      PushNotifications.addListener('registration', 
+        (token: PushNotificationToken) => {
+          alert('Push registration success, token: ' + token.value);
+        }
+      );
+
+      PushNotifications.addListener('registrationError', 
+        (error: any) => {
+          alert('Error on registration: ' + JSON.stringify(error));
+        }
+      );
+
+      PushNotifications.addListener('pushNotificationReceived', 
+        (notification: PushNotification) => {
+          alert('Push received: ' + JSON.stringify(notification));
+        }
+      );
+
+      PushNotifications.addListener('pushNotificationActionPerformed', 
+        (notification: PushNotificationActionPerformed) => {
+          alert('Push action performed: ' + JSON.stringify(notification));
+        }
+      );
   }
+
+
   doRefresh(event) {
     this.ionViewDidEnter();
     setTimeout(() => {

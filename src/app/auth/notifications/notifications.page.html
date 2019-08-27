@@ -26,7 +26,7 @@
       </div>
     </div> -->
 
-    <div class="card-button notification-grid " *ngFor = "let notification of notifications">
+    <div class="card-button notification-grid " *ngFor = "let notification of notifications" (click)='goTo(notification.type.id,notification.entityId)'>
       <div class="icon">
         <img src="assets/icon/process/{{notification?.type.icon}}">
       </div>
