@@ -54,7 +54,8 @@
     <div class="card-info status">
       <h4>Aceptar Diagnóstico</h4>
       <p>
-        Hemos actualizado los servicios con los elementos que faltaban para que tu bicicleta quede en perfectas condiciones.
+        <!-- Hemos actualizado los servicios con los elementos que faltaban para que tu bicicleta quede en perfectas condiciones. -->
+        Hemos actualizado el resumen de servicios. Puede que se hayan agregado más servicios/repuestos necesarios para que tu bicicleta quede en optimas condiciones.
       </p>
       <h4>Diagnóstico</h4>
       <p>
@@ -65,10 +66,10 @@
 
   <section class="status-card" *ngIf="order?.status.id == 5 ">
       <div class="card-info status">
-        <h4>Esperando taller</h4>
+        <h4>En taller</h4>
         <p>
-          Tu orden se esta preparando para ingresar al taller.
-          Podria estar lista para el {{order?.posibleReadyAt}}
+          Ingresaremos tu bici al taller para realizar los servicios contratados.<br>
+          Tu bicicleta estará lista para retirar el {{order?.posibleReadyAt}}
         </p>
         <h4>Diagnóstico</h4>
         <p>
@@ -165,8 +166,18 @@
 
 </ion-content>
 
-<ion-footer>
-  <ion-button *ngIf="order?.status.id != 9 " expand="block" (click)="goToChat()">Hablar con la Sucursal</ion-button>
-  <ion-button *ngIf="order?.status.id == 4 " expand="block" (click)="approveOrder()"> Confirmar presupuesto</ion-button>
-  <ion-button *ngIf="order?.status.id == 8 " expand="block" (click)="review()"> Aprobar arreglos</ion-button>
+<ion-footer class="flex">
+  <ion-button *ngIf="order?.status.id != 9 && order?.status.id != 4 && order?.status.id != 8" expand="block" (click)="goToChat()">Hablar con la Sucursal</ion-button>
+  <ng-template [ngIf]="order?.status.id == 4">
+    <ion-button expand="block" (click)="goToChat()">
+      <img src="/assets/icon/chat.svg">
+    </ion-button>
+    <ion-button expand="block" (click)="approveOrder()">Confirmar presupuesto</ion-button>
+  </ng-template>
+  <ng-template [ngIf]="order?.status.id == 8">
+    <ion-button expand="block" (click)="goToChat()">Hablar con la Sucursal</ion-button>
+    <ion-button expand="block" (click)="review()">
+      <img src="/assets/icon/check.svg">
+    </ion-button>
+  </ng-template>
 </ion-footer>
