@@ -8,6 +8,8 @@ import { Storage } from '@ionic/storage';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { IonInfiniteScroll } from '@ionic/angular';
 
+
+
 import {
   Plugins,
   PushNotification,
@@ -42,7 +44,8 @@ export class DashboardPage implements OnInit {
   constructor(
     private router: Router,
     private storage: Storage,
-    private http:HttpClient
+    private http:HttpClient,
+
   ) { }
 
 
@@ -85,6 +88,7 @@ export class DashboardPage implements OnInit {
   }
 
   ionViewDidEnter() {
+    //console.log(this.hasNotifications);
     this.page = 1
     this.storage.get('auth-token').then((value) => {
       

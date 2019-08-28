@@ -57,19 +57,22 @@ export class NotificationsPage implements OnInit {
     if(type == 1 ){
       this.router.navigate(['/orders/'+id]);
     }
+    if(type == 2 ){
+      this.router.navigate(['/orders/'+id+'/chat']);
+    }
   }
 
-  goToChat(){
-    this.router.navigate(['/chat']);
-  }
+  // goToChat(){
+  //   this.router.navigate(['/chat']);
+  // }
 
-  goToStatus(){
-    this.router.navigate(['/step-on-waiting']);
-  }
+  // goToStatus(){
+  //   this.router.navigate(['/step-on-waiting']);
+  // }
 
-  goToSpecialMessage(){
-    this.router.navigate(['/special-message']);
-  }
+  // goToSpecialMessage(){
+  //   this.router.navigate(['/special-message']);
+  // }
 
 
 

@@ -57,6 +57,7 @@ const routes: Routes = [
   { path: 'forget', loadChildren: './public/forget/forget.module#ForgetPageModule' },
   //ORDERS
   { path: 'orders/:id', loadChildren: './auth/order/order.module#OrderPageModule' },
+  { path: 'orders/:id/chat', loadChildren: './auth/order/chat/chat.module#ChatPageModule' },
 
 
 

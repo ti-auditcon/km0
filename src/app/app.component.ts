@@ -73,6 +73,13 @@ export class AppComponent implements OnInit {
               this.http.get(SERVER_URL+"api/profile", this.httpOptions)
               .subscribe((result: any) => {
                 this.profile = result.data;
+                if(this.profile.hasNotifications == 1){
+                  this.storage.set('has_notification',true);
+
+                } else {
+                  this.storage.set('has_notification',false);
+
+                }
               });
           });
 

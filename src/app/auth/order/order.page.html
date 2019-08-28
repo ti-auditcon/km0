@@ -169,13 +169,13 @@
 <ion-footer class="flex">
   <ion-button *ngIf="order?.status.id != 9 && order?.status.id != 4 && order?.status.id != 8" expand="block" (click)="goToChat()">Hablar con la Sucursal</ion-button>
   <ng-template [ngIf]="order?.status.id == 4">
-    <ion-button expand="block" (click)="goToChat()">
+    <ion-button expand="block" (click)="goToChat(order?.id)">
       <img src="/assets/icon/chat.svg">
     </ion-button>
     <ion-button expand="block" (click)="approveOrder()">Confirmar presupuesto</ion-button>
   </ng-template>
   <ng-template [ngIf]="order?.status.id == 8">
-    <ion-button expand="block" (click)="goToChat()">Hablar con la Sucursal</ion-button>
+    <ion-button expand="block" (click)="goToChat(order?.id)">Hablar con la Sucursal</ion-button>
     <ion-button expand="block" (click)="review()">
       <img src="/assets/icon/check.svg">
     </ion-button>

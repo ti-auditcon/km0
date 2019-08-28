@@ -19,6 +19,7 @@ export class OrderPage implements OnInit {
   services:any;
   spares:any;
   hola:boolean = true;
+  hasNotifications:boolean;
 
   constructor(
     public activatedRoute: ActivatedRoute,
@@ -38,6 +39,9 @@ export class OrderPage implements OnInit {
   }
 
   ionViewDidEnter() {
+    this.storage.get('has_notification').then((value) => {
+      this.hasNotifications = value;
+    });
     this.storage.get('auth-token').then((value) => {
 
       let Bearer = value;
@@ -94,6 +98,8 @@ export class OrderPage implements OnInit {
   }
 
   review() {
+
+
     this.storage.get('auth-token').then((value) => {
 
       let Bearer = value;
@@ -113,6 +119,12 @@ export class OrderPage implements OnInit {
 
     });
 
+  }
+
+  goToChat(){
+    let id = this.activatedRoute.snapshot.paramMap.get('id');
+    console.log('entre:'+id);
+    this.router.navigate(['/orders/'+id+'/chat']);
   }
 
 }

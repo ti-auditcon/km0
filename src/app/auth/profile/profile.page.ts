@@ -43,6 +43,7 @@ export class ProfilePage implements OnInit {
         })};
         this.http.get(SERVER_URL+"api/profile", this.httpOptions)
         .subscribe((result: any) => {
+          console.log(result.data);
           this.profile = result.data;
         });
     });

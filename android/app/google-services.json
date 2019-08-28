@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "733374607853",
+    "firebase_url": "https://kilometro-cero.firebaseio.com",
+    "project_id": "kilometro-cero",
+    "storage_bucket": "kilometro-cero.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:733374607853:android:3b97c954340651a5",
+        "android_client_info": {
+          "package_name": "com.asomic.km0"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "733374607853-t99q80h89d1oq6t1pg6lsvtmiidp3cpc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVsjyJM7M-39TmgoXM-JUZNG1X_a8qvU8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "733374607853-t99q80h89d1oq6t1pg6lsvtmiidp3cpc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
