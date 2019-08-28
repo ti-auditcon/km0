@@ -19,6 +19,7 @@ export class ProfilePage implements OnInit {
 
   profile:any = '';
   httpOptions:any;
+  hasNotifications:boolean;
 
   photo: SafeResourceUrl;
 
@@ -46,6 +47,13 @@ export class ProfilePage implements OnInit {
           console.log(result.data);
           this.profile = result.data;
         });
+
+        this.http.get(SERVER_URL+"api/profile/notifications/has", this.httpOptions)
+        .subscribe((result: any) => {
+          console.log(result);
+          this.hasNotifications = result;
+        });
+
     });
   }
 

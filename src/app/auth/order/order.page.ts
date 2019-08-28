@@ -39,9 +39,7 @@ export class OrderPage implements OnInit {
   }
 
   ionViewDidEnter() {
-    this.storage.get('has_notification').then((value) => {
-      this.hasNotifications = value;
-    });
+
     this.storage.get('auth-token').then((value) => {
 
       let Bearer = value;
@@ -71,6 +69,11 @@ export class OrderPage implements OnInit {
         console.log('Tipo: '+typeof(this.spares));
       });
 
+      this.http.get(SERVER_URL+"api/profile/notifications/has", this.httpOptions)
+      .subscribe((result: any) => {
+        console.log(result);
+        this.hasNotifications = result;
+      });
 
     });
   }

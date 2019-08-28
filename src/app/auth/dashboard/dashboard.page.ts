@@ -38,7 +38,7 @@ export class DashboardPage implements OnInit {
   eventsMeta:any = '';
   ordersMeta:any = '';
   httpOptions:any;
-  hasNotifications:boolean = false;
+  hasNotifications:boolean;
   public page = 1;
 
   constructor(
@@ -103,18 +103,6 @@ export class DashboardPage implements OnInit {
         .subscribe((result: any) => {
           
           this.profile = result.data;
-          if(this.profile.hasNotifications == 1){
-            this.storage.set('has_notification',true);
-            this.storage.get('has_notification').then((value) => {
-              this.hasNotifications = value;
-            });
-          } else {
-            this.storage.set('has_notification',false);
-            this.storage.get('has_notification').then((value) => {
-              this.hasNotifications = value;
-            });
-          }
-
 
         });
 
@@ -131,6 +119,12 @@ export class DashboardPage implements OnInit {
             this.orders = result.data;
 
 
+        });
+
+        this.http.get(SERVER_URL+"api/profile/notifications/has", this.httpOptions)
+        .subscribe((result: any) => {
+          console.log(result);
+          this.hasNotifications = result;
         });
 
 
