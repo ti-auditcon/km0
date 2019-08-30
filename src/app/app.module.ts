@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -7,6 +7,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { HttpClientModule} from "@angular/common/http";
 import { IonicStorageModule } from '@ionic/storage';
+import { registerLocaleData } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -18,6 +19,10 @@ import { ModalImagePageModule } from './auth/events/event-detail/modal-image/mod
 import { ModalAddBikeProfilePageModule } from './auth/my-bikes/modal-add-bike-profile/modal-add-bike-profile.module';
 import { ModalAddSpecializedPageModule } from './auth/my-bikes/modal-add-specialized/modal-add-specialized.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import localeEs from '@angular/common/locales/es';
+
+registerLocaleData(localeEs, 'es');
 
 @NgModule({
   declarations: [AppComponent],
@@ -45,6 +50,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   providers: [
     StatusBar,
     SplashScreen,
+    { provide: LOCALE_ID, useValue: 'es' },
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

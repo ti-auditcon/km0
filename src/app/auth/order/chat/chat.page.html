@@ -26,12 +26,17 @@
 
   <section class="conversation">
 
-      <div  [ngClass]="{'balloon': true,'sucursal-message': message.from == 1,'user-message': message.from == 2}" *ngFor="let message of messages">
-        <p>
-          {{message.content}}
-        </p>
+      <div class="balloon" *ngFor="let message of messages">
+        <!-- <div> -->
+          <p [ngClass]="{'balloon-inner': true,'sucursal-message': message.from == 1,'user-message': message.from == 2}">
+            {{message.content}}
+            <span class="date">
+              {{message.createdAt | date :'mediumDate'}}<br>
+              {{message.createdAt | date :'shortTime'}}
+            </span>
+          </p>
+        <!-- </div> -->
       </div>
-
 
   </section>
 

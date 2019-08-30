@@ -579,6 +579,7 @@ ion-toggle {
         line-height: 24px;
         color: var(--clickable-text);
         margin-bottom: 8px;
+        width: 100%;
       }
       p {
         color: var(--text-color-dark);
@@ -1942,47 +1943,83 @@ ion-toggle {
 
 .conversation {
   margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
   .balloon {
-    border-radius: 10px;
-    max-width: 85%;
-    padding: 18px 15px;
-    margin: 10px 0;
+    width: 100%;
+    margin: 7px 0;
     p {
       margin: 0;
     }
-  }
-  .sucursal-message {
-    background: var(--calendar-dark-background);
-    color: black;
-    position: relative;
-    float: left;
-    &:before {
-      content: '';
-      position: absolute;
-      bottom: 10px;
-      left: -17px;
-      width: 20px;
-      height: 20px;
-      background-position: center;
-      background-size: cover;
-      background-image: url('/assets/icon/bubble-arrow-left.svg');
-    }
-  }
-  .user-message {
-    background: #373A45;
-    color: var(--text-color-dark);
-    position: relative;
-    float: right;
-    &:before {
-      content: '';
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      bottom: 10px;
-      right: -17px;
-      background-position: center;
-      background-size: cover;
-      background-image: url('/assets/icon/bubble-arrow-right.svg');
+    .balloon-inner {
+      padding: 18px 15px;
+      border-radius: 10px;
+      line-height: 20px;
+      display: inline-block;
+      max-width: 75%;
+      &.sucursal-message {
+        background: var(--calendar-dark-background);
+        color: black;
+        position: relative;
+        &:before {
+          content: '';
+          position: absolute;
+          bottom: 10px;
+          left: -17px;
+          width: 20px;
+          height: 20px;
+          background-position: center;
+          background-size: cover;
+          background-image: url('/assets/icon/bubble-arrow-left.svg');
+        }
+        .date {
+          position: absolute;
+          right: -73px;
+          bottom: 0px;
+          line-height: 15px;
+          color: var(--body-background);
+          font-size: 11px;
+          text-align: left;
+          transition: all ease 0.3s;
+        }
+        &:focus, &:hover {
+          .date {
+            color: #696c79;
+          }
+        }
+      }
+      &.user-message {
+        background: #373A45;
+        color: var(--text-color-dark);
+        position: relative;
+        float: right;
+        &:before {
+          content: '';
+          position: absolute;
+          width: 20px;
+          height: 20px;
+          bottom: 10px;
+          right: -17px;
+          background-position: center;
+          background-size: cover;
+          background-image: url('/assets/icon/bubble-arrow-right.svg');
+        }
+        .date {
+          position: absolute;
+          left: -73px;
+          bottom: 0px;
+          line-height: 15px;
+          color: var(--body-background);
+          font-size: 11px;
+          text-align: right;
+          transition: all ease 0.3s;
+        }
+        &:focus, &:hover {
+          .date {
+            color: #696c79;
+          }
+        }
+      }
     }
   }
 }
