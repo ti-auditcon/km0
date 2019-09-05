@@ -107,10 +107,6 @@ export class StepServicePage implements OnInit {
     this.router.navigate(['/step-dates']);
   }
 
-  if(servicesSelected.length > 0){
-    this.hasSelectedServices = true;
-  }
-
 }
 
 //
