@@ -20,18 +20,6 @@
 
     <h1 class="title-section">Selecciona tu Bicicleta</h1>
 
-    <!-- <div class="card-button" (click)="goToService()">
-      <div class="single-bike-grid">
-        <div class="img" style="background-image: url('assets/img/bike-example.jpg')"></div>
-        <div class="data">
-          <h4>Men's S-Works Epic</h4>
-          <p>
-            SPECIALIZED <br>
-            Color Negro
-          </p>
-        </div>
-      </div>
-    </div> -->
     <div class="card-button" (click)="goToService(bike)" *ngFor="let bike of bikes">
       <div class="single-bike-grid">
         <div class="img" style="background-image: url('assets/img/bike-example.jpg')"></div>
@@ -45,7 +33,7 @@
       </div>
     </div>
 
-    <div class="card-info data" (click)="addBicicleModal()" *ngIf="bikesMeta?.pagination?.total == 0">
+    <div class="card-info data" (click)="addBike()" *ngIf="bikesMeta?.pagination?.total == 0">
       <img class="the-icon" src="assets/icon/icon-add.svg">
       <h4>Agregar Nueva Bicicleta</h4>
       <p class="explain">
@@ -53,15 +41,15 @@
       </p>
     </div>
 
-    <div class="card-info data" (click)="addBicicleModal()">
+    <div class="card-info data" (click)="addBike()">
       <img class="the-icon" src="assets/icon/icon-add.svg">
       <h4>Agregar Otra Bicicleta</h4>
       <p class="explain">
-        Asocia otra bicicleta con las que puedes reservar servicios. 
+        Asocia otra bicicleta con las que puedes reservar servicios.
       </p>
     </div>
 
-    <div class="card-info data" (click)="addPieceModal()">
+    <div class="card-info data disabled" (click)="addPieceModal()">
       <img class="the-icon" src="assets/icon/icon-part.svg">
       <h4>Tengo Solo la Pieza</h4>
       <p class="explain">
@@ -79,7 +67,7 @@
       <p>Argomedo 30</p>
     </div>
     <div class="button-wrapper">
-      <ion-button (click)="changeOfficeModal()">Cambiar</ion-button>
+      <ion-button class="disabled" (click)="changeOfficeModal()">Cambiar</ion-button>
     </div>
   </section>
 

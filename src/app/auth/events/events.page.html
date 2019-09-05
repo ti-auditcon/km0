@@ -40,11 +40,15 @@
         <p>Evento Reservado</p>
       </div>
     </div>
+    <div class="card-info no-data" *ngIf="nextEvents==''">
+        <img class="the-icon" src="assets/icon/icon-noevents.svg">
+        <h4>No hay eventos Próximos por el momento</h4>
+    </div>
   </section>
 
-  <div class="separator"></div>
+  <div class="separator" *ngIf="pastEvents!=''"></div>
 
-  <section class="past-events">
+  <section class="past-events" *ngIf="pastEvents!=''">
     <h1 class="title-section">Eventos Pasados</h1>
 
     <div class="card-calendar" (click)="goToEvent(event.id)" *ngFor="let event of pastEvents">

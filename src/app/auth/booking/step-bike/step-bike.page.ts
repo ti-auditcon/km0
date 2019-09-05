@@ -12,6 +12,7 @@ import { ModalAddPiecePage } from './modal-add-piece/modal-add-piece.page';
 import { ModalChangeOfficePage } from './modal-change-office/modal-change-office.page';
 //models
 import { Bike } from '../../../models/bike.model';
+import { ModalAddBikeProfilePage } from '../../my-bikes/modal-add-bike-profile/modal-add-bike-profile.page';
 
 @Component({
   selector: 'app-step-bike',
@@ -22,7 +23,7 @@ export class StepBikePage implements OnInit {
   //public bike: Bike;
   bikes:any = '';
   bikeSelected:Bike;
-  
+
   httpOptions:any;
   bikesMeta:any = '';
 
@@ -58,11 +59,24 @@ export class StepBikePage implements OnInit {
     });
   }
 
-  async addBicicleModal() {
+  // async addBicicleModal() {
+  //   const modal = await this.modalController.create({
+  //     component: ModalAddBikePage
+  //   });
+  //   return await modal.present();
+  // }
+  async addBike() {
     const modal = await this.modalController.create({
-      component: ModalAddBikePage
+      component: ModalAddBikeProfilePage
     });
-    return await modal.present();
+    await modal.present();
+    const { data } = await modal.onDidDismiss();
+    if(data){
+      console.log('cargar nuevamente')
+     this.ionViewDidEnter();
+    } else {
+      console.log('no hacer nada')
+    }
   }
 
   async addPieceModal() {

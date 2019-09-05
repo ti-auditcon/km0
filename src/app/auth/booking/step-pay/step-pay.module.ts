@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { StepPayPage } from './step-pay.page';
+import { BookingProcessModule } from '../../components/booking-process/booking-process.module';
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    BookingProcessModule,
     RouterModule.forChild(routes)
   ],
   declarations: [StepPayPage]

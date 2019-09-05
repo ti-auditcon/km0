@@ -1,10 +1,9 @@
-
 //env
 import { environment, SERVER_URL} from '../../../../environments/environment';
 //imports
 import { Component, OnInit, ViewChild   } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { ModalController, ToastController } from '@ionic/angular';
 import { ModalImagePage } from './modal-image/modal-image.page';
 import { Storage } from '@ionic/storage';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
@@ -26,6 +25,7 @@ export class EventDetailPage implements OnInit {
   reserved:any = false;
   closed:any = true;
   httpOptions:any;
+  imagesMeta: any;
 
 
 
@@ -41,7 +41,8 @@ export class EventDetailPage implements OnInit {
     private router: Router,
     private modalController: ModalController,
     private storage: Storage,
-    private http:HttpClient
+    private http:HttpClient,
+    public toastController: ToastController
   ) { }
 
   ngOnInit() {
@@ -50,7 +51,7 @@ export class EventDetailPage implements OnInit {
     this.closed = true;
     this.imagesPage = 1
     this.storage.get('auth-token').then((value) => {
-      
+
       let Bearer = value;
       let id = this.activatedRoute.snapshot.paramMap.get('id');
 
@@ -71,17 +72,20 @@ export class EventDetailPage implements OnInit {
         this.http.get(SERVER_URL+"api/events/"+id+"/users", this.httpOptions)
         .subscribe((result: any) => {
           console.log(result);
-          
+
           this.users = result.data;
-          
+          console.log(this.users);
+
         });
         //images
         this.http.get(SERVER_URL+"api/events/"+id+"/images?per_page=6&page="+this.imagesPage, this.httpOptions)
         .subscribe((result: any) => {
           console.log(result);
-          
+
           this.images = result.data;
-          
+          this.imagesMeta = result.meta;
+          this.imagesPage++;
+
         });
 
     });
@@ -89,18 +93,20 @@ export class EventDetailPage implements OnInit {
 
   loadMoreImages(infiniteScrollEvent){
     console.log('entre');
+    console.log(this.imagesMeta);
+
     let id = this.activatedRoute.snapshot.paramMap.get('id');
     this.http.get(SERVER_URL+"api/events/"+id+"/images?per_page=6&page="+this.imagesPage, this.httpOptions)
         .subscribe((result: any) => {
           this.images = this.images.concat(result.data);
-          if(this.imagesPage < result.meta.pagination.total_pages ){
+          console.log("total pages: "+result.meta.pagination.total_pages);
+          if(this.imagesPage <= result.meta.pagination.total_pages ){
             this.imagesPage++;
             infiniteScrollEvent.target.complete();
           } else {
             console.log('no hay mas');
             infiniteScrollEvent.target.disabled = true;
           }
-
         },
         err => {
           console.log('error eventos');
@@ -120,7 +126,7 @@ export class EventDetailPage implements OnInit {
           console.log('error reservar');
         });
     }
-  
+
   //eliminar reserva
   detach() {
     let id = this.activatedRoute.snapshot.paramMap.get('id');
@@ -148,6 +154,24 @@ export class EventDetailPage implements OnInit {
     }).then(modal => {
       modal.present();
     });
+  }
+
+  async reserveToast() {
+    const toast = await this.toastController.create({
+      message: 'Cupo Reservado',
+      position: 'top',
+      duration: 2000
+    });
+    toast.present();
+  }
+
+  async leaveToast() {
+    const toast = await this.toastController.create({
+      message: 'Cupo Cedido',
+      position: 'top',
+      duration: 2000
+    });
+    toast.present();
   }
 
   // async openImage() {

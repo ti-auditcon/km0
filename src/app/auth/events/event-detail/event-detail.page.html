@@ -51,9 +51,9 @@
         </div>
       </div>
 
-      <div class="separator"></div>
+      <div class="separator" *ngIf="users != ''"></div>
 
-      <div class="assistants">
+      <div class="assistants" *ngIf="users != ''">
         <h1 class="title-section">Asistentes</h1>
         <div class="item" (click)="goToPublicProfile()" *ngFor="let user of users">
           <div class="img" style="background-image: url('assets/img/avatar-default.jpg')"></div>
@@ -64,9 +64,9 @@
         </div>
       </div>
 
-      <div class="separator" *ngIf="closed"></div>
+      <div class="separator" *ngIf="closed && images != ''"></div>
 
-      <div class="gallery" *ngIf="closed">
+      <div class="gallery" *ngIf="closed && images != ''">
         <h1 class="title-section">Galería</h1>
         <div class="gallery-content">
           <div class="item"
@@ -87,8 +87,8 @@
 </ion-content>
 
 <ion-footer *ngIf="!closed">
-  <ion-button expand="block" *ngIf="!event?.rels.auth.reserved" (click)="attach()">Reservar mi Cupo</ion-button>
-  <ion-button expand="block" *ngIf="event?.rels.auth.reserved" (click)="detach()">Ceder Cupo</ion-button>
+  <ion-button expand="block" *ngIf="!event?.rels.auth.reserved" (click)="attach(); reserveToast()">Reservar mi Cupo</ion-button>
+  <ion-button expand="block" *ngIf="event?.rels.auth.reserved" (click)="detach(); leaveToast()">Ceder Cupo</ion-button>
 </ion-footer>
 
 <!--

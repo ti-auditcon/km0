@@ -210,6 +210,11 @@ ion-content.image-modal {
   outline: none;
 }
 
+.disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
 ion-infinite-scroll {
   margin-top: 30px;
 }
@@ -283,6 +288,11 @@ ion-button {
     --background-focused: transparent;
     --background-hovered: transparent;
   }
+}
+
+ion-toast {
+  --background: var(--highlighten-color);
+  --color: white;
 }
 
 // Footer
@@ -953,6 +963,7 @@ ion-toggle {
           font-weight: 700;
           font-size: 40px;
           line-height: 47px;
+          letter-spacing: -1px;
         }
       }
       .month {
@@ -1038,6 +1049,7 @@ ion-toggle {
           font-weight: 700;
           font-size: 40px;
           line-height: 47px;
+          letter-spacing: -1px;
         }
       }
       .month {
@@ -1120,7 +1132,8 @@ ion-toggle {
     width: 0%;
   }
   100% {
-    width: 25%;
+    width: 3%;
+    // width: 25%;
   }
 }
 
@@ -1129,7 +1142,8 @@ ion-toggle {
     width: 0%;
   }
   100% {
-    width: 45%;
+    width: 25%;
+    // width: 45%;
   }
 }
 
@@ -1138,7 +1152,8 @@ ion-toggle {
     width: 0%;
   }
   100% {
-    width: 65%;
+    // width: 65%;
+    width: 50%;
   }
 }
 
@@ -1147,7 +1162,18 @@ ion-toggle {
     width: 0%;
   }
   100% {
-    width: 95%;
+    // width: 95%;
+    width: 75%;
+  }
+}
+
+@keyframes fill-process-5 {
+  0% {
+    width: 0%;
+  }
+  100% {
+    // width: 95%;
+    width: 100%;
   }
 }
 
@@ -1156,7 +1182,7 @@ ion-toggle {
     width: 0%;
   }
   100% {
-    width: 35%;
+    width: 3%;
   }
 }
 
@@ -1165,11 +1191,21 @@ ion-toggle {
     width: 0%;
   }
   100% {
-    width: 65%;
+    // width: 65%;
+    width: 35%;
   }
 }
 
 @keyframes fill-status-3 {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 65%;
+  }
+}
+
+@keyframes fill-status-4 {
   0% {
     width: 0%;
   }
@@ -1349,7 +1385,8 @@ ion-toggle {
     }
     .connector {
       .connector-background {
-        animation: "fill-process-2" 0.8s forwards linear;
+        // animation: "fill-process-2" 0.8s forwards linear;
+        animation: "fill-process-2" 0.3s forwards linear;
         animation-delay: 0.7s;
       }
     }
@@ -1396,7 +1433,8 @@ ion-toggle {
     }
     .connector {
       .connector-background {
-        animation: "fill-process-3" 0.85s forwards linear;
+        // animation: "fill-process-3" 0.3s forwards linear;
+        animation: "fill-process-3" 0.7s forwards linear;
         animation-delay: 0.7s;
       }
     }
@@ -1455,7 +1493,7 @@ ion-toggle {
     }
     .connector {
       .connector-background {
-        animation: "fill-process-4" 1.1s forwards linear;
+        animation: "fill-process-4" 1s forwards linear;
         animation-delay: 0.7s;
       }
     }
@@ -1526,7 +1564,7 @@ ion-toggle {
     }
     .connector {
       .connector-background {
-        animation: "fill-process-4" 1.1s forwards linear;
+        animation: "fill-process-5" 1.3s forwards linear;
         animation-delay: 0.7s;
       }
     }
@@ -1648,8 +1686,8 @@ ion-toggle {
     }
     .connector {
       .connector-background {
-        animation: "fill-status-2" 0.8s forwards linear;
-        animation-delay: 0.7s;
+        animation: "fill-status-2" 0.45s forwards linear;
+        animation-delay: 0.6s;
       }
     }
   }
@@ -1695,7 +1733,7 @@ ion-toggle {
     }
     .connector {
       .connector-background {
-        animation: "fill-status-3" 0.85s forwards linear;
+        animation: "fill-status-3" 0.75s forwards linear;
         animation-delay: 0.7s;
       }
     }
@@ -1754,7 +1792,7 @@ ion-toggle {
     }
     .connector {
       .connector-background {
-        animation: "fill-status-3" 1.1s forwards linear;
+        animation: "fill-status-4" 1.1s forwards linear;
         animation-delay: 0.7s;
       }
     }
@@ -2323,7 +2361,7 @@ ion-toggle {
           }
           p {
             margin: 0;
-            font-size: 13px;
+            font-size: 12px;
             line-height: 15px;
             display: flex;
             align-items: center;

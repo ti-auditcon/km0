@@ -15,16 +15,14 @@ import { Service } from '../../../models/service.model';
 })
 export class StepServicePage implements OnInit {
 
-  
+
   hightlightStatus: Array<boolean> = [];
   item:any;
   httpOptions:any;
   services:any = '';
-  
-  clickedServices:Array<number> = [];
-  
-  
+  hasSelectedServices: boolean;
 
+  clickedServices:Array<number> = [];
 
   // services:any = [
   //   {
@@ -99,7 +97,7 @@ export class StepServicePage implements OnInit {
       service.id = element.getAttribute('data-id');
       service.name = element.getAttribute('data-name');
       service.value = element.getAttribute('data-value');
-     
+
       servicesSelected.push(service);
 
     });
@@ -107,6 +105,10 @@ export class StepServicePage implements OnInit {
     this.storage.set('services',servicesSelected);
 
     this.router.navigate(['/step-dates']);
+  }
+
+  if(servicesSelected.length > 0){
+    this.hasSelectedServices = true;
   }
 
 }

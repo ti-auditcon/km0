@@ -45,7 +45,7 @@ export class MyBikesPage implements OnInit {
           //bicicletas
           this.http.get(this.profile.rels.bikes.href, this.httpOptions)
           .subscribe((result: any) => {
-           
+
             this.bikes = result.data;
 
           });
@@ -65,10 +65,10 @@ export class MyBikesPage implements OnInit {
     await modal.present();
     const { data } = await modal.onDidDismiss();
     if(data){
-      console.log('cargar nuevamente')
-     this.ionViewDidEnter();
+      console.log('cargar nuevamente');
+      this.ionViewDidEnter();
     } else {
-      console.log('no hacer nada')
+      console.log('no hacer nada');
     }
   }
 

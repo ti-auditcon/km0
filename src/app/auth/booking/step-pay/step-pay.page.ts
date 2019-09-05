@@ -1,4 +1,3 @@
-//env
 import { environment, SERVER_URL, API_KEY} from '../../../../environments/environment';
 //imports
 import { Component, OnInit } from '@angular/core';
@@ -53,7 +52,7 @@ export class StepPayPage implements OnInit {
         amount: this.total,
         services: this.services
       });
-      
+
       const httpOptions = {
         headers: new HttpHeaders({
           'Authorization': 'Bearer '+ Bearer,//updated
@@ -75,5 +74,5 @@ export class StepPayPage implements OnInit {
     })
 
   }
-  
+
 }
