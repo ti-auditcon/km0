@@ -77,10 +77,18 @@ export class StepServicePage implements OnInit {
   }
 
   wasClicked = false;
-  onClick() {
-    this.wasClicked= !this.wasClicked;
-    //this.clickedServices.push()
-  }
+  // onClick() {
+  //   console.log('click');
+  //   this.wasClicked= !this.wasClicked;
+  //   var selected = document.querySelectorAll('.selected');
+  //   console.log(selected.length);
+  //   if(selected.length > 0){
+  //     this.hasSelectedServices = true;
+  //   } else {
+  //     this.hasSelectedServices = false;
+  //   }
+  //   //this.clickedServices.push()
+  // }
 
   goToDate(){
     var clickedServices = [];
@@ -88,10 +96,11 @@ export class StepServicePage implements OnInit {
     var service:Service;
     var servicesSelected:Array<Service> = [];
 
+    
     console.log(selected);
     selected.forEach( function(element) {
       console.log('servicios');
-     // console.log(JSON.parse(element.getAttribute('data-service')));
+      // console.log(JSON.parse(element.getAttribute('data-service')));
       //clickedServices.push(element.getAttribute('data-id'))
       service = new Service()
       service.id = element.getAttribute('data-id');
@@ -101,10 +110,16 @@ export class StepServicePage implements OnInit {
       servicesSelected.push(service);
 
     });
-    console.log(servicesSelected);
-    this.storage.set('services',servicesSelected);
 
-    this.router.navigate(['/step-dates']);
+
+    if(servicesSelected.length > 0 ){
+      console.log(servicesSelected);
+      this.storage.set('services',servicesSelected);
+  
+      this.router.navigate(['/step-dates']);
+    }
+
+
   }
 
 }

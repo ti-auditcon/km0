@@ -1,0 +1,20 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <div class="brand">
+        <img class="logo" src="assets/img/logo.png">
+      </div>
+      <ion-buttons slot="end">
+        <ion-icon class="notification-icon " [routerLink]="['/notifications']" src="assets/icon/bell.svg" [ngClass]="{'has': hasNotifications}"></ion-icon>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+    <div slot="fixed">
+        <ion-spinner *ngIf="loading"></ion-spinner>
+        <div id="webview" #webview></div>
+    </div>
+</ion-content>

@@ -58,6 +58,7 @@ const routes: Routes = [
   //ORDERS
   { path: 'orders/:id', loadChildren: './auth/order/order.module#OrderPageModule' },
   { path: 'orders/:id/chat', loadChildren: './auth/order/chat/chat.module#ChatPageModule' },
+  { path: 'orders/:id/flow', loadChildren: './auth/flow/flow.module#FlowPageModule' },
 
 
 
