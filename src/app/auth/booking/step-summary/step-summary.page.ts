@@ -22,6 +22,8 @@ export class StepSummaryPage implements OnInit {
   public services:Array<Service>;
   public bike:Bike;
   public total:number;
+  public discount:number = 0 ;
+  public discountValue:number = 0 ;
 
   constructor(
     private router: Router,
@@ -39,11 +41,15 @@ export class StepSummaryPage implements OnInit {
       console.log(this.bike);
     });
 
+    this.storage.get('discount').then((value) => {
+      this.discount = value;
+    });
+
     this.storage.get('services').then((value) => {
       this.services = value;
       console.log(this.services);
       this.total = this.services.map(item => +item.value).reduce((prev, next) => prev + next);
-
+      this.discountValue = this.total*(this.discount/100);
     });
 
 

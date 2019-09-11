@@ -32,11 +32,17 @@
               </div>
               <div class="total-detail">
                   <div class="service-detail">
+                      <p *ngIf="discount > 0 ">
+                          <b>DESCUENTO </b>
+                        </p>
+                        <p>
+                          <b> - {{discountValue}}</b>
+                        </p>
                       <p>
                         <b>TOTAL</b>
                       </p>
                       <p>
-                        <b>{{total}}</b>
+                        <b>{{total - discountValue}}</b>
                       </p>
                     </div>
                     <div class="service-detail big highlighten-price" (click)="infoPriceModal()">
@@ -45,7 +51,7 @@
                         <ion-badge>i</ion-badge>
                       </p>
                       <p>
-                        <b>{{total*0.1}}</b>
+                        <b>{{(total - discountValue)*0.1}}</b>
                       </p>
                     </div>
               </div>

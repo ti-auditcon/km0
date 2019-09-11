@@ -53,6 +53,9 @@ export class OrderPage implements OnInit {
       this.http.get(SERVER_URL+"api/orders/"+id, this.httpOptions)
       .subscribe((result: any) => {
         console.log(result.data);
+        if(result.data.status['id'] == 1){
+          this.router.navigate(['/orders/'+id+'/flow']);
+        }
         this.order = result.data;
       });
 
