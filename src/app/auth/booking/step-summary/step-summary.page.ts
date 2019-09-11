@@ -43,6 +43,7 @@ export class StepSummaryPage implements OnInit {
 
     this.storage.get('discount').then((value) => {
       this.discount = value;
+      console.log('descuento: '+this.discount);
     });
 
     this.storage.get('services').then((value) => {

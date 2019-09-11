@@ -103,7 +103,8 @@ export class DashboardPage implements OnInit {
         .subscribe((result: any) => {
           
           this.profile = result.data;
-          this.storage.set('discount',result.data.discount/100)
+          console.log(result.data);
+          this.storage.set('discount',result.data.discount)
 
         });
 
