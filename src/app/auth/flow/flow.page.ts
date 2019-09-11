@@ -37,7 +37,7 @@ export class FlowPage implements OnInit , OnDestroy {
 
   async ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      this.id = params.get("order");
+      this.id = params.get("id");
       this.storage.get('auth-token').then((value) => {
 
         let Bearer = value;

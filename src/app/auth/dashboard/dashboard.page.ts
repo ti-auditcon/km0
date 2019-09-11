@@ -49,35 +49,35 @@ export class DashboardPage implements OnInit {
   ) { }
 
 
-  // ngOnInit() {
-  //     console.log('Initializing HomePage');
+  ngOnInit() {
+      console.log('Initializing HomePage');
 
-  //     PushNotifications.register();
+      PushNotifications.register();
 
-  //     PushNotifications.addListener('registration', 
-  //       (token: PushNotificationToken) => {
-  //         alert('Push registration success, token: ' + token.value);
-  //       }
-  //     );
+      PushNotifications.addListener('registration', 
+        (token: PushNotificationToken) => {
+          alert('Push registration success, token: ' + token.value);
+        }
+      );
 
-  //     PushNotifications.addListener('registrationError', 
-  //       (error: any) => {
-  //         alert('Error on registration: ' + JSON.stringify(error));
-  //       }
-  //     );
+      PushNotifications.addListener('registrationError', 
+        (error: any) => {
+          alert('Error on registration: ' + JSON.stringify(error));
+        }
+      );
 
-  //     PushNotifications.addListener('pushNotificationReceived', 
-  //       (notification: PushNotification) => {
-  //         alert('Push received: ' + JSON.stringify(notification));
-  //       }
-  //     );
+      PushNotifications.addListener('pushNotificationReceived', 
+        (notification: PushNotification) => {
+          alert('Push received: ' + JSON.stringify(notification));
+        }
+      );
 
-  //     PushNotifications.addListener('pushNotificationActionPerformed', 
-  //       (notification: PushNotificationActionPerformed) => {
-  //         alert('Push action performed: ' + JSON.stringify(notification));
-  //       }
-  //     );
-  // }
+      PushNotifications.addListener('pushNotificationActionPerformed', 
+        (notification: PushNotificationActionPerformed) => {
+          alert('Push action performed: ' + JSON.stringify(notification));
+        }
+      );
+  }
 
 
   doRefresh(event) {

@@ -80,6 +80,7 @@ export class StepSummaryPage implements OnInit {
                  (result: any) => {
                      console.log('success refresh 200');
                      console.log('Resultados: '+JSON.stringify(result.data));
+                     console.log('id: '+JSON.stringify(result.data.id));
                      this.router.navigate(['orders/'+result.data.id+'/flow']);
                  },
                  (err) => {
