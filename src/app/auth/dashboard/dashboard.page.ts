@@ -52,33 +52,25 @@ export class DashboardPage implements OnInit {
   ngOnInit() {
       console.log('Initializing HomePage');
 
-      PushNotifications.register();
-
-      PushNotifications.addListener('registration', 
-        (token: PushNotificationToken) => {
-          // alert('Push registration success, token: ' + token.value);
 
 
-        }
-      );
+      // PushNotifications.addListener('registrationError', 
+      //   (error: any) => {
+      //     alert('Error on registration: ' + JSON.stringify(error));
+      //   }
+      // );
 
-      PushNotifications.addListener('registrationError', 
-        (error: any) => {
-          alert('Error on registration: ' + JSON.stringify(error));
-        }
-      );
+      // PushNotifications.addListener('pushNotificationReceived', 
+      //   (notification: PushNotification) => {
+      //     alert('Push received: ' + JSON.stringify(notification));
+      //   }
+      // );
 
-      PushNotifications.addListener('pushNotificationReceived', 
-        (notification: PushNotification) => {
-          alert('Push received: ' + JSON.stringify(notification));
-        }
-      );
-
-      PushNotifications.addListener('pushNotificationActionPerformed', 
-        (notification: PushNotificationActionPerformed) => {
-          alert('Push action performed: ' + JSON.stringify(notification));
-        }
-      );
+      // PushNotifications.addListener('pushNotificationActionPerformed', 
+      //   (notification: PushNotificationActionPerformed) => {
+      //     alert('Push action performed: ' + JSON.stringify(notification));
+      //   }
+      // );
   }
 
 
@@ -100,7 +92,23 @@ export class DashboardPage implements OnInit {
         headers: new HttpHeaders({
           'Authorization': 'Bearer '+ Bearer//updated
         })};
-        //profile
+        
+        PushNotifications.register();
+
+        PushNotifications.addListener('registration', 
+          (token: PushNotificationToken) => {
+            // alert('Push registration success, token: ' + token.value);
+            this.http.get(SERVER_URL+"fcm/token/"+token.value, this.httpOptions)
+            .subscribe((result: any) => {
+                 console.log('success fcm token 200:'+JSON.stringify(result));
+                },
+                (err) => {
+                  console.log('error refrersh 401:'+JSON.stringify(err));
+                }
+              );
+          }
+        );
+
         this.http.get(SERVER_URL+"api/profile", this.httpOptions)
         .subscribe((result: any) => {
           
