@@ -97,8 +97,8 @@ export class DashboardPage implements OnInit {
 
         PushNotifications.addListener('registration', 
           (token: PushNotificationToken) => {
-            // alert('Push registration success, token: ' + token.value);
-            this.http.get(SERVER_URL+"fcm/token/"+token.value, this.httpOptions)
+            console.log('Push registration success, token: ' + token.value);
+            this.http.get(SERVER_URL+"api/fcm/token/"+token.value, this.httpOptions)
             .subscribe((result: any) => {
                  console.log('success fcm token 200:'+JSON.stringify(result));
                 },
@@ -108,6 +108,12 @@ export class DashboardPage implements OnInit {
               );
           }
         );
+
+      PushNotifications.addListener('pushNotificationReceived', 
+        (notification: PushNotification) => {
+          alert('Push received: ' + JSON.stringify(notification));
+        }
+      );
 
         this.http.get(SERVER_URL+"api/profile", this.httpOptions)
         .subscribe((result: any) => {

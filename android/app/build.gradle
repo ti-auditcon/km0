@@ -6,7 +6,7 @@ android {
         applicationId "com.asomic.km0"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 7
+        versionCode 8
         versionName "1.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -35,6 +35,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation project(':capacitor-cordova-android-plugins')
+
+
 }
 
 apply from: 'capacitor.build.gradle'
