@@ -25,6 +25,19 @@
 
   <app-status-process [class]="order?.status.class" *ngIf="order?.status.id != 9 "></app-status-process>
 
+  <section class="status-card" *ngIf="order?.status.id == 1 ">
+      <div class="card-info status">
+        <h4>Esperando reserva</h4>
+        <p>
+          Estámos esperando tu pago para reservar los servicios. El monto se descontara del pago total
+        </p>
+        <h4>Reserva: $ {{order.reserve}}</h4>
+        <!-- <p class="add-info">
+          Quién entrega: Raul Berrios
+        </p> -->
+      </div>
+    </section>
+
   <section class="status-card" *ngIf="order?.status.id == 2 ">
     <div class="card-info status">
       <h4>Esperando la Bicicleta</h4>
@@ -167,7 +180,14 @@
 </ion-content>
 
 <ion-footer class="flex">
-  <ion-button *ngIf="order?.status.id != 9 && order?.status.id != 4 && order?.status.id != 8" expand="block" (click)="goToChat()">Hablar con la Sucursal</ion-button>
+  <ion-button *ngIf="order?.status.id != 9 && order?.status.id != 4 && order?.status.id != 8 && order?.status.id != 1" expand="block" (click)="goToChat()">Hablar con la Sucursal</ion-button>
+  <ng-template [ngIf]="order?.status.id == 1">
+      <!-- <ion-button expand="block" (click)="goToChat(order?.id)">
+        <img src="/assets/icon/chat.svg">
+      </ion-button> -->
+      <ion-button expand="block" (click)="payReserve()">Pagar</ion-button>
+      <ion-button expand="block" (click)="delete()">Eliminar</ion-button>
+    </ng-template>
   <ng-template [ngIf]="order?.status.id == 4">
     <ion-button expand="block" (click)="goToChat(order?.id)">
       <img src="/assets/icon/chat.svg">

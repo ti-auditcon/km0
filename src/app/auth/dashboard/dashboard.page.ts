@@ -56,7 +56,9 @@ export class DashboardPage implements OnInit {
 
       PushNotifications.addListener('registration', 
         (token: PushNotificationToken) => {
-          alert('Push registration success, token: ' + token.value);
+          // alert('Push registration success, token: ' + token.value);
+
+
         }
       );
 
@@ -119,6 +121,7 @@ export class DashboardPage implements OnInit {
         this.http.get(SERVER_URL+"api/orders", this.httpOptions)
         .subscribe((result: any) => {
             this.orders = result.data;
+            console.log(result.data);
 
 
         });
