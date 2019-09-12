@@ -29,9 +29,13 @@
       <div class="card-info status">
         <h4>Esperando reserva</h4>
         <p>
-          Estámos esperando tu pago para reservar los servicios. El monto se descontara del pago total
+          Estámos esperando tu pago para reservar los servicios. El monto se descontara del total de los servicios reservados.<br>
+          Tu orden se eliminará en una semana si no se efectua el pago de la reserva.
         </p>
-        <h4>Reserva: $ {{order.reserve}}</h4>
+        <div class="flex-space-between">
+          <h4 style="width: 70%">Pago por Reserva</h4>
+          <h4 style="width: 30%; text-align: right">${{order.reserve}}</h4>
+        </div>
         <!-- <p class="add-info">
           Quién entrega: Raul Berrios
         </p> -->
@@ -180,23 +184,20 @@
 </ion-content>
 
 <ion-footer class="flex">
-  <ion-button *ngIf="order?.status.id != 9 && order?.status.id != 4 && order?.status.id != 8 && order?.status.id != 1" expand="block" (click)="goToChat()">Hablar con la Sucursal</ion-button>
+  <ion-button mode="ios" color="km" *ngIf="order?.status.id != 9 && order?.status.id != 4 && order?.status.id != 8 && order?.status.id != 1" expand="block" (click)="goToChat()">Hablar con la Sucursal</ion-button>
   <ng-template [ngIf]="order?.status.id == 1">
-      <!-- <ion-button expand="block" (click)="goToChat(order?.id)">
-        <img src="/assets/icon/chat.svg">
-      </ion-button> -->
-      <ion-button expand="block" (click)="payReserve()">Pagar</ion-button>
-      <ion-button expand="block" (click)="delete()">Eliminar</ion-button>
+      <ion-button mode="ios" color="km" expand="block" (click)="payReserve()">Pagar Reserva</ion-button>
+      <ion-button mode="ios" color="km" expand="block" (click)="delete()">Eliminar</ion-button>
     </ng-template>
   <ng-template [ngIf]="order?.status.id == 4">
-    <ion-button expand="block" (click)="goToChat(order?.id)">
+    <ion-button mode="ios" color="km" expand="block" (click)="goToChat(order?.id)">
       <img src="/assets/icon/chat.svg">
     </ion-button>
-    <ion-button expand="block" (click)="approveOrder()">Confirmar presupuesto</ion-button>
+    <ion-button mode="ios" color="km" expand="block" (click)="approveOrder()">Confirmar presupuesto</ion-button>
   </ng-template>
   <ng-template [ngIf]="order?.status.id == 8">
-    <ion-button expand="block" (click)="goToChat(order?.id)">Hablar con la Sucursal</ion-button>
-    <ion-button expand="block" (click)="review()">
+    <ion-button mode="ios" color="km" expand="block" (click)="goToChat(order?.id)">Hablar con la Sucursal</ion-button>
+    <ion-button mode="ios" color="km" expand="block" (click)="review()">
       <img src="/assets/icon/check.svg">
     </ion-button>
   </ng-template>

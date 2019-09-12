@@ -62,7 +62,7 @@
 
 </ion-content>
 
-<ion-footer *ngIf="selOther"> 
-  <ion-button expand="block"  form="bikeForm"  type="submit" (click)="storeBike()"
+<ion-footer *ngIf="selOther">
+  <ion-button mode="ios" color="km" expand="block"  form="bikeForm"  type="submit" (click)="storeBike()"
   [disabled]="!bikeForm.valid" >Guardar Bicicleta</ion-button>
 </ion-footer>

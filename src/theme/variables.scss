@@ -78,8 +78,8 @@
   .ion-color-km {
     --ion-color-base: #ED1C24;
     --ion-color-base-rgb: 237,28,36;
-    --ion-color-contrast: #000000;
-    --ion-color-contrast-rgb: 0,0,0;
+    --ion-color-contrast: #ffffff;
+    --ion-color-contrast-rgb: 255,255,255;
     --ion-color-shade: #d11920;
     --ion-color-tint: #ef333a;
     --ion-color-step-50: var(--alt-background);
@@ -112,6 +112,11 @@
   --text-color-light: #FFFFFF;
   --border-box: #B6B7BB;
 
+}
+
+.flex-space-between {
+  display: flex;
+  justify-content: space-between;
 }
 
 ion-content.only-events {
@@ -273,8 +278,7 @@ ion-button {
   --background-activated: var(--highlighten-dark-color);
   --background-focused: var(--highlighten-color);
   --background-hovered: var(--highlighten-color);
-  // --padding-top: ;
-  // --padding-bottom: ;
+  text-transform: none;
   &.delete {
     --background: var(--navbar-background);
     --background-activated: var(--menu-sidebar-background);
@@ -304,6 +308,7 @@ ion-footer {
     justify-content: space-between;
     ion-button {
       width: 100%;
+      letter-spacing: 0px;
       &:nth-child(1) {
         margin-right: 8px;
       }

@@ -56,8 +56,8 @@
         <div class="actions-wrapper" *ngIf="discount">
           <div class="discount-action">
             <!-- <input type="text"> -->
-            <ion-input placeholder="Ingresa el código"></ion-input>
-            <ion-button>Aplicar</ion-button>
+            <ion-input color="km" placeholder="Ingresa el código"></ion-input>
+            <ion-button color="km" >Aplicar</ion-button>
           </div>
         </div>
       </div>
@@ -66,5 +66,5 @@
 </ion-content>
 
 <ion-footer>
-  <ion-button expand="block" (click)="goToSummary()">Listo</ion-button>
+  <ion-button mode="ios" color="km" expand="block" (click)="goToSummary()">Listo</ion-button>
 </ion-footer>
