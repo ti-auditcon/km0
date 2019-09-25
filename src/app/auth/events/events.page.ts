@@ -20,6 +20,8 @@ export class EventsPage implements OnInit {
   nextEventsPage:any = '';
   pastEventsPage:any = '';
   httpOptions:any;
+  hasNotifications:boolean;
+
   public page = 1;
 
   constructor(
@@ -57,6 +59,12 @@ export class EventsPage implements OnInit {
             this.pastEvents = result.data;
             console.log(this.pastEvents);
           } 
+        });
+
+        this.http.get(SERVER_URL+"api/profile/notifications/has", this.httpOptions)
+        .subscribe((result: any) => {
+          console.log(result);
+          this.hasNotifications = result;
         });
 
     });

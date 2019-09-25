@@ -58,6 +58,7 @@ export class StepPayPage implements OnInit {
           'Authorization': 'Bearer '+ Bearer,//updated
           'Content-Type': 'application/json', //updated
         })};
+
       // return new Promise((resolve, reject) => {
         this.http.post(SERVER_URL+"/api/orders",data, httpOptions)
              .subscribe(

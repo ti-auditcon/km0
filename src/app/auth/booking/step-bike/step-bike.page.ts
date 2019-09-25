@@ -26,6 +26,8 @@ export class StepBikePage implements OnInit {
 
   httpOptions:any;
   bikesMeta:any = '';
+  hasNotifications:boolean;
+
 
   constructor(
     public activatedRoute: ActivatedRoute,
@@ -54,6 +56,12 @@ export class StepBikePage implements OnInit {
           console.log(this.bikes);
           this.bikesMeta = result.meta;
           console.log(this.bikesMeta);
+        });
+
+        this.http.get(SERVER_URL+"api/profile/notifications/has", this.httpOptions)
+        .subscribe((result: any) => {
+          console.log(result);
+          this.hasNotifications = result;
         });
 
     });

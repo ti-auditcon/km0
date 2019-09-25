@@ -24,6 +24,7 @@ export class StepSummaryPage implements OnInit {
   public total:number;
   public discount:number = 0 ;
   public discountValue:number = 0 ;
+  hasNotifications:boolean;
 
   constructor(
     private router: Router,

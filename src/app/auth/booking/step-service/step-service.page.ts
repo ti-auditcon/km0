@@ -21,29 +21,11 @@ export class StepServicePage implements OnInit {
   httpOptions:any;
   services:any = '';
   hasSelectedServices: boolean;
+  hasNotifications:boolean;
 
   clickedServices:Array<number> = [];
 
-  // services:any = [
-  //   {
-  //     title: 'Full Bicicleta',
-  //     icon: 'icon-bike.svg',
-  //     description: 'Incluye Lavado, regulación de cambios y engrase de trasmisión, frenos, engrasado todos los rodamientos.',
-  //     price: '22.000'
-  //   },
-  //   {
-  //     title: 'General Bicicleta',
-  //     icon: 'icon-bike.svg',
-  //     description: 'Etiam ultricies vel metus sed sagittis. Ut hendrerit, neque eu sodales maximus.',
-  //     price: '10.000'
-  //   },
-  //   {
-  //     title: 'Horquilla',
-  //     icon: 'icon-bike.svg',
-  //     description: 'Etiam ultricies vel metus sed sagittis. Ut hendrerit, neque eu sodales maximus.',
-  //     price: '25.000'
-  //   }
-  // ]
+
 
   constructor(
     public activatedRoute: ActivatedRoute,
@@ -71,6 +53,12 @@ export class StepServicePage implements OnInit {
           this.services = result.data;
           console.log(this.services);
 
+        });
+
+        this.http.get(SERVER_URL+"api/profile/notifications/has", this.httpOptions)
+        .subscribe((result: any) => {
+          console.log(result);
+          this.hasNotifications = result;
         });
 
     });
