@@ -6,7 +6,7 @@ import { Component, OnInit, ViewChild  } from '@angular/core';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
-import { IonInfiniteScroll } from '@ionic/angular';
+import { IonInfiniteScroll,ToastController  } from '@ionic/angular';
 
 
 
@@ -37,6 +37,7 @@ export class DashboardPage implements OnInit {
   orders:any = '';
   eventsMeta:any = '';
   ordersMeta:any = '';
+
   httpOptions:any;
   hasNotifications:boolean;
   public page = 1;
@@ -45,6 +46,7 @@ export class DashboardPage implements OnInit {
     private router: Router,
     private storage: Storage,
     private http:HttpClient,
+    public toastController: ToastController
 
   ) { }
 
@@ -81,6 +83,15 @@ export class DashboardPage implements OnInit {
     }, 2000);
   }
 
+  async presentToast(title:any,message:any) {
+    const toast = await this.toastController.create({
+      header: title,
+      message: message,
+      duration: 2000
+    });
+    toast.present();
+  }
+
   ionViewDidEnter() {
     //console.log(this.hasNotifications);
     this.page = 1
@@ -111,7 +122,8 @@ export class DashboardPage implements OnInit {
 
       PushNotifications.addListener('pushNotificationReceived', 
         (notification: PushNotification) => {
-          alert('Push received: ' + JSON.stringify(notification));
+         // alert('Push received: ' + JSON.stringify(notification));
+         this.presentToast(notification.title,notification.body);
         }
       );
 
