@@ -22,7 +22,7 @@
 
     <div class="card-button border-button" *ngFor="let bike of spFiltered; let i = index" (click)="check(i,bike.id)" [class.selected]="hightlightStatus[i]">
       <div class="bike-item">
-        <div class="img" [ngStyle]="{'background-image': 'url(/assets/img/bike-example.jpg)'}"></div>
+        <div class="img" [style.background-image]="'url(' + bike.img + ')'" ></div>
         <div class="data">
           <h4>{{bike.model}}</h4>
           <p>{{bike.year}}</p>

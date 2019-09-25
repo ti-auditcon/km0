@@ -16,7 +16,7 @@
 
   <section class="bike-detail">
 
-    <div class="header-image" style="background-image: url('/assets/img/bike-example.jpg')"></div>
+    <div class="header-image" [style.background-image]="'url(' + bike.img + ')'" ></div>
 
     <div class="bike-data">
       <h4>{{bike.model}}</h4>
