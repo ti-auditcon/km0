@@ -87,7 +87,15 @@ export class DashboardPage implements OnInit {
     const toast = await this.toastController.create({
       header: title,
       message: message,
-      duration: 2000
+      buttons: [
+        {
+          text: 'Cerrar',
+          role: 'cancel',
+          handler: () => {
+            //console.log('Cancel clicked');
+          }
+        }
+      ]
     });
     toast.present();
   }
