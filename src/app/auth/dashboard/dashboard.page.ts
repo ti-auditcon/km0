@@ -8,7 +8,7 @@ import { Storage } from '@ionic/storage';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { IonInfiniteScroll,ToastController  } from '@ionic/angular';
 
-
+import { FCM } from "capacitor-fcm";
 
 import {
   Plugins,
@@ -16,7 +16,9 @@ import {
   PushNotificationToken,
   PushNotificationActionPerformed } from '@capacitor/core';
 
+
 const { PushNotifications } = Plugins;
+const fcm = new FCM();
 
 @Component({
   selector: 'app-dashboard',
@@ -24,20 +26,15 @@ const { PushNotifications } = Plugins;
   styleUrls: ['./dashboard.page.scss'],
 })
 
-
 export class DashboardPage implements OnInit {
-
-
 
   @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
 
   profile:any = '';
-
   events:any = '';
   orders:any = '';
   eventsMeta:any = '';
   ordersMeta:any = '';
-
   httpOptions:any;
   hasNotifications:boolean;
   public page = 1;
@@ -53,8 +50,6 @@ export class DashboardPage implements OnInit {
 
   ngOnInit() {
       console.log('Initializing HomePage');
-
-
 
       // PushNotifications.addListener('registrationError',
       //   (error: any) => {
@@ -114,27 +109,32 @@ export class DashboardPage implements OnInit {
 
         PushNotifications.register();
 
-        PushNotifications.addListener('registration',
-          (token: PushNotificationToken) => {
-            alert('Push registered: ' + JSON.stringify(token));
-            console.log('Push registration success, token: ' + token.value);
-            this.http.get(SERVER_URL+"api/fcm/token/"+token.value, this.httpOptions)
-            .subscribe((result: any) => {
-                 console.log('success fcm token 200:'+JSON.stringify(result));
-                },
-                (err) => {
-                  console.log('error refrersh 401:'+JSON.stringify(err));
-                }
-              );
-          }
-        );
+        // PushNotifications.addListener('registration',
+        //   (token: PushNotificationToken) => {
+        //     alert('Push registered: ' + JSON.stringify(token));
+        //     console.log('Push registration success, token: ' + token.value);
+        //     this.http.get(SERVER_URL+"api/fcm/token/"+token.value, this.httpOptions)
+        //     .subscribe((result: any) => {
+        //          console.log('success fcm token 200:'+JSON.stringify(result));
+        //         },
+        //         (err) => {
+        //           console.log('error refrersh 401:'+JSON.stringify(err));
+        //         }
+        //       );
+        //   }
+        // );
+        fcm
+            .getToken()
+            .then(r => alert(`Token ${r.token}`))
+            .catch(err => console.log(err));
 
-      PushNotifications.addListener('pushNotificationReceived',
-        (notification: PushNotification) => {
-         alert('Push received: ' + JSON.stringify(notification));
-         this.presentToast(notification.title,notification.body);
-        }
-      );
+
+      // PushNotifications.addListener('pushNotificationReceived',
+      //   (notification: PushNotification) => {
+      //    alert('Push received: ' + JSON.stringify(notification));
+      //    this.presentToast(notification.title,notification.body);
+      //   }
+      // );
 
         this.http.get(SERVER_URL+"api/profile", this.httpOptions)
         .subscribe((result: any) => {
