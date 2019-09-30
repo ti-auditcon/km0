@@ -27,12 +27,12 @@ const { PushNotifications } = Plugins;
 
 export class DashboardPage implements OnInit {
 
-  
+
 
   @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
 
   profile:any = '';
- 
+
   events:any = '';
   orders:any = '';
   eventsMeta:any = '';
@@ -56,19 +56,19 @@ export class DashboardPage implements OnInit {
 
 
 
-      // PushNotifications.addListener('registrationError', 
+      // PushNotifications.addListener('registrationError',
       //   (error: any) => {
       //     alert('Error on registration: ' + JSON.stringify(error));
       //   }
       // );
-
-      // PushNotifications.addListener('pushNotificationReceived', 
+      //
+      // PushNotifications.addListener('pushNotificationReceived',
       //   (notification: PushNotification) => {
       //     alert('Push received: ' + JSON.stringify(notification));
       //   }
       // );
-
-      // PushNotifications.addListener('pushNotificationActionPerformed', 
+      //
+      // PushNotifications.addListener('pushNotificationActionPerformed',
       //   (notification: PushNotificationActionPerformed) => {
       //     alert('Push action performed: ' + JSON.stringify(notification));
       //   }
@@ -104,18 +104,19 @@ export class DashboardPage implements OnInit {
     //console.log(this.hasNotifications);
     this.page = 1
     this.storage.get('auth-token').then((value) => {
-      
+
       let Bearer = value;
 
       this.httpOptions = {
         headers: new HttpHeaders({
           'Authorization': 'Bearer '+ Bearer//updated
         })};
-        
+
         PushNotifications.register();
 
-        PushNotifications.addListener('registration', 
+        PushNotifications.addListener('registration',
           (token: PushNotificationToken) => {
+            alert('Push registered: ' + JSON.stringify(token));
             console.log('Push registration success, token: ' + token.value);
             this.http.get(SERVER_URL+"api/fcm/token/"+token.value, this.httpOptions)
             .subscribe((result: any) => {
@@ -128,16 +129,16 @@ export class DashboardPage implements OnInit {
           }
         );
 
-      PushNotifications.addListener('pushNotificationReceived', 
+      PushNotifications.addListener('pushNotificationReceived',
         (notification: PushNotification) => {
-         // alert('Push received: ' + JSON.stringify(notification));
+         alert('Push received: ' + JSON.stringify(notification));
          this.presentToast(notification.title,notification.body);
         }
       );
 
         this.http.get(SERVER_URL+"api/profile", this.httpOptions)
         .subscribe((result: any) => {
-          
+
           this.profile = result.data;
           console.log(result.data);
           this.storage.set('discount',result.data.discount)
