@@ -107,7 +107,14 @@ export class DashboardPage implements OnInit {
           'Authorization': 'Bearer '+ Bearer//updated
         })};
 
-        PushNotifications.register();
+        PushNotifications.register()
+          .then(_ => {
+          fcm
+              .subscribeTo({ topic: "test" })
+              .then(r => alert(`suscrito`))
+              .catch(err => console.log(err));
+          })
+          .catch(err => alert(JSON.stringify(err)));
 
         // PushNotifications.addListener('registration',
         //   (token: PushNotificationToken) => {
