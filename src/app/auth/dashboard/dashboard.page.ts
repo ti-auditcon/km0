@@ -82,6 +82,7 @@ export class DashboardPage implements OnInit {
     const toast = await this.toastController.create({
       header: title,
       message: message,
+      duration: 3000,
       buttons: [
         {
           text: 'Cerrar',
@@ -111,7 +112,7 @@ export class DashboardPage implements OnInit {
           .then(_ => {
           fcm
               .subscribeTo({ topic: "test" })
-              .then(r => alert(`suscrito`))
+              .then(r => console.log(`suscrito`))
               .catch(err => console.log(err));
           })
           .catch(err => alert(JSON.stringify(err)));
@@ -132,9 +133,8 @@ export class DashboardPage implements OnInit {
         // );
         fcm
             .getToken()
-            .then(r => alert(`Token ${r.token}`))
+            .then(r => console.log(`Token ${r.token}`))
             .catch(err => console.log(err));
-
 
       PushNotifications.addListener('pushNotificationReceived',
         (notification: PushNotification) => {
