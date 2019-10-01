@@ -4,3 +4,6 @@ project(':capacitor-android').projectDir = new File('../node_modules/@capacitor/
 
 include ':teamhive-capacitor-webview-overlay'
 project(':teamhive-capacitor-webview-overlay').projectDir = new File('../node_modules/@teamhive/capacitor-webview-overlay/android/@teamhive/capacitor-webview-overlay')
+
+include ':capacitor-fcm'
+project(':capacitor-fcm').projectDir = new File('../node_modules/capacitor-fcm/android/capacitor-fcm')

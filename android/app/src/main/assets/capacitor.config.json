@@ -3,5 +3,10 @@
   "appName": "Kilometro Cero",
   "bundledWebRuntime": false,
   "npmClient": "npm",
-  "webDir": "www"
+  "webDir": "www",
+  "plugins": {
+  "PushNotifications": {
+    "presentationOptions": ["badge", "sound", "alert"]
+    }
+  }
 }
