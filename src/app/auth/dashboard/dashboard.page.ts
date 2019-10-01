@@ -82,7 +82,7 @@ export class DashboardPage implements OnInit {
     const toast = await this.toastController.create({
       header: title,
       message: message,
-      duration: 3000,
+      duration: 4000,
       buttons: [
         {
           text: 'Cerrar',
@@ -138,7 +138,7 @@ export class DashboardPage implements OnInit {
 
       PushNotifications.addListener('pushNotificationReceived',
         (notification: PushNotification) => {
-         alert('Push received: ' + JSON.stringify(notification));
+         console.log('Push received: ' + JSON.stringify(notification));
          this.presentToast(notification.title,notification.body);
         }
       );
