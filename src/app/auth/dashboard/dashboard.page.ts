@@ -136,12 +136,12 @@ export class DashboardPage implements OnInit {
             .catch(err => console.log(err));
 
 
-      // PushNotifications.addListener('pushNotificationReceived',
-      //   (notification: PushNotification) => {
-      //    alert('Push received: ' + JSON.stringify(notification));
-      //    this.presentToast(notification.title,notification.body);
-      //   }
-      // );
+      PushNotifications.addListener('pushNotificationReceived',
+        (notification: PushNotification) => {
+         alert('Push received: ' + JSON.stringify(notification));
+         this.presentToast(notification.title,notification.body);
+        }
+      );
 
         this.http.get(SERVER_URL+"api/profile", this.httpOptions)
         .subscribe((result: any) => {
