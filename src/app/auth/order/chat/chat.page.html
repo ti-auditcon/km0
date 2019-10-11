@@ -31,8 +31,8 @@
           <p [ngClass]="{'balloon-inner': true,'sucursal-message': message.from == 1,'user-message': message.from == 2}">
             {{message.content}}
             <span class="date">
-              {{message.createdAt | date :'mediumDate'}}<br>
-              {{message.createdAt | date :'shortTime'}}
+              {{message.date}}<br>
+              {{message.hour}}
             </span>
           </p>
         <!-- </div> -->

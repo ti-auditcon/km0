@@ -19,7 +19,7 @@
     <div class="profile-header">
       <div class="img-container">
           <!-- <div class="avatar" style="background-image: url('assets/img/avatar-default-2.jpg')"></div> -->
-        <img [src]="profile?.avatar">
+        <img [src]="profile?.avatar" (click)="takePicture()">
       </div>
       <!-- <div class="img" (click)="takePicture()" [ngStyle]="{'background-image': 'url(' + 'assets/img/avatar-default.jpg' + ')'}"></div> -->
       <!-- <div class="img" (click)="takePicture()" [ngStyle]="{'background-image': 'url(' + photo + ')'}"></div> -->
@@ -27,6 +27,7 @@
       <p>{{profile?.city}}, Chile</p>
     </div>
 
+    <img [src]="photo">
 
     <div class="dates profile-card">
       <div class="card-info info">

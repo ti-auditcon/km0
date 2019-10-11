@@ -135,6 +135,10 @@ ion-refresher {
   }
 }
 
+ion-toast {
+  --button-color: white;
+}
+
 // Basics
 .separator {
   height: 2px;
@@ -330,6 +334,12 @@ ion-toggle {
 //   --background: var(--highlighten-color);
 // }
 
+// Var
+.alert-title.sc-ion-alert-md,
+.alert-radio-label.sc-ion-alert-md,
+[aria-checked=true].sc-ion-alert-md .alert-radio-label.sc-ion-alert-md {
+  color: white;
+}
 
 .toggle-icon:host {
   background: blue !important;
@@ -2118,7 +2128,7 @@ ion-toggle {
   ion-select {
     font-size: 16px;
     line-height: 19px;
-    color: var(--text-color-dark);
+    // color: var(--text-color-dark);
     font-weight: 300;
   }
   ion-input {
