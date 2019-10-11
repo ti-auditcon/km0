@@ -156,13 +156,13 @@
         <div class="services">
             <h4 *ngIf="services">Servicios</h4>
             <div class="service-detail" *ngFor="let service of services">
-              <p [ngClass]="{'highlighten-price': !service.rels.pivot.confirmed}" >{{service.name}}</p>
-              <p [ngClass]="{'highlighten-price': !service.rels.pivot.confirmed}" >${{service.value}}</p>
+              <p [ngClass]="{'highlighten-price': !service.confirmed}" >{{service.name}}</p>
+              <p [ngClass]="{'highlighten-price': !service.confirmed}" >{{service.amount}}</p>
             </div>
             <h4 *ngIf="spares != 0">Repuestos</h4>
             <div class="service-detail" *ngFor="let spare of spares">
-              <p [ngClass]="{'highlighten-price': !spare.rels.pivot.confirmed}" >{{spare.name}}</p>
-              <p [ngClass]="{'highlighten-price': !spare.rels.pivot.confirmed}" >${{spare.value}}</p>
+              <p [ngClass]="{'highlighten-price': !spare.confirmed}" >{{spare.name}}</p>
+              <p [ngClass]="{'highlighten-price': !spare.confirmed}" >{{spare.amount}}</p>
             </div>
             <!-- <br> -->
             <!-- cambiar esto -->
@@ -170,10 +170,14 @@
               <p>Descuento por Reserva</p>
               <p>-{{order?.reserve}}</p>
             </div>
+            <div class="service-detail dscto">
+              <p>Descuento Cliente </p>
+              <p>-{{order?.discountAmount}}</p>
+            </div>
             <div class="total-detail">
               <div class="service-detail big">
                 <p><b>TOTAL</b></p>
-                <p><b>${{order?.amount - order?.reserve }}</b></p>
+                <p><b>{{order?.total }}</b></p>
               </div>
             </div>
         </div>

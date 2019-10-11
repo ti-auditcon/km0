@@ -69,7 +69,7 @@ export class OrderPage implements OnInit {
       .subscribe((result: any) => {
         console.log(result.data);
         this.spares = result.data;
-        console.log('Tipo: '+typeof(this.spares));
+        // console.log('Tipo: '+typeof(this.spares));
       });
 
       this.http.get(SERVER_URL+"api/profile/notifications/has", this.httpOptions)
