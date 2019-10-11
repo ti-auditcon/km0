@@ -138,6 +138,22 @@ export class OrderPage implements OnInit {
     this.router.navigate(['/orders/'+id+'/flow']);
   }
   delete(){
+    
+    this.storage.get('auth-token').then((value) => {
 
+      let Bearer = value;
+      let id = this.activatedRoute.snapshot.paramMap.get('id');
+
+      this.httpOptions = {
+        headers: new HttpHeaders({
+          'Authorization': 'Bearer '+ Bearer//updated
+        })};
+
+      this.http.delete(SERVER_URL+"api/orders/"+id, this.httpOptions)
+      .subscribe((result: any) => {
+        this.router.navigate(['/']);
+      });
+
+    });
   }
 }
