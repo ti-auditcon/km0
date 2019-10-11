@@ -133,7 +133,17 @@ export class DashboardPage implements OnInit {
         // );
         fcm
             .getToken()
-            .then(r => console.log(`Token ${r.token}`))
+            .then(r => {
+              console.log(`Token ${r.token}`);
+              this.http.get(SERVER_URL+"api/fcm/token/"+r.token, this.httpOptions)
+              .subscribe((result: any) => {
+                  console.log('success fcm token 200:'+JSON.stringify(result));
+                  },
+                  (err) => {
+                    console.log('error refrersh 401:'+JSON.stringify(err));
+                  }
+                );
+            })
             .catch(err => console.log(err));
 
       PushNotifications.addListener('pushNotificationReceived',

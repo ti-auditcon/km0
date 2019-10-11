@@ -7,6 +7,7 @@ import com.getcapacitor.Plugin;
 
 import java.util.ArrayList;
 import com.webviewOverlay.plugin.WebviewOverlayPlugin;
+import io.stewan.capacitor.fcm.FCMPlugin;
 
 public class MainActivity extends BridgeActivity {
   @Override
@@ -18,6 +19,7 @@ public class MainActivity extends BridgeActivity {
       // Additional plugins you've installed go here
       // Ex: add(TotallyAwesomePlugin.class);
       add(WebviewOverlayPlugin.class);
+      add(FCMPlugin.class);
     }});
   }
 }
