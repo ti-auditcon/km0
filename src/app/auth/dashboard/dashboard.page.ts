@@ -56,44 +56,9 @@ export class DashboardPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    // console.log('entre ngoninit');
-    // PushNotifications.addListener('registration', data => {
-    //   // alert(JSON.stringify(data));
-    //   console.log('hola este es mi fcm: '+data.value);
-    // });
-    // PushNotifications.register().then(() => alert(`registered for push`));
-    // PushNotifications.addListener(
-    //   'pushNotificationReceived',
-    //   (notification: PushNotification) => {
-    //     console.log('notification ' + JSON.stringify(notification));
-    //     this.notifications.push(notification);
-    //     this.presentToast(notification.title,notification.body);
-    //   }
-    // );
+
   }
 
-
-  // ngOnInit() {
-  //     console.log('Initializing HomePage');
-
-  //     PushNotifications.addListener('registrationError',
-  //       (error: any) => {
-  //         alert('Error on registration: ' + JSON.stringify(error));
-  //       }
-  //     );
-      
-  //     PushNotifications.addListener('pushNotificationReceived',
-  //       (notification: PushNotification) => {
-  //         alert('Push received: ' + JSON.stringify(notification));
-  //       }
-  //     );
-      
-  //     PushNotifications.addListener('pushNotificationActionPerformed',
-  //       (notification: PushNotificationActionPerformed) => {
-  //         alert('Push action performed: ' + JSON.stringify(notification));
-  //       }
-  //     );
-  // }
 
 
   doRefresh(event) {
@@ -140,7 +105,7 @@ export class DashboardPage implements OnInit {
           console.log('hola este es mi fcm: '+data.value);
           token = data.value;
         });
-        PushNotifications.register().then(() => alert(`registered for push`));
+        PushNotifications.register().then(() => console.log('registrado'));
         PushNotifications.addListener(
           'pushNotificationReceived',
           (notification: PushNotification) => {
@@ -154,13 +119,13 @@ export class DashboardPage implements OnInit {
         .getToken()
         .then(result => {
           let remoteToken = result.token;
-          console.log('ahora si po puto: '+this.remoteToken);
+          console.log('ahora si po puto: '+remoteToken);
           this.http.get(SERVER_URL+"api/fcm/token/"+remoteToken, this.httpOptions)
           .subscribe((result: any) => {
-                console.log('success fcm token 200:'+JSON.stringify(result));
+                console.log('success fcm token 200: '+JSON.stringify(result));
               },
               (err) => {
-                console.log('error refrersh 401:'+JSON.stringify(err));
+                console.log('error refrersh 401: '+JSON.stringify(err));
               }
             );
         })
