@@ -47,6 +47,7 @@ export class MyBikesPage implements OnInit {
           .subscribe((result: any) => {
 
             this.bikes = result.data;
+            console.log(this.bikes);
 
           });
         });
