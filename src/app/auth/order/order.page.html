@@ -99,7 +99,7 @@
       <div class="card-info status">
           <h4>Lista para Retiro</h4>
           <p>
-            Tu bicicleta está lista para ser retirada. Puedes venir a buscarla a nuestra sucursal.
+            {{order?.rels?.user.name}}, tu bicicleta está lista para ser retirada. Puedes venir a buscarla a nuestra sucursal.
           </p>
           <h4>Diagnóstico</h4>
           <p>
@@ -112,8 +112,7 @@
       <div class="card-info status">
           <h4>Aprueba el trabajo</h4>
           <p>
-            Si los arreglos han sido satisfactorios por favor apruebarlos para cerrar la orden.
-            Gracias
+            {{order?.rels?.user.name}}, Esta todo bien con tu bicicleta? Por favor aprueba nuestro servicio, si tienes alguna duda o problema no dudes en escribirnos.
           </p>
           <h4>Diagnóstico</h4>
           <p>

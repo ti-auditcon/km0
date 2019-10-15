@@ -56,7 +56,7 @@
       <div class="assistants" *ngIf="users != ''">
         <h1 class="title-section">Asistentes</h1>
         <div class="item" (click)="goToPublicProfile()" *ngFor="let user of users">
-          <div class="img" style="background-image: url('assets/img/avatar-default.jpg')"></div>
+          <div class="img" [ngStyle]="{'background-image':'url('+user.avatar+')'}"></div>
           <div class="data">
             <h6>{{user?.fullName}}</h6>
             <p>Curicó, Chile</p>
@@ -87,7 +87,7 @@
 </ion-content>
 
 <ion-footer *ngIf="!closed">
-  <ion-button mode="ios" color="km" expand="block" *ngIf="!event?.rels.auth.reserved" (click)="attach(); reserveToast()">Reservar mi Cupo</ion-button>
+  <ion-button mode="ios" color="km" expand="block" *ngIf="!event?.rels.auth.reserved && event?.available > 0" (click)="attach(); reserveToast()">Reservar mi Cupo</ion-button>
   <ion-button mode="ios" color="km" expand="block" *ngIf="event?.rels.auth.reserved" (click)="detach(); leaveToast()">Ceder Cupo</ion-button>
 </ion-footer>
 
