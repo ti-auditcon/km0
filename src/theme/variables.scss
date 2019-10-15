@@ -2171,6 +2171,9 @@ ion-toggle {
         height: 100%;
       }
     }
+    .botoncito {
+      margin-top: 12px;
+    }
     h4 {
       font-family: "Roboto Condensed";
       font-weight: 700;
@@ -2246,6 +2249,18 @@ ion-toggle {
         bottom: 0;
       }
     }
+  }
+}
+
+.data-profile, .password-profile {
+  ion-input {
+    text-align: left;
+    border: solid 1px var(--noclickable-text);
+    --padding-start: 12px;
+    margin-bottom: 12px;
+  }
+  ion-button {
+    margin: 0;
   }
 }
 

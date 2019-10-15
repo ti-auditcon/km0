@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { ModalController } from '@ionic/angular';
+import { EditProfilePage } from './edit-profile/edit-profile.page';
 import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
 
 import { AuthenticationService } from '../../services/authentication.service';
@@ -28,7 +30,8 @@ export class ProfilePage implements OnInit {
     private storage: Storage,
     private authenticationService: AuthenticationService,
     private http:HttpClient,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private modalController: ModalController
   ) { }
 
   ngOnInit() {
@@ -70,6 +73,13 @@ export class ProfilePage implements OnInit {
     // this.photo = this.sanitizer.bypassSecurityTrustResourceUrl(image.webPath);
     // this.photo = this.sanitizer.bypassSecurityTrustResourceUrl("data:Image/*;base64,"+image.dataUrl);
     // console.log("Aqui va la var photo: "+this.photo);
+  }
+
+  async editProfileModal() {
+    const modal = await this.modalController.create({
+      component: EditProfilePage
+    });
+    return await modal.present();
   }
 
   goToMyBikes(){

@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <!-- <ion-menu-button></ion-menu-button> -->
+    </ion-buttons>
+    <ion-title>
+      Editar Perfil
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()" class="no-background">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <section class="data-profile modal-section">
+    <h1 class="title-section">Edita tus Datos</h1>
+    <ion-input placeholder="Dirección"></ion-input>
+    <ion-input placeholder="Ciudad"></ion-input>
+    <ion-button mode="ios" color="km" expand="block">
+      Guardar datos
+    </ion-button>
+  </section>
+
+  <div class="separator"></div>
+
+  <section class="password-profile modal-section">
+    <h1 class="title-section">Cambia tu Contraseña</h1>
+    <ion-input placeholder="Nueva Contraseña" type="password"></ion-input>
+    <ion-input placeholder="Repite la Contraseña" type="password"></ion-input>
+    <ion-button mode="ios" color="km" expand="block">
+      Actualizar Contraseña
+    </ion-button>
+  </section>
+
+</ion-content>
