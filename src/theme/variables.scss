@@ -2157,6 +2157,7 @@ ion-toggle {
   .profile-header {
     text-align: center;
     margin: auto;
+    position: relative;
     padding-bottom: 30px;
     .img-container {
       width: 93px;
@@ -2173,6 +2174,12 @@ ion-toggle {
     }
     .botoncito {
       margin-top: 12px;
+    }
+    .icon-edit {
+      position: absolute;
+      right: 35%;
+      bottom: 58%;
+      width: 10%;
     }
     h4 {
       font-family: "Roboto Condensed";
