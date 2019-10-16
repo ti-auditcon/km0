@@ -90,7 +90,8 @@ export class ProfilePage implements OnInit {
     
 
     const image = await Plugins.Camera.getPhoto({
-      quality: 100,
+      quality: 60,
+      width:720,
       allowEditing: false,
       resultType: CameraResultType.Base64,
       source: CameraSource.Camera
