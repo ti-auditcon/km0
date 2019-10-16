@@ -76,6 +76,7 @@ export class AuthenticationService {
                  },
                  (err) => {
                    console.log('error refrersh 401:'+JSON.stringify(err));
+                   alert('El usuario no existe o la contraseña es incorrecta. Intente nuevamente.');
                    this.router.navigate(['dashboard']);
                  }
                );
@@ -119,7 +120,9 @@ export class AuthenticationService {
                },
                (err) => {
                  console.log('error 401');
+                 alert('El usuario no existe o la contraseña es incorrecta. Intente nuevamente.');
                  reject(err);
+
 
                }
              );
