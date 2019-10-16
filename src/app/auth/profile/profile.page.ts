@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { ModalController } from '@ionic/angular';
+import { ModalController, ToastController } from '@ionic/angular';
 import { EditProfilePage } from './edit-profile/edit-profile.page';
 import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
 
@@ -36,8 +36,29 @@ export class ProfilePage implements OnInit {
     private authenticationService: AuthenticationService,
     private http:HttpClient,
     private sanitizer: DomSanitizer,
-    private modalController: ModalController
+    private modalController: ModalController,
+    public toastController: ToastController
   ) { }
+
+  async presentToast(message:any) {
+    const toast = await this.toastController.create({
+
+      message: message,
+      duration: 4000,
+      position: 'top',
+      buttons: [
+        {
+          text: 'Cerrar',
+          role: 'cancel',
+          handler: () => {
+            //console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    toast.present();
+  }
+   
 
   ngOnInit() {
   }
@@ -90,6 +111,7 @@ export class ProfilePage implements OnInit {
         .subscribe((result: any) => {
           console.log('avataaaar!');
           console.log(result);
+          this.presentToast('datos actualizados con éxito');
           this.router.navigate(['/profile']);
         });
 
