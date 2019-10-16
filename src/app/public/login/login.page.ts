@@ -31,7 +31,7 @@ export class LoginPage implements OnInit {
       console.log('primero: '+e);
       console.log('segundo: '+this.error.error );
       console.log('tersero: '+this.error.message );
-
+      alert('El usuario no existe o la contraseña es incorrecta. Intente nuevamente.');
     });
 
   }
