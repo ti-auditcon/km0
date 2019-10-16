@@ -66,24 +66,31 @@ export class ProfilePage implements OnInit {
   }
 
   async takePicture() {
+    
+
     const image = await Plugins.Camera.getPhoto({
       quality: 100,
       allowEditing: false,
       resultType: CameraResultType.Base64,
       source: CameraSource.Camera
     });
+   // input.append('avatar',image.base64String,'avatar');
+    let input = new FormData();
+    input.append("avatar", image.base64String);
 
     this.storage.get('auth-token').then((value) => {
 
       let Bearer = value;
       this.httpOptions = {
         headers: new HttpHeaders({
-          'content-type': 'multipart/form-data',
           'Authorization': 'Bearer '+ Bearer//updated
         })};
-        this.http.post(SERVER_URL+"api/profile/avatar", this.httpOptions)
-        .subscribe((result: any) => {
 
+        this.http.post(SERVER_URL+"api/profile/avatar",input, this.httpOptions)
+        .subscribe((result: any) => {
+          console.log('avataaaar!');
+          console.log(result);
+          this.router.navigate(['/profile']);
         });
 
 
