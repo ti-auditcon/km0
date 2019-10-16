@@ -11,6 +11,8 @@ import { EditProfilePage } from './edit-profile/edit-profile.page';
 import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
 
 import { AuthenticationService } from '../../services/authentication.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-profile',
@@ -22,6 +24,9 @@ export class ProfilePage implements OnInit {
   profile:any = '';
   httpOptions:any;
   hasNotifications:boolean;
+  selectedImage: any;
+
+  
 
   photo: SafeResourceUrl;
 
@@ -64,20 +69,41 @@ export class ProfilePage implements OnInit {
     const image = await Plugins.Camera.getPhoto({
       quality: 100,
       allowEditing: false,
-      resultType: CameraResultType.DataUrl,
+      resultType: CameraResultType.Base64,
       source: CameraSource.Camera
     });
 
+    this.storage.get('auth-token').then((value) => {
+
+      let Bearer = value;
+      this.httpOptions = {
+        headers: new HttpHeaders({
+          'content-type': 'multipart/form-data',
+          'Authorization': 'Bearer '+ Bearer//updated
+        })};
+        this.http.post(SERVER_URL+"api/profile/avatar", this.httpOptions)
+        .subscribe((result: any) => {
+
+        });
+
+
+    });
+
     // this.photo = this.sanitizer.bypassSecurityTrustResourceUrl(image && (image.dataUrl));
-    this.photo = this.sanitizer.bypassSecurityTrustResourceUrl(image && (image.dataUrl));
+    //this.photo = this.sanitizer.bypassSecurityTrustResourceUrl(image && (image.dataUrl));
     // this.photo = this.sanitizer.bypassSecurityTrustResourceUrl(image.webPath);
     // this.photo = this.sanitizer.bypassSecurityTrustResourceUrl("data:Image/*;base64,"+image.dataUrl);
     // console.log("Aqui va la var photo: "+this.photo);
   }
 
+
+
   async editProfileModal() {
     const modal = await this.modalController.create({
       component: EditProfilePage
+    });
+    modal.onDidDismiss().then(data => {
+      this.ionViewDidEnter();
     });
     return await modal.present();
   }

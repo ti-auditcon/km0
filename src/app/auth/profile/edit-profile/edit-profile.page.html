@@ -15,23 +15,30 @@
 <ion-content>
 
   <section class="data-profile modal-section">
-    <h1 class="title-section">Edita tus Datos</h1>
-    <ion-input placeholder="Dirección"></ion-input>
-    <ion-input placeholder="Ciudad"></ion-input>
-    <ion-button mode="ios" color="km" expand="block">
-      Guardar datos
-    </ion-button>
+    <form [formGroup]="profileForm" (ngSubmit)="profileUpdate()">
+        <h1 class="title-section">Edita tus Datos</h1>
+        <ion-input placeholder="Phone" formControlName="phone" ></ion-input>
+        <ion-input placeholder="Dirección" formControlName="address"></ion-input>
+        <ion-input placeholder="Ciudad" formControlName="city"></ion-input>
+        <ion-button mode="ios" color="km" expand="block" type="submit">
+          Guardar datos
+        </ion-button>
+    </form>
+
   </section>
 
   <div class="separator"></div>
 
   <section class="password-profile modal-section">
-    <h1 class="title-section">Cambia tu Contraseña</h1>
-    <ion-input placeholder="Nueva Contraseña" type="password"></ion-input>
-    <ion-input placeholder="Repite la Contraseña" type="password"></ion-input>
-    <ion-button mode="ios" color="km" expand="block">
-      Actualizar Contraseña
-    </ion-button>
+    <form [formGroup]="passForm"  (ngSubmit)="profilePassword()">
+        <h1 class="title-section">Cambia tu Contraseña</h1>
+        <ion-input placeholder="Nueva Contraseña" type="password" formControlName="password"></ion-input>
+        <ion-input placeholder="Repite la Contraseña" type="password" formControlName="confirm"></ion-input>
+        <ion-button mode="ios" color="km" expand="block" type="submit">
+          Actualizar Contraseña
+        </ion-button>
+    </form>
+
   </section>
 
 </ion-content>
