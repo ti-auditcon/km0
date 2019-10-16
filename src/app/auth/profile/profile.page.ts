@@ -40,6 +40,13 @@ export class ProfilePage implements OnInit {
     public toastController: ToastController
   ) { }
 
+  doRefresh(event) {
+    this.ionViewDidEnter();
+    setTimeout(() => {
+      event.target.complete();
+    }, 2000);
+  }
+  
   async presentToast(message:any) {
     const toast = await this.toastController.create({
 
@@ -113,7 +120,7 @@ export class ProfilePage implements OnInit {
           console.log('avataaaar!');
           console.log(result);
           this.presentToast('datos actualizados con éxito');
-          this.router.navigate(['/profile']);
+          this.ionViewDidEnter();
         });
 
 

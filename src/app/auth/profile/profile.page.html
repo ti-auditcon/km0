@@ -13,6 +13,14 @@
   </ion-header>
 
 <ion-content class="only-events">
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+          pullingIcon="arrow-dropdown"
+          pullingText="Arrastra para actualizar"
+          refreshingSpinner="circles">
+        </ion-refresher-content>
+
+      </ion-refresher>
 
   <section class="profile">
 
