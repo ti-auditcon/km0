@@ -12,7 +12,8 @@ import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
 
 import { AuthenticationService } from '../../services/authentication.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+//models
+import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-profile',
@@ -41,12 +42,42 @@ export class ProfilePage implements OnInit {
   ) { }
 
   doRefresh(event) {
-    this.ionViewDidEnter();
+    this.storage.get('auth-token').then((value) => {
+
+      let Bearer = value;
+      this.httpOptions = {
+        headers: new HttpHeaders({
+          'Authorization': 'Bearer '+ Bearer//updated
+        })};
+        this.http.get(SERVER_URL+"api/profile", this.httpOptions)
+        .subscribe((result: any) => {
+          console.log(result.data);
+          this.profile = result.data;
+          var userModel:User;
+
+          userModel = new User();
+          userModel.id = result.data.id;
+          userModel.name = result.data.fullName;
+          userModel.avatar = result.data.avatar;
+          userModel.city = result.data.city;
+      
+          console.log(userModel);
+          this.storage.set('user',userModel);
+          this.storage.set('discount',result.data.discount);
+        });
+
+        this.http.get(SERVER_URL+"api/profile/notifications/has", this.httpOptions)
+        .subscribe((result: any) => {
+          console.log(result);
+          this.hasNotifications = result;
+        });
+
+    });
     setTimeout(() => {
       event.target.complete();
     }, 2000);
   }
-  
+
   async presentToast(message:any) {
     const toast = await this.toastController.create({
 
@@ -82,6 +113,17 @@ export class ProfilePage implements OnInit {
         .subscribe((result: any) => {
           console.log(result.data);
           this.profile = result.data;
+          var userModel:User;
+
+          userModel = new User();
+          userModel.id = result.data.id;
+          userModel.name = result.data.fullName;
+          userModel.avatar = result.data.avatar;
+          userModel.city = result.data.city;
+      
+          console.log(userModel);
+          this.storage.set('user',userModel);
+          this.storage.set('discount',result.data.discount);
         });
 
         this.http.get(SERVER_URL+"api/profile/notifications/has", this.httpOptions)

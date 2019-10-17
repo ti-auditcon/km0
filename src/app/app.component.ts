@@ -11,6 +11,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { AuthenticationService } from './services/authentication.service';
 
+import { User } from './models/user.model';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -18,7 +20,7 @@ import { AuthenticationService } from './services/authentication.service';
 })
 export class AppComponent implements OnInit {
 
-  profile:any = '';
+  profile:User ;
   httpOptions:any;
 
   public appPages = [
@@ -49,10 +51,23 @@ export class AppComponent implements OnInit {
     private authenticationService: AuthenticationService,
   ) {
     this.initializeApp();
+    this.profile = new User; 
+    this.profile.id = 0;
+    this.profile.name = '';
+    this.profile.avatar = '';
+    this.profile.city = '';
   }
 
   ngOnInit() {
+    
+  }
 
+  menuOpened(){
+    this.storage.get('user').then((value) => {
+      this.profile = value;
+      console.log(this.profile);
+    });
+    console.log('abri el menu');
   }
 
   initializeApp() {
@@ -63,25 +78,6 @@ export class AppComponent implements OnInit {
 
       this.authenticationService.authenticationState.subscribe(state => {
         if (state) {
-
-          this.storage.get('auth-token').then((value) => {
-            let Bearer = value;
-            this.httpOptions = {
-              headers: new HttpHeaders({
-                'Authorization': 'Bearer '+ Bearer//updated
-              })};
-              this.http.get(SERVER_URL+"api/profile", this.httpOptions)
-              .subscribe((result: any) => {
-                this.profile = result.data;
-                if(this.profile.hasNotifications == 1){
-                  this.storage.set('has_notification',true);
-
-                } else {
-                  this.storage.set('has_notification',false);
-
-                }
-              });
-          });
 
           this.router.navigate(['dashboard']);
 

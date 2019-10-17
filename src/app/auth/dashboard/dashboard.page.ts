@@ -9,6 +9,8 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { IonInfiniteScroll,ToastController  } from '@ionic/angular';
 import { Platform } from '@ionic/angular';
 import { FCM } from "capacitor-fcm";
+//models 
+import { User } from '../../models/user.model';
 
 import {
   Plugins,
@@ -39,6 +41,7 @@ export class DashboardPage implements OnInit {
   httpOptions:any;
   hasNotifications:boolean;
   public page = 1;
+
 
   notifications: PushNotification[] = [];
   //
@@ -86,6 +89,7 @@ export class DashboardPage implements OnInit {
     toast.present();
   }
 
+  //ionic enter
   ionViewDidEnter() {
     //console.log(this.hasNotifications);
     this.page = 1
@@ -101,7 +105,6 @@ export class DashboardPage implements OnInit {
 
         console.log('entre ionenter');
         PushNotifications.addListener('registration', data => {
-          // alert(JSON.stringify(data));
           console.log('hola este es mi fcm: '+data.value);
           token = data.value;
         });
@@ -134,63 +137,22 @@ export class DashboardPage implements OnInit {
           console.log(err);
         });
 
-        //guardando token 
-
-
-
-
-        // PushNotifications.register()
-        //   .then(_ => {
-        //   fcm
-        //       .subscribeTo({ topic: "app" })
-        //       .then(r => console.log("suscrito sii! "))
-        //       .catch(err => console.log(err));
-        //   })
-        //   .catch(err => alert(JSON.stringify(err)));
-
-        // PushNotifications.addListener('registration',
-        //   (token: PushNotificationToken) => {
-        //     alert('Push registered: ' + JSON.stringify(token));
-        //     console.log('Push registration success, token: ' + token.value);
-        //     this.http.get(SERVER_URL+"api/fcm/token/"+token.value, this.httpOptions)
-        //     .subscribe((result: any) => {
-        //          console.log('success fcm token 200:'+JSON.stringify(result));
-        //         },
-        //         (err) => {
-        //           console.log('error refrersh 401:'+JSON.stringify(err));
-        //         }
-        //       );
-        //   }
-        // );
-      //   fcm
-      //       .getToken()
-      //       .then(r => {
-      //         console.log("Token fcm: "+r.token);
-              
-      //         this.http.get(SERVER_URL+"api/fcm/token/"+r.token, this.httpOptions)
-      //         .subscribe((result: any) => {
-      //             console.log('success fcm token 200:'+JSON.stringify(result));
-      //             },
-      //             (err) => {
-      //               console.log('error refrersh 401:'+JSON.stringify(err));
-      //             }
-      //           );
-      //       })
-      //       .catch(err => console.log(err));
-
-      // PushNotifications.addListener('pushNotificationReceived',
-      //   (notification: PushNotification) => {
-      //    console.log('Push received: ' + JSON.stringify(notification));
-      //    this.presentToast(notification.title,notification.body);
-      //   }
-      // );
-
         this.http.get(SERVER_URL+"api/profile", this.httpOptions)
         .subscribe((result: any) => {
 
           this.profile = result.data;
           console.log(result.data);
-          this.storage.set('discount',result.data.discount)
+          var userModel:User;
+
+          userModel = new User();
+          userModel.id = result.data.id;
+          userModel.name = result.data.fullName;
+          userModel.avatar = result.data.avatar;
+          userModel.city = result.data.city;
+      
+          console.log(userModel);
+          this.storage.set('user',userModel);
+          this.storage.set('discount',result.data.discount);
 
         });
 

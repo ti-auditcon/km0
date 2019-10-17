@@ -1,6 +1,6 @@
 <ion-app>
   <ion-split-pane>
-    <ion-menu type="overlay">
+    <ion-menu type="overlay" (ionDidOpen)="menuOpened()">
       <ion-header>
         <ion-toolbar>
           <ion-title>Menu</ion-title>
@@ -22,7 +22,7 @@
             <div class="bottom-split" (click)="goToProfile()">
               <div class="avatar" [style.background-image]="'url(' + profile.avatar + ')'" ></div>
               <div class="data">
-                <h6>{{profile.fullName}}</h6>
+                <h6>{{profile.name}}</h6>
                 <p>{{profile.city}}, Chile</p>
               </div>
             </div>
