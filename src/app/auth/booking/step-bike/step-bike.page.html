@@ -22,7 +22,7 @@
 
     <div class="card-button" (click)="goToService(bike)" *ngFor="let bike of bikes">
       <div class="single-bike-grid">
-        <div class="img" style="background-image: url('assets/img/bike-example.jpg')"></div>
+        <div class="img" [style.background-image]="'url(' + bike.img + ')'" ></div>
         <div class="data">
           <h4>{{bike.model}}</h4>
           <p>
