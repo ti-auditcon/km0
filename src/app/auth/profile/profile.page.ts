@@ -143,7 +143,7 @@ export class ProfilePage implements OnInit {
       width:720,
       allowEditing: false,
       resultType: CameraResultType.Base64,
-      source: CameraSource.Camera
+      source: CameraSource.Prompt
     });
    // input.append('avatar',image.base64String,'avatar');
     let input = new FormData();
