@@ -38,7 +38,7 @@ const routes: Routes = [
   { path: 'profile/bikes/:id', loadChildren: './auth/my-bikes/bike-detail/bike-detail.module#BikeDetailPageModule' },
   { path: 'profile/services', loadChildren: './auth/my-services/my-services.module#MyServicesPageModule' },
   { path: 'profile/services/:id', loadChildren: './auth/my-services/service-detail/service-detail.module#ServiceDetailPageModule' },
-  { path: 'public-profile', loadChildren: './auth/public-profile/public-profile.module#PublicProfilePageModule' },
+  { path: 'public-profile/:id', loadChildren: './auth/public-profile/public-profile.module#PublicProfilePageModule' },
   //Notificaciones
   { path: 'notifications', loadChildren: './auth/notifications/notifications.module#NotificationsPageModule' },
   { path: 'special-message', loadChildren: './auth/notifications/special-message/special-message.module#SpecialMessagePageModule' },

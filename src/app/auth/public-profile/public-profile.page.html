@@ -16,60 +16,45 @@
 
   <section class="profile">
     <div class="profile-header no-pd-b">
-      <div class="img" style="background-image: url('assets/img/avatar-default-2.jpg')" (click)="viewPhoto()"></div>
-      <h4>Sebastían Henriquez</h4>
+      <div class="img-container">
+        <!-- <div class="avatar" style="background-image: url('assets/img/avatar-default-2.jpg')"></div> -->
+        <img [src]="profile?.avatar" (click)="takePicture()">
+      </div>
+      <h4>{{profile.fullName}}</h4>
       <p>
-        Curicó, Chile<br>
-        28 años
+        {{profile.city}}, Chile<br>
+
       </p>
     </div>
 
     <div class="separator"></div>
 
-    <section class="past-events">
+   </section>
+   <section class="past-events">
       <h1 class="title-section">Eventos Asistidos</h1>
 
-      <div class="card-calendar">
+      <div class="card-calendar" *ngFor="let event of events" (click)="goEvent(event.id)">
         <div class="calendar-grid">
           <div class="date">
             <div class="day">
-              <h2>12</h2>
+              <h2>{{event.day}}</h2>
             </div>
             <div class="month month-past">
-              <h6>Jul</h6>
+              <h6>{{event.month}}</h6>
             </div>
           </div>
           <div class="data">
-            <h3>Salida a las Buitreras</h3>
+            <h3>{{event.name}}</h3>
             <p class="detail">
-                Potrero Grande Km. 8 <br>
-                29 Asistentes
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="card-calendar">
-        <div class="calendar-grid">
-          <div class="date">
-            <div class="day">
-              <h2>12</h2>
-            </div>
-            <div class="month month-past">
-              <h6>Jul</h6>
-            </div>
-          </div>
-          <div class="data">
-            <h3>Salida a las Buitreras</h3>
-            <p class="detail">
-                Potrero Grande Km. 8 <br>
-                29 Asistentes
+                {{event.startLocation}}<br>
+                {{event.quota - event.available}} asistentes
             </p>
           </div>
         </div>
       </div>
 
     </section>
-  </section>
+    
+ 
 
 </ion-content>

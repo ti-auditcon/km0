@@ -18,10 +18,10 @@ interface obj {
 }
 
 
-
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthenticationService {
   public alert: string = 'hola';
   public authError: any = 'e' ;

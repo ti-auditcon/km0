@@ -77,7 +77,7 @@ export class EventDetailPage implements OnInit {
           console.log(this.users);
 
         });
-        //images
+        //servicios
         this.http.get(SERVER_URL+"api/events/"+id+"/images?per_page=6&page="+this.imagesPage, this.httpOptions)
         .subscribe((result: any) => {
           console.log(result);
@@ -141,8 +141,8 @@ export class EventDetailPage implements OnInit {
         });
     }
 
-  goToPublicProfile() {
-    this.router.navigate(['/public-profile']);
+  goToPublicProfile(id:any) {
+    this.router.navigate(['/public-profile/'+id+'/']);
   }
 
   openPreview(img) {

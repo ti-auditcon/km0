@@ -55,7 +55,7 @@
 
       <div class="assistants" *ngIf="users != ''">
         <h1 class="title-section">Asistentes</h1>
-        <div class="item" (click)="goToPublicProfile()" *ngFor="let user of users">
+        <div class="item" (click)="goToPublicProfile(user.id)" *ngFor="let user of users">
           <div class="img" [ngStyle]="{'background-image':'url('+user.avatar+')'}"></div>
           <div class="data">
             <h6>{{user?.fullName}}</h6>

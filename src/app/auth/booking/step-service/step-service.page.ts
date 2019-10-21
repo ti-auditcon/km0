@@ -1,10 +1,12 @@
 //env
 import { environment, SERVER_URL} from '../../../../environments/environment';
 //imports
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild   } from '@angular/core';
 import { Router, ActivatedRoute} from '@angular/router';
 import { Storage } from '@ionic/storage';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
+
+import { IonInfiniteScroll } from '@ionic/angular';
 
 import { Service } from '../../../models/service.model';
 
@@ -15,6 +17,7 @@ import { Service } from '../../../models/service.model';
 })
 export class StepServicePage implements OnInit {
 
+  @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
 
   hightlightStatus: Array<boolean> = [];
   item:any;
@@ -22,6 +25,9 @@ export class StepServicePage implements OnInit {
   services:any = '';
   hasSelectedServices: boolean;
   hasNotifications:boolean;
+
+  servicesPage = 1;
+  servicesMeta:any = '';
 
   clickedServices:Array<number> = [];
 
@@ -48,10 +54,13 @@ export class StepServicePage implements OnInit {
           'Authorization': 'Bearer '+ Bearer//updated
         })};
 
-        this.http.get(SERVER_URL+"api/services", this.httpOptions)
+        this.http.get(SERVER_URL+"api/services?per_page=6&page="+this.servicesPage, this.httpOptions)
         .subscribe((result: any) => {
           this.services = result.data;
           console.log(this.services);
+          this.servicesMeta = result.meta;
+          this.servicesPage++;
+          console.log(this.servicesMeta);
 
         });
 
@@ -63,6 +72,31 @@ export class StepServicePage implements OnInit {
 
     });
   }
+
+  loadMoreImages(infiniteScrollEvent){
+    console.log('entre');
+    console.log(this.servicesMeta);
+
+    this.http.get(SERVER_URL+"api/services?per_page=6&page="+this.servicesPage, this.httpOptions)
+        .subscribe((result: any) => {
+          this.services = this.services.concat(result.data);
+          console.log("total pages: "+result.meta.pagination.total_pages);
+          if(this.servicesPage <= result.meta.pagination.total_pages ){
+            this.servicesPage++;
+            infiniteScrollEvent.target.complete();
+          } else {
+            console.log('no hay mas');
+            infiniteScrollEvent.target.disabled = true;
+          }
+        },
+        err => {
+          console.log('error eventos');
+        });
+  }
+
+
+
+
 
   wasClicked = false;
   // onClick() {

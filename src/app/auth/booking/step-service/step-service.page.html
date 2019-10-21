@@ -38,6 +38,13 @@
       </div>
     </div>
 
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMoreImages($event)">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="Cargando imagenes...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
   </section>
 
 </ion-content>
