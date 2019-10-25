@@ -17,6 +17,10 @@ export class StepDatesPage implements OnInit {
   public retiro:boolean;
   httpOptions:any;
   hasNotifications:boolean;
+  now:Date; 
+  close:Date; 
+  in:Date; 
+  out:Date; 
 
 
   constructor(
@@ -30,6 +34,30 @@ export class StepDatesPage implements OnInit {
   }
 
   ionViewDidEnter() {
+
+    this.now = new Date();
+    this.close = new Date(this.now.getFullYear(), this.now.getMonth(), this.now.getDate(), 19, 0, 0);
+
+    this.in = this.now;
+    this.out = this.now;
+
+    
+    if(this.in >this.close){
+      this.in.setDate(this.in.getDate() + 1);
+    }
+    if(this.in.getDay() == 0)
+    {
+      this.in.setDate(this.in.getDate() + 1);
+    }
+    
+    this.out.setDate(this.in.getDate() + 1);
+    if(this.out.getDay() == 0)
+    {
+      this.out.setDate(this.out.getDate() + 1);
+    }
+
+
+
     this.storage.get('auth-token').then((value) => {
 
       let Bearer = value;
