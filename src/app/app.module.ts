@@ -21,6 +21,8 @@ import { ModalAddSpecializedPageModule } from './auth/my-bikes/modal-add-special
 import { EditProfilePageModule } from './auth/profile/edit-profile/edit-profile.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+
 import localeEs from '@angular/common/locales/es';
 
 registerLocaleData(localeEs, 'es');
@@ -44,6 +46,7 @@ registerLocaleData(localeEs, 'es');
     EditProfilePageModule,
     FormsModule,
     ReactiveFormsModule
+    
   ],
   exports: [
     FormsModule,
@@ -52,6 +55,7 @@ registerLocaleData(localeEs, 'es');
   providers: [
     StatusBar,
     SplashScreen,
+    InAppBrowser,
     { provide: LOCALE_ID, useValue: 'es' },
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

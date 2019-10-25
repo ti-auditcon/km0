@@ -39,24 +39,32 @@ export class StepDatesPage implements OnInit {
     this.close = new Date(this.now.getFullYear(), this.now.getMonth(), this.now.getDate(), 19, 0, 0);
 
     this.in = this.now;
-    this.out = this.now;
-
-    
-    if(this.in >this.close){
-      this.in.setDate(this.in.getDate() + 1);
-    }
-    if(this.in.getDay() == 0)
-    {
-      this.in.setDate(this.in.getDate() + 1);
-    }
-    
+    this.out = new Date();
+    console.log('in antes');
+    console.log(this.in);
     this.out.setDate(this.in.getDate() + 1);
+    console.log('in despues');
+    console.log(this.in);
+    console.log(this.out);
+    
+    if(this.in > this.close){
+      console.log('mayor');
+      this.in.setDate(this.in.getDate() + 1);
+    }
+    if(this.in.getDay() === 0)
+    {
+      console.log('dia');
+      this.in.setDate(this.in.getDate() + 1);
+    }
+    console.log(this.in);
+    
     if(this.out.getDay() == 0)
     {
       this.out.setDate(this.out.getDate() + 1);
     }
 
-
+    console.log(this.in);
+    console.log(this.out);
 
     this.storage.get('auth-token').then((value) => {
 

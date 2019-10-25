@@ -9,6 +9,10 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { WebviewOverlay } from '@teamhive/capacitor-webview-overlay';
 import { Plugins } from '@capacitor/core';
 import { Router,ActivatedRoute  } from '@angular/router';
+
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { browser } from 'protractor';
+
 const { Browser } = Plugins;
 
 @Component({
@@ -16,26 +20,27 @@ const { Browser } = Plugins;
   templateUrl: './flow.page.html',
   styleUrls: ['./flow.page.scss'],
 })
-export class FlowPage implements OnInit , OnDestroy {
+export class FlowPage {
   loading = true;
   pageLoading = false;
   progress: number;
   webview: WebviewOverlay;
   url:string = '';
   id:any ='';
-  @ViewChild('webview') webviewEl: ElementRef;
+
 
   constructor(
     private platform: Platform,
     private menuCtrl: MenuController,
-    private zone: NgZone,
+    private router: Router,
     private storage: Storage,
     private http:HttpClient,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public iap: InAppBrowser,
 
   ) { }
 
-  async ngOnInit() {
+  ionViewDidEnter() {
     this.route.paramMap.subscribe(params => {
       this.id = params.get("id");
       this.storage.get('auth-token').then((value) => {
@@ -50,104 +55,37 @@ export class FlowPage implements OnInit , OnDestroy {
           this.http.get(SERVER_URL+"api/orders/"+this.id+"/payflow", httpOptions)
           .subscribe((result: any) => {
             console.log(result.url);
-            this.createWebview(result.url);
+
+
+            if(this.platform.is('android')){
+                const browser = this.iap.create(result.url, '_blank', "hideurlbar=yes,footer=no,toolbarcolor=#141A29,navigationbuttoncolor=#D3D5E0,closebuttoncaption=cerrar,closebuttoncolor=#D3D5E0");
+                browser.on('loadstop').subscribe((event) => {
+                  console.log('cargo android');
+                });
+                browser.on('exit').subscribe((event) => {
+                    this.router.navigate(['/orders/'+this.id]);
+                    browser.close();
+                });
+            }
+            if(this.platform.is('ios')){
+                const browser = this.iap.create(result.url, '_system', "usewkwebview=yes");
+                browser.on('loadstop').subscribe((event) => {
+                  console.log('cargo ios');
+                });
+                browser.on('exit').subscribe((event) => {
+                    this.router.navigate(['/orders/'+this.id]);
+                    browser.close();
+                });
+            }
+
+
+
+
           });
       });
     });
 
     
-
-    const menus = await this.menuCtrl.getMenus();
-    for (const menu of menus) {
-        menu.addEventListener('ionWillOpen', () => {
-            if (this.webview) {
-                this.webview.toggleSnapshot(true);
-            }
-        });
-        menu.addEventListener('ionDidClose', () => {
-            if (this.webview) {
-                this.webview.toggleSnapshot(false);
-            }
-        });
-    }
   }
-
-  ngOnDestroy() {
-      if (this.platform.is('capacitor')) {
-          this.webview.close();
-      }
-  }
-
-  get hasWebview() {
-      return !!this.webview;
-  }
-
-  async createWebview(url:string) {
-      if (this.platform.is('capacitor')) {
-          this.loading = true;
-          this.webview = new WebviewOverlay();
-          this.webview.open({
-              url: url,
-              element: this.webviewEl.nativeElement
-          });
-
-          this.webview.onPageLoaded(() => {
-              this.zone.run(() => {
-                  this.loading = false;
-                  setTimeout(() => {
-                      this.pageLoading = false;
-                      setTimeout(() => {
-                          this.progress = 0;
-                      }, 200);
-                  }, 500);
-              });
-          });
-
-          this.webview.onProgress((progress) => {
-              this.zone.run(() => {
-                  this.progress = progress.value;
-                  if (progress.value < 1) {
-                      this.pageLoading = true;
-                  }
-              });
-          });
-
-          this.webview.handleNavigation((event) => {
-              if (event.newWindow) {
-                  event.complete(false);
-                  window.open(event.url);
-              } else {
-                  event.complete(true);
-              }
-          });
-      }
-  }
-
-
-  async destroyWebview() {
-      if (this.platform.is('capacitor')) {
-          this.webview.close();
-          this.loading = false;
-          this.webview = undefined;
-      }
-  }
-
-  goBack() {
-      if (this.platform.is('capacitor')) {
-          this.webview.goBack();
-      }
-  }
-
-  goForward() {
-      if (this.platform.is('capacitor')) {
-          this.webview.goForward();
-      }
-  }
-
-  reload() {
-      if (this.platform.is('capacitor')) {
-          this.webview.reload();
-      }
-  }
-
+  
 }
