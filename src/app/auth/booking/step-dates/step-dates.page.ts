@@ -42,7 +42,7 @@ export class StepDatesPage implements OnInit {
     this.out = new Date();
     console.log('in antes');
     console.log(this.in);
-    this.out.setDate(this.in.getDate() + 1);
+    
     console.log('in despues');
     console.log(this.in);
     console.log(this.out);
@@ -56,15 +56,19 @@ export class StepDatesPage implements OnInit {
       console.log('dia');
       this.in.setDate(this.in.getDate() + 1);
     }
+
+    this.out.setDate(this.in.getDate() + 1);
+    console.log('in');
     console.log(this.in);
-    
+    console.log('out');
+    console.log(this.out);
+
     if(this.out.getDay() == 0)
     {
       this.out.setDate(this.out.getDate() + 1);
     }
 
-    console.log(this.in);
-    console.log(this.out);
+
 
     this.storage.get('auth-token').then((value) => {
 
