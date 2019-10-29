@@ -36,6 +36,7 @@ export class DashboardPage implements OnInit {
   profile:any = '';
   events:any = '';
   orders:any = '';
+  diagnosed:any = '';
   eventsMeta:any = '';
   ordersMeta:any = '';
   httpOptions:any;
@@ -81,7 +82,24 @@ export class DashboardPage implements OnInit {
           text: 'Cerrar',
           role: 'cancel',
           handler: () => {
-            //console.log('Cancel clicked');
+           
+          }
+        }
+      ]
+    });
+    toast.present();
+  }
+
+  async diagnosedToast(id:any) {
+    const toast = await this.toastController.create({
+      header: 'Diagnostico actualizado',
+      message: 'la orden #'+id+' necesita tu aprobación.',
+      buttons: [
+        {
+          text: 'Ver',
+          handler: () => {
+            console.log('me fui');
+            this.router.navigate(['/orders/'+id]);
           }
         }
       ]
@@ -168,7 +186,12 @@ export class DashboardPage implements OnInit {
         .subscribe((result: any) => {
             this.orders = result.data;
             console.log(result.data);
+            this.diagnosed = result.data.filter(order => order.status.id == 4);
 
+            this.diagnosed.forEach(element => {
+              console.log(element.id);
+              this.diagnosedToast(element.id); 
+          });
 
         });
 
