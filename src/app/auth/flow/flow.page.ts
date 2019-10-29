@@ -2,7 +2,7 @@
 //env
 import { environment, SERVER_URL} from '../../../environments/environment';
 
-import { Component, OnInit, ViewChild, ElementRef , OnDestroy, NgZone } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { Platform, MenuController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
@@ -37,6 +37,7 @@ export class FlowPage {
     private http:HttpClient,
     private route: ActivatedRoute,
     public iap: InAppBrowser,
+    private zone: NgZone
 
   ) { }
 
@@ -63,8 +64,10 @@ export class FlowPage {
                   console.log('cargo android');
                 });
                 browser.on('exit').subscribe((event) => {
-                    this.router.navigate(['/orders/'+this.id]);
-                    browser.close();
+                  this.zone.run(async () => {
+                    await this.router.navigate(['/orders/'+this.id+'']);
+                  });
+                  browser.close();
                 });
             }
             if(this.platform.is('ios')){
@@ -72,10 +75,10 @@ export class FlowPage {
                 browser.on('loadstop').subscribe((event) => {
                   console.log('cargo ios');
                 });
-                browser.on('exit').subscribe((event) => {
-                    this.router.navigate(['/orders/'+this.id]);
-                    browser.close();
+                this.zone.run(async () => {
+                  await this.router.navigate(['/orders/'+this.id+'']);
                 });
+                browser.close();
             }
 
 
