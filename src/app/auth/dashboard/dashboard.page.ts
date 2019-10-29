@@ -72,12 +72,18 @@ export class DashboardPage implements OnInit {
     }, 2000);
   }
 
-  async presentToast(title:any,message:any) {
+  async presentToast(title:any,message:any,order:any) {
     const toast = await this.toastController.create({
       header: title,
       message: message,
-      duration: 4000,
       buttons: [
+        {
+          text: 'Ver',
+          handler: () => {
+            console.log('me fui');
+            this.router.navigate(['/orders/'+order]);
+          }
+        },
         {
           text: 'Cerrar',
           role: 'cancel',
@@ -138,8 +144,10 @@ export class DashboardPage implements OnInit {
           'pushNotificationReceived',
           (notification: PushNotification) => {
             console.log('notification ' + JSON.stringify(notification));
+            console.log('order');
+            console.log(notification.data.moredata);
             this.notifications.push(notification);
-            this.presentToast(notification.title,notification.body);
+            this.presentToast(notification.title,notification.body,notification.data.moredata);
           }
         );
 

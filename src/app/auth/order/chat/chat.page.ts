@@ -29,6 +29,12 @@ export class ChatPage {
     private http:HttpClient
   ) { }
 
+  doRefresh(event) {
+    this.ionViewDidEnter();
+    setTimeout(() => {
+      event.target.complete();
+    }, 2000);
+  }
 
   ionViewDidEnter() {
     let that = this;
