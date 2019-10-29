@@ -101,6 +101,13 @@ export class DashboardPage implements OnInit {
             console.log('me fui');
             this.router.navigate(['/orders/'+id]);
           }
+        },
+        {
+          text: 'Cerrar',
+          role: 'cancel',
+          handler: () => {
+           
+          }
         }
       ]
     });
