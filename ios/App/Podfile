@@ -12,6 +12,7 @@ def capacitor_pods
   pod 'CapacitorCordova', :path => '../../node_modules/@capacitor/ios'
   pod 'TeamhiveCapacitorWebviewOverlay', :path => '../../node_modules/@teamhive/capacitor-webview-overlay'
   pod 'CapacitorFcm', :path => '../../node_modules/capacitor-fcm'
+  pod 'CordovaPlugins', :path => '../capacitor-cordova-ios-plugins'
   # Do not delete
 end
 

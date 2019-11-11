@@ -71,14 +71,16 @@ export class FlowPage {
                 });
             }
             if(this.platform.is('ios')){
-                const browser = this.iap.create(result.url, '_system', "usewkwebview=yes");
+                const browser = this.iap.create(result.url, '_blank', "toolbarposition=top,closebuttoncaption=Cerrar,toolbarcolor=#141A29,closebuttoncolor=#D3D5E0,navigationbuttoncolor=#D3D5E0");
                 browser.on('loadstop').subscribe((event) => {
                   console.log('cargo ios');
                 });
-                this.zone.run(async () => {
-                  await this.router.navigate(['/orders/'+this.id+'']);
+                browser.on('exit').subscribe((event) => {
+                  this.zone.run(async () => {
+                    await this.router.navigate(['/orders/'+this.id+'']);
+                  });
+                  browser.close();
                 });
-                browser.close();
             }
 
 
@@ -88,7 +90,7 @@ export class FlowPage {
       });
     });
 
-    
+
   }
-  
+
 }
