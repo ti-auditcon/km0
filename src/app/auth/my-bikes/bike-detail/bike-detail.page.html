@@ -28,6 +28,10 @@
       <p class="description">
         {{bike.description}} 
       </p>
+
+      <p *ngIf='bike.fromUs == 1'>
+        Tu Mantencion completa vence el {{bike.endProm}} 
+      </p>
     </div>
 
   </section>

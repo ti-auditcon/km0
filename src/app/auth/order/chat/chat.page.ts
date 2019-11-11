@@ -19,6 +19,7 @@ export class ChatPage {
   messages:any;
   text:any;
   order:any;
+  disableButton:boolean;
 
   @ViewChild('content') content: IonContent;
 
@@ -37,6 +38,7 @@ export class ChatPage {
   }
 
   ionViewDidEnter() {
+    this.disableButton = false;
     let that = this;
     this.content.scrollToBottom(200);
     this.storage.get('auth-token').then((value) => {
@@ -68,32 +70,40 @@ export class ChatPage {
     });
   }
   sendMessage() {
-    console.log(this.text);
-    this.storage.get('auth-token').then((value) => {
+    if(this.text == null){
+      console.log('nada');
+    } else {
+      this.storage.get('auth-token').then((value) => {
 
-      let Bearer = value;
-      let id = this.activatedRoute.snapshot.paramMap.get('id');
-      let data=JSON.stringify({
-        content: this.text,
-
+        let Bearer = value;
+        let id = this.activatedRoute.snapshot.paramMap.get('id');
+        let data=JSON.stringify({
+          content: this.text,
+  
+        });
+        this.httpOptions = {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json', //updated
+            'Authorization': 'Bearer '+ Bearer//updated
+            
+          })};
+  
+        this.disableButton = true;
+        this.http.post(SERVER_URL+"api/orders/"+id+"/messages",data, this.httpOptions)
+        .subscribe((result: any) => {
+          console.log(result);
+          this.text = null;
+          this.ionViewDidEnter();
+        },
+        (err) => {
+          console.log('error refrersh 401');
+          this.ionViewDidEnter();
+        }
+        );
+    
       });
-      this.httpOptions = {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json', //updated
-          'Authorization': 'Bearer '+ Bearer//updated
-          
-        })};
+    }
 
-      this.http.post(SERVER_URL+"api/orders/"+id+"/messages",data, this.httpOptions)
-      .subscribe((result: any) => {
-        console.log(result);
-        this.text = '';
-        this.ionViewDidEnter();
-      });
-
-
-
-    });
   }
 
   goToOrder(){

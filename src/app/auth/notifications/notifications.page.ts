@@ -54,12 +54,20 @@ export class NotificationsPage implements OnInit {
   }
 
   goTo(type:number, id:number){
-    if(type == 1 ){
-      this.router.navigate(['/orders/'+id]);
-    }
-    if(type == 2 ){
-      this.router.navigate(['/orders/'+id+'/chat']);
-    }
+
+    switch(type) {
+      case 1:
+        this.router.navigate(['/orders/'+id]);
+        break;
+      case 2:
+        this.router.navigate(['/orders/'+id+'/chat']);
+        break;
+      case 3:
+        this.router.navigate(['/profile/bikes/'+id]);
+        break;
+      default:
+        // code block
+    } 
   }
 
   // goToChat(){
