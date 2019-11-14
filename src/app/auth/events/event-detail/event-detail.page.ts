@@ -20,12 +20,15 @@ export class EventDetailPage implements OnInit {
 
   event:any = '';
   users:any = '';
+  usersMeta: any;
+  usersPage: any = 1;
   images:any = '';
   imagesPage:any = 1;
   reserved:any = false;
   closed:any = true;
   httpOptions:any;
   imagesMeta: any;
+
 
 
 
@@ -69,12 +72,13 @@ export class EventDetailPage implements OnInit {
 
         });
         //users
-        this.http.get(SERVER_URL+"api/events/"+id+"/users", this.httpOptions)
+        this.http.get(SERVER_URL+"api/events/"+id+"/users?per_page=6&page="+this.usersPage, this.httpOptions)
         .subscribe((result: any) => {
           console.log(result);
 
           this.users = result.data;
-          console.log(this.users);
+          this.usersMeta = result.meta;
+          this.usersPage++;
 
         });
         //servicios
@@ -91,9 +95,31 @@ export class EventDetailPage implements OnInit {
     });
   }
 
+  loadMoreUsers(infiniteScrollEvent){
+    console.log('entre users');
+
+
+    let id = this.activatedRoute.snapshot.paramMap.get('id');
+    this.http.get(SERVER_URL+"api/events/"+id+"/users?per_page=6&page="+this.usersPage, this.httpOptions)
+        .subscribe((result: any) => {
+          this.users = this.users.concat(result.data);
+          console.log("total pages: "+result.meta.pagination.total_pages);
+          if(this.usersPage <= result.meta.pagination.total_pages ){
+            this.usersPage++;
+            infiniteScrollEvent.target.complete();
+          } else {
+            console.log('no hay mas');
+            infiniteScrollEvent.target.disabled = true;
+          }
+        },
+        err => {
+          console.log('error eventos');
+        });
+  }
+
   loadMoreImages(infiniteScrollEvent){
-    console.log('entre');
-    console.log(this.imagesMeta);
+    console.log('entre images');
+
 
     let id = this.activatedRoute.snapshot.paramMap.get('id');
     this.http.get(SERVER_URL+"api/events/"+id+"/images?per_page=6&page="+this.imagesPage, this.httpOptions)

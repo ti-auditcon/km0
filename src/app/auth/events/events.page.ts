@@ -17,8 +17,10 @@ export class EventsPage implements OnInit {
 
   nextEvents:any = '';
   pastEvents:any = '';
-  nextEventsPage:any = '';
-  pastEventsPage:any = '';
+  nextEventsPage:any = 1;
+  nextEventsMeta:any;
+  pastEventsPage:any = 1;
+  pastEventsMeta:any;
   httpOptions:any;
   hasNotifications:boolean;
 
@@ -35,7 +37,8 @@ export class EventsPage implements OnInit {
   }
 
   ionViewDidEnter() {
-    this.page = 1
+    this.pastEventsPage = 1;
+
     this.storage.get('auth-token').then((value) => {
       
       let Bearer = value;
@@ -48,8 +51,12 @@ export class EventsPage implements OnInit {
         //get next events
         this.http.get(SERVER_URL+"api/events/next?per_page=3&page="+this.nextEventsPage, this.httpOptions)
         .subscribe((result: any) => {
-          this.nextEvents = result.data;
-          console.log(this.nextEvents);
+          if(result){
+            console.log(result);
+            this.nextEvents = result.data;
+            this.nextEventsMeta = result.meta ;
+            this.nextEventsPage++;
+          } 
         });
 
         this.http.get(SERVER_URL+"api/events/past?per_page=3&page="+this.pastEventsPage, this.httpOptions)
@@ -57,7 +64,8 @@ export class EventsPage implements OnInit {
           if(result){
             console.log(result);
             this.pastEvents = result.data;
-            console.log(this.pastEvents);
+            this.pastEventsMeta = result.meta;
+            this.pastEventsPage++;
           } 
         });
 
@@ -78,4 +86,43 @@ export class EventsPage implements OnInit {
     this.router.navigate(['/events/'+id]);
   }
 
+  loadMoreEvents(infiniteScrollEvent){
+    console.log('entre events');
+
+    this.http.get(SERVER_URL+"api/events/next?per_page=3&page="+this.nextEventsPage, this.httpOptions)
+        .subscribe((result: any) => {
+          this.nextEvents = this.nextEvents.concat(result.data);
+          console.log("total pages: "+result.meta.pagination.total_pages);
+          if(this.nextEventsPage <= result.meta.pagination.total_pages ){
+            this.nextEventsPage++;
+            infiniteScrollEvent.target.complete();
+          } else {
+            console.log('no hay mas');
+            infiniteScrollEvent.target.disabled = true;
+          }
+        },
+        err => {
+          console.log('error eventos');
+        });
+  }
+
+  loadMorePastEvents(infiniteScrollEvent){
+    console.log('entre events');
+
+    this.http.get(SERVER_URL+"api/events/past?per_page=3&page="+this.pastEventsPage, this.httpOptions)
+      .subscribe((result: any) => {
+        this.pastEvents = this.pastEvents.concat(result.data);
+        console.log("total pages: "+result.meta.pagination.total_pages);
+        if(this.pastEventsPage <= result.meta.pagination.total_pages ){
+          this.pastEventsPage++;
+          infiniteScrollEvent.target.complete();
+        } else {
+          console.log('no hay mas');
+          infiniteScrollEvent.target.disabled = true;
+        }
+      },
+      err => {
+        console.log('error eventos');
+      });
+  }
 }
