@@ -23,6 +23,7 @@ export class EventsPage implements OnInit {
   pastEventsMeta:any;
   httpOptions:any;
   hasNotifications:boolean;
+  reActiveInfinite: any;
 
   public page = 1;
 
@@ -37,7 +38,11 @@ export class EventsPage implements OnInit {
   }
 
   ionViewDidEnter() {
+    if(this.reActiveInfinite){
+      this.reActiveInfinite.target.disabled = false;
+     }
     this.pastEventsPage = 1;
+    this.nextEventsPage = 1;
 
     this.storage.get('auth-token').then((value) => {
       
@@ -49,7 +54,7 @@ export class EventsPage implements OnInit {
         })};
 
         //get next events
-        this.http.get(SERVER_URL+"api/events/next?per_page=3&page="+this.nextEventsPage, this.httpOptions)
+        this.http.get(SERVER_URL+"api/events/next?per_page=10&page="+this.nextEventsPage, this.httpOptions)
         .subscribe((result: any) => {
           if(result){
             console.log(result);
@@ -107,6 +112,7 @@ export class EventsPage implements OnInit {
   }
 
   loadMorePastEvents(infiniteScrollEvent){
+    this.reActiveInfinite = infiniteScrollEvent;
     console.log('entre events');
 
     this.http.get(SERVER_URL+"api/events/past?per_page=3&page="+this.pastEventsPage, this.httpOptions)

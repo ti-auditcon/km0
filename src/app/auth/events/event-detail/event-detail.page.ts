@@ -3,7 +3,7 @@ import { environment, SERVER_URL} from '../../../../environments/environment';
 //imports
 import { Component, OnInit, ViewChild   } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ModalController, ToastController } from '@ionic/angular';
+import { ModalController, ToastController  } from '@ionic/angular';
 import { ModalImagePage } from './modal-image/modal-image.page';
 import { Storage } from '@ionic/storage';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
@@ -16,7 +16,8 @@ import { IonInfiniteScroll } from '@ionic/angular';
 })
 export class EventDetailPage implements OnInit {
 
-  @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
+  @ViewChild(IonInfiniteScroll, {read: IonInfiniteScroll}) public infiniteScroll: IonInfiniteScroll;
+
 
   event:any = '';
   users:any = '';
@@ -28,7 +29,7 @@ export class EventDetailPage implements OnInit {
   closed:any = true;
   httpOptions:any;
   imagesMeta: any;
-
+  reActiveInfinite: any;
 
 
 
@@ -49,10 +50,15 @@ export class EventDetailPage implements OnInit {
   ) { }
 
   ngOnInit() {
+
   }
   ionViewDidEnter() {
+    if(this.reActiveInfinite){
+     this.reActiveInfinite.target.disabled = false;
+    }
     this.closed = true;
-    this.imagesPage = 1
+    this.imagesPage = 1;
+    this.usersPage = 1;
     this.storage.get('auth-token').then((value) => {
 
       let Bearer = value;
@@ -97,7 +103,7 @@ export class EventDetailPage implements OnInit {
 
   loadMoreUsers(infiniteScrollEvent){
     console.log('entre users');
-
+    this.reActiveInfinite = infiniteScrollEvent;
 
     let id = this.activatedRoute.snapshot.paramMap.get('id');
     this.http.get(SERVER_URL+"api/events/"+id+"/users?per_page=6&page="+this.usersPage, this.httpOptions)
@@ -145,8 +151,10 @@ export class EventDetailPage implements OnInit {
     this.http.get(SERVER_URL+"api/events/"+id+"/attach", this.httpOptions)
         .subscribe((result: any) => {
           console.log('attach');
-          this.ionViewDidEnter();
+         
           this.reserved = false;
+          this.ionViewDidEnter();
+          
         },
         err => {
           console.log('error reservar');
@@ -159,8 +167,10 @@ export class EventDetailPage implements OnInit {
     this.http.get(SERVER_URL+"api/events/"+id+"/detach", this.httpOptions)
         .subscribe((result: any) => {
           console.log('detach');
-          this.ionViewDidEnter();
+         
           this.reserved = true;
+          this.ionViewDidEnter();
+          
         },
         err => {
           console.log('error ceder');

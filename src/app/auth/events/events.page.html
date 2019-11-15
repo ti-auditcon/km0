@@ -44,12 +44,12 @@
         <img class="the-icon" src="assets/icon/icon-noevents.svg">
         <h4>No hay eventos Próximos por el momento</h4>
     </div>
-    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMoreEvents($event)">
+    <!-- <ion-infinite-scroll threshold="10px" (ionInfinite)="loadMoreEvents($event)">
       <ion-infinite-scroll-content
         loadingSpinner="bubbles"
         loadingText="Cargando eventos pasados...">
       </ion-infinite-scroll-content>
-    </ion-infinite-scroll>
+    </ion-infinite-scroll> -->
   </section>
 
   <div class="separator" *ngIf="pastEvents!=''"></div>
