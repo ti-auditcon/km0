@@ -16,7 +16,7 @@ import { IonInfiniteScroll } from '@ionic/angular';
 })
 export class EventDetailPage implements OnInit {
 
-  @ViewChild(IonInfiniteScroll, {read: IonInfiniteScroll}) public infiniteScroll: IonInfiniteScroll;
+  @ViewChild(IonInfiniteScroll, {read: IonInfiniteScroll,static: true}) public infiniteScroll: IonInfiniteScroll;
 
 
   event:any = '';
