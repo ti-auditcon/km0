@@ -21,7 +21,7 @@ export class ChatPage {
   order:any;
   disableButton:boolean;
 
-  @ViewChild('content',{static: true}) content: IonContent;
+  @ViewChild('content') content: IonContent;
 
   constructor(
     public activatedRoute: ActivatedRoute,

@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class StepDiagnosticPage implements OnInit {
 
+  public order:any;
   constructor(
     private router:Router
   ) { }

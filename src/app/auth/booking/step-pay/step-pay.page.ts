@@ -18,6 +18,7 @@ export class StepPayPage implements OnInit {
   public services:Array<Service>;
   public bike:Bike;
   public total:number;
+  public hasNotifications:boolean;
 
   constructor(
     private router: Router,
