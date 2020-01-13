@@ -17,10 +17,13 @@ export class StepDatesPage implements OnInit {
   public retiro:boolean;
   httpOptions:any;
   hasNotifications:boolean;
-  now:Date; 
-  close:Date; 
-  in:Date; 
-  out:Date; 
+  // now:Date; 
+  // close:Date; 
+  // in:Date; 
+  // out:Date; 
+  dateText:string; 
+  start:string;
+  end:string;
 
 
   constructor(
@@ -35,38 +38,38 @@ export class StepDatesPage implements OnInit {
 
   ionViewDidEnter() {
 
-    this.now = new Date();
-    this.close = new Date(this.now.getFullYear(), this.now.getMonth(), this.now.getDate(), 19, 0, 0);
+    // this.now = new Date();
+    // this.close = new Date(this.now.getFullYear(), this.now.getMonth(), this.now.getDate(), 19, 0, 0);
 
-    this.in = this.now;
-    this.out = new Date();
-    console.log('in antes');
-    console.log(this.in);
+    // this.in = this.now;
+    // this.out = new Date();
+    // console.log('in antes');
+    // console.log(this.in);
     
-    console.log('in despues');
-    console.log(this.in);
-    console.log(this.out);
+    // console.log('in despues');
+    // console.log(this.in);
+    // console.log(this.out);
     
-    if(this.in > this.close){
-      console.log('mayor');
-      this.in.setDate(this.in.getDate() + 1);
-    }
-    if(this.in.getDay() === 0)
-    {
-      console.log('dia');
-      this.in.setDate(this.in.getDate() + 1);
-    }
+    // if(this.in > this.close){
+    //   console.log('mayor');
+    //   this.in.setDate(this.in.getDate() + 1);
+    // }
+    // if(this.in.getDay() === 0)
+    // {
+    //   console.log('dia');
+    //   this.in.setDate(this.in.getDate() + 1);
+    // }
 
-    this.out.setDate(this.in.getDate() + 1);
-    console.log('in');
-    console.log(this.in);
-    console.log('out');
-    console.log(this.out);
+    // this.out.setDate(this.in.getDate() + 1);
+    // console.log('in');
+    // console.log(this.in);
+    // console.log('out');
+    // console.log(this.out);
 
-    if(this.out.getDay() == 0)
-    {
-      this.out.setDate(this.out.getDate() + 1);
-    }
+    // if(this.out.getDay() == 0)
+    // {
+    //   this.out.setDate(this.out.getDate() + 1);
+    // }
 
 
 
@@ -75,12 +78,24 @@ export class StepDatesPage implements OnInit {
       let Bearer = value;
 
 
+      let data=JSON.stringify({
+        blocks: 10,
+      });
+
       this.httpOptions = {
         headers: new HttpHeaders({
-          'Authorization': 'Bearer '+ Bearer//updated
+          'Authorization': 'Bearer '+ Bearer,//updated
+          'Content-Type': 'application/json', //updated
         })};
 
-
+        this.http.post(SERVER_URL+"api/orders-checkblock",data, this.httpOptions)
+        .subscribe((result: any) => {
+          console.log('check');
+          console.log(result);
+          this.dateText = result.text;
+          this.start = result.start;
+          this.end = result.end;
+        });
 
         this.http.get(SERVER_URL+"api/profile/notifications/has", this.httpOptions)
         .subscribe((result: any) => {

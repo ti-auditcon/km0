@@ -19,7 +19,8 @@
     <section class="dates">
       <div class="card-info info">
         <p>
-            Si llevas tu bicicleta el <span>{{ in | date }}   </span>, podrás retirarla el <span>{{ out | date }} </span>.
+            Si llevas tu bicicleta el <span>{{start || '--'}}   </span>, podrás retirarla el <span>{{ end || '--'}} </span>.
+            <!-- {{dateText}} -->
         </p>
       </div>
     </section>
@@ -39,7 +40,7 @@
         <div class="actions-wrapper" *ngIf="retiro">
           <div class="card-info info">
             <p>
-              <span>Retiro el Lunes 7 de Julio</span><br>
+              <span>Retiro el - - </span><br>
               Entre las 10:00 y las 11:00 hrs
             </p>
           </div>
