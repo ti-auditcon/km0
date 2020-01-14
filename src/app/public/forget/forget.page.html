@@ -5,7 +5,7 @@
       <img class="logo-auth" src="assets/img/logo_login.png">
     </div>
 
-    <form (ngSubmit)="login()" #registerForm="ngForm">
+    <form (ngSubmit)="forget()" #registerForm="ngForm">
       <div class="form-inner">
 
         <div class="a-input">
@@ -13,14 +13,14 @@
             Ingresa tu correo y te enviaremos un link para reestablecer tu contraseña:
           </span>
           <span class="icon-input-auth icon-auth-mail"></span>
-          <ion-input type="email" placeholder="correo@correo.com" class="input-email" name="email" required>
+          <ion-input type="email" placeholder="correo@correo.com" class="input-email" name="email" required [(ngModel)]="resetEmail.email" >
             <img src="assets/img/email.svg">
           </ion-input>
         </div>
 
       </div>
       <div class="signup-col">
-        <ion-button class="submit-login-auth" full type="submit" expand="block">Enviar</ion-button>
+        <ion-button class="submit-login-auth" full type="submit" expand="block" [disabled]="disableButton">Enviar</ion-button>
       </div>
       <div class="login-options">
         <a class="link-forget" [routerLink]="['/login']" routerDirection="back">Atrás</a>

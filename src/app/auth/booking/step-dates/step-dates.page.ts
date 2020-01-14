@@ -6,6 +6,9 @@ import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 
+import { Service } from '../../../models/service.model';
+
+
 @Component({
   selector: 'app-step-dates',
   templateUrl: './step-dates.page.html',
@@ -24,7 +27,8 @@ export class StepDatesPage implements OnInit {
   dateText:string; 
   start:string;
   end:string;
-
+  blocks:number = 0;
+  public services:Array<Service>;
 
   constructor(
 
@@ -77,31 +81,41 @@ export class StepDatesPage implements OnInit {
 
       let Bearer = value;
 
+      this.storage.get('services').then((value) => {
+        this.services = value;
+        console.log(this.services);
 
-      let data=JSON.stringify({
-        blocks: 10,
+        this.blocks = this.services.map(item => +item.blocks).reduce((prev, next) => prev + next);
+        console.log(this.blocks);
+
+        let data=JSON.stringify({
+          blocks: +this.blocks,
+        });
+  
+        this.httpOptions = {
+          headers: new HttpHeaders({
+            'Authorization': 'Bearer '+ Bearer,//updated
+            'Content-Type': 'application/json', //updated
+          })};
+  
+          this.http.post(SERVER_URL+"api/orders-checkdates",data, this.httpOptions)
+          .subscribe((result: any) => {
+            console.log('check');
+            console.log(result);
+            this.dateText = result.text;
+            this.start = result.start;
+            this.end = result.end;
+          });
+  
+          this.http.get(SERVER_URL+"api/profile/notifications/has", this.httpOptions)
+          .subscribe((result: any) => {
+            console.log(result);
+            this.hasNotifications = result;
+          });
       });
 
-      this.httpOptions = {
-        headers: new HttpHeaders({
-          'Authorization': 'Bearer '+ Bearer,//updated
-          'Content-Type': 'application/json', //updated
-        })};
 
-        this.http.post(SERVER_URL+"api/orders-checkblock",data, this.httpOptions)
-        .subscribe((result: any) => {
-          console.log('check');
-          console.log(result);
-          this.dateText = result.text;
-          this.start = result.start;
-          this.end = result.end;
-        });
 
-        this.http.get(SERVER_URL+"api/profile/notifications/has", this.httpOptions)
-        .subscribe((result: any) => {
-          console.log(result);
-          this.hasNotifications = result;
-        });
 
     });
   }
@@ -111,3 +125,5 @@ export class StepDatesPage implements OnInit {
   }
 
 }
+
+

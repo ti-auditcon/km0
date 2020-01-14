@@ -147,4 +147,35 @@ export class AuthenticationService {
     return this.authError;
   }
 
+    //login method
+  forget(forgetEmail) {
+
+      let data=JSON.stringify({
+        email: forgetEmail.email,
+      });
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json', //updated
+        })};
+      return new Promise((resolve, reject) => {
+        this.http.post(SERVER_URL+"/api/forgot/password",data, httpOptions)
+             .subscribe(
+                 (result: any) => {
+                   console.log('success 200');
+
+                   resolve(result);
+  
+                 },
+                 (err) => {
+                   console.log('error 401');
+                   alert('erro al recuperar contraseña');
+                   reject(err);
+  
+  
+                 }
+               );
+      });
+  
+    }
+
 }

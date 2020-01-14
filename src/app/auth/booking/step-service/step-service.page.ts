@@ -44,6 +44,7 @@ export class StepServicePage implements OnInit {
   }
 
   ionViewDidEnter() {
+    this.servicesPage = 1;
     this.storage.get('auth-token').then((value) => {
 
       let Bearer = value;
@@ -128,7 +129,7 @@ export class StepServicePage implements OnInit {
       service.id = element.getAttribute('data-id');
       service.name = element.getAttribute('data-name');
       service.value = element.getAttribute('data-value');
-
+      service.blocks = +element.getAttribute('data-blocks');
       servicesSelected.push(service);
 
     });
