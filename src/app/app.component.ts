@@ -48,7 +48,7 @@ export class AppComponent implements OnInit {
     private router:Router,
     private storage: Storage,
     private http: HttpClient,
-    private authenticationService: AuthenticationService,
+    public authenticationService: AuthenticationService,
   ) {
     this.initializeApp();
     this.profile = new User; 
