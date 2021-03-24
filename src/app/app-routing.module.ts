@@ -39,7 +39,7 @@ const routes: Routes = [
   { path: 'profile/services', loadChildren: './auth/my-services/my-services.module#MyServicesPageModule' },
   { path: 'profile/services/:id', loadChildren: './auth/my-services/service-detail/service-detail.module#ServiceDetailPageModule' },
   { path: 'public-profile/:id', loadChildren: './auth/public-profile/public-profile.module#PublicProfilePageModule' },
-  //Notificaciones
+  // Notificaciones
   { path: 'notifications', loadChildren: './auth/notifications/notifications.module#NotificationsPageModule' },
   { path: 'special-message', loadChildren: './auth/notifications/special-message/special-message.module#SpecialMessagePageModule' },
   // Modales
@@ -56,10 +56,19 @@ const routes: Routes = [
   // PUBLIC
   { path: 'login', loadChildren: './public/login/login.module#LoginPageModule' },
   { path: 'forget', loadChildren: './public/forget/forget.module#ForgetPageModule' },
-  //ORDERS
+  // ORDERS
   { path: 'orders/:id', loadChildren: './auth/order/order.module#OrderPageModule' },
   { path: 'orders/:id/chat', loadChildren: './auth/order/chat/chat.module#ChatPageModule' },
   { path: 'orders/:id/flow', loadChildren: './auth/flow/flow.module#FlowPageModule' },
+  // Shop
+  { path: 'shop', loadChildren: './shop/shop.module#ShopPageModule' },
+  { path: 'search', loadChildren: './shop/search/search.module#SearchPageModule' },
+  { path: 'product', loadChildren: './shop/product/product.module#ProductPageModule' },
+  { path: 'categories', loadChildren: './shop/categories/categories.module#CategoriesPageModule' },
+  { path: 'category', loadChildren: './shop/categories/category/category.module#CategoryPageModule' },
+  { path: 'cart', loadChildren: './shop/buy/cart/cart.module#CartPageModule' },
+  { path: 'delivery', loadChildren: './shop/buy/delivery/delivery.module#DeliveryPageModule' },
+  { path: 'confirm', loadChildren: './shop/buy/confirm/confirm.module#ConfirmPageModule' },
 
 
 
