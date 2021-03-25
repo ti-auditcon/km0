@@ -1,9 +1,158 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>shop</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <div class="brand">
+      <img class="logo" src="assets/img/logo.png">
+    </div>
+    <ion-buttons slot="end">
+      <ion-icon class="notification-icon " [routerLink]="['/notifications']" src="assets/icon/bell.svg" [ngClass]="{'has': hasNotifications}"></ion-icon>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="only-events">
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+          pullingIcon="arrow-dropdown"
+          pullingText="Arrastra para actualizar"
+          refreshingSpinner="circles">
+        </ion-refresher-content>
+
+    </ion-refresher>
+
+  <!-- Esto va condicional Si es que esta logueado para taller -->
+  <section class="home-actions">
+    <div class="card-home-welcome">
+      <p class="emoji">🎉</p>
+      <h4>
+        Hola {{profile.fullName}}<br>
+        <span>¿Qué quieres hacer hoy?</span>
+      </h4>
+    </div>
+    <div class="card-home-actions ion-text-center" (click)="goToBooking()">
+        <img class="the-icon" src="assets/icon/icon-reservar.svg">
+        <h4>Reservar Servicio</h4>
+    </div>
+    <div class="card-home-actions ion-text-center" (click)="goToEvents()">
+        <img class="the-icon" src="assets/icon/icon-eventos.svg">
+        <h4>Ver Eventos</h4>
+    </div>
+  </section>
+
+  <div class="separator"></div>
+
+  <!-- Recién Llegados -->
+  <section class="shop-last-arrived">
+      <h1 class="title-section">Recién Llegados</h1>
+      <div class="shop-articles">
+          <a class="card">
+              <div class="img"></div>
+              <div class="data">
+                  <p class="category">
+                    Bicicletas
+                  </p>
+                  <h3 class="title">
+                    S-Works SHIV DI2 2021
+                  </h3>
+                  <h5 class="price">
+                    $<span>12.100.000</span>
+                </h5>
+              </div>
+          </a>
+          <a class="card">
+              <div class="img"></div>
+              <div class="data">
+                  <p class="category">
+                    Bicicletas
+                  </p>
+                  <h3 class="title">
+                    S-Works SHIV DI2 2021
+                  </h3>
+                  <h5 class="price">
+                    $<span>12.100.000</span>
+                </h5>
+              </div>
+          </a>
+          <a class="card">
+              <div class="img"></div>
+              <div class="data">
+                  <p class="category">
+                    Bicicletas
+                  </p>
+                  <h3 class="title">
+                    S-Works SHIV DI2 2021
+                  </h3>
+                  <h5 class="price">
+                    $<span>12.100.000</span>
+                </h5>
+              </div>
+          </a>
+      </div>
+  </section>
+
+
+  <section class="booked-services">
+    <h1 class="title-section">Servicios Reservados</h1>
+    <div class="card-info no-data" *ngIf="orders==''">
+        <img class="the-icon" src="assets/icon/icon-nobooked.svg">
+        <h4>No tienes Servicios Reservados</h4>
+    </div>
+    <div class="card-button" (click)="goToOrder(order.id)" *ngFor = "let order of orders">
+      <h3>{{order.rels.bike.brand}} {{order.rels.bike.model}}</h3>
+      <p class="detail">Orden Nº {{order.id}}</p>
+      <div class="status">
+        <p>{{order.status.name}}</p>
+      </div>
+      <!-- <img class="arrow" src="assets/icon/icon-arrow.svg"> -->
+    </div>
+  </section>
+
+  <div class="separator"></div>
+
+  <section class="next-events">
+    <h1 class="title-section">Próximos Eventos</h1>
+    <div class="card-info no-data" *ngIf="events==''">
+        <img class="the-icon" src="assets/icon/icon-noevents.svg">
+        <h4>No hay eventos Próximos por el momento</h4>
+    </div>
+    <div class="card-calendar" (click)="goToEvent(event.id)" *ngFor="let event of events">
+      <div class="calendar-grid">
+        <div class="date">
+          <div class="day">
+            <h2>{{event.day}}</h2>
+          </div>
+          <div class="month">
+            <h6>{{event.month}}</h6>
+          </div>
+        </div>
+        <div class="data">
+          <h3>{{event.name}}</h3>
+          <p class="detail">
+              {{event.startLocation}} <br>
+              {{event.available}} Disponibles
+          </p>
+        </div>
+      </div>
+      <div class="reserved" *ngIf="event.rels.auth.reserved" >
+        <p>Evento Reservado</p>
+      </div>
+    </div>
+
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMoreEvents($event)" *ngIf="events!=''">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="Cargando Eventos proximos...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+  </section>
+  <!-- <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMoreEvents($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll> -->
 
 </ion-content>

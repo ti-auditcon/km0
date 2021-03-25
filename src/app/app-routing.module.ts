@@ -53,10 +53,10 @@ const routes: Routes = [
   { path: 'modal-add-bike-profile', loadChildren: './auth/my-bikes/modal-add-bike-profile/modal-add-bike-profile.module#ModalAddBikeProfilePageModule' },
   { path: 'modal-add-specialized', loadChildren: './auth/my-bikes/modal-add-specialized/modal-add-specialized.module#ModalAddSpecializedPageModule' },
   { path: 'edit-profile', loadChildren: './auth/profile/edit-profile/edit-profile.module#EditProfilePageModule' },
-  // PUBLIC
+  // Public
   { path: 'login', loadChildren: './public/login/login.module#LoginPageModule' },
   { path: 'forget', loadChildren: './public/forget/forget.module#ForgetPageModule' },
-  // ORDERS
+  // Orders
   { path: 'orders/:id', loadChildren: './auth/order/order.module#OrderPageModule' },
   { path: 'orders/:id/chat', loadChildren: './auth/order/chat/chat.module#ChatPageModule' },
   { path: 'orders/:id/flow', loadChildren: './auth/flow/flow.module#FlowPageModule' },
@@ -69,9 +69,6 @@ const routes: Routes = [
   { path: 'cart', loadChildren: './shop/buy/cart/cart.module#CartPageModule' },
   { path: 'delivery', loadChildren: './shop/buy/delivery/delivery.module#DeliveryPageModule' },
   { path: 'confirm', loadChildren: './shop/buy/confirm/confirm.module#ConfirmPageModule' },
-
-
-
 ];
 
 @NgModule({

@@ -16,8 +16,8 @@ import {
   Plugins,
   PushNotification,
   PushNotificationToken,
-  PushNotificationActionPerformed } from '@capacitor/core';
-
+  PushNotificationActionPerformed 
+} from '@capacitor/core';
 
 const { PushNotifications } = Plugins;
 const fcm = new FCM();
