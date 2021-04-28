@@ -22,10 +22,7 @@
 
     </ion-refresher>
 
-    <a routerLink="/shop/">
-      Shop
-    </a>
-
+  <!-- Esto va condicional Si es que esta logueado para taller -->
   <section class="home-actions">
     <div class="card-home-welcome">
       <p class="emoji">🎉</p>
@@ -34,7 +31,6 @@
         <span>¿Qué quieres hacer hoy?</span>
       </h4>
     </div>
-
     <div class="card-home-actions ion-text-center" (click)="goToBooking()">
         <img class="the-icon" src="assets/icon/icon-reservar.svg">
         <h4>Reservar Servicio</h4>
@@ -46,6 +42,56 @@
   </section>
 
   <div class="separator"></div>
+
+  <!-- Recién Llegados -->
+  <section class="shop-last-arrived">
+      <h1 class="title-section">Recién Llegados</h1>
+      <div class="shop-articles">
+          <a class="card">
+              <div class="img"></div>
+              <div class="data">
+                  <p class="category">
+                    Bicicletas
+                  </p>
+                  <h3 class="title">
+                    S-Works SHIV DI2 2021
+                  </h3>
+                  <h5 class="price">
+                    $<span>12.100.000</span>
+                </h5>
+              </div>
+          </a>
+          <a class="card">
+              <div class="img"></div>
+              <div class="data">
+                  <p class="category">
+                    Bicicletas
+                  </p>
+                  <h3 class="title">
+                    S-Works SHIV DI2 2021
+                  </h3>
+                  <h5 class="price">
+                    $<span>12.100.000</span>
+                </h5>
+              </div>
+          </a>
+          <a class="card">
+              <div class="img"></div>
+              <div class="data">
+                  <p class="category">
+                    Bicicletas
+                  </p>
+                  <h3 class="title">
+                    S-Works SHIV DI2 2021
+                  </h3>
+                  <h5 class="price">
+                    $<span>12.100.000</span>
+                </h5>
+              </div>
+          </a>
+      </div>
+  </section>
+
 
   <section class="booked-services">
     <h1 class="title-section">Servicios Reservados</h1>

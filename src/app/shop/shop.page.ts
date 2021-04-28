@@ -1,6 +1,23 @@
+// import { Component, OnInit } from '@angular/core';
+
+// @Component({
+//   selector: 'app-shop',
+//   templateUrl: './shop.page.html',
+//   styleUrls: ['./shop.page.scss'],
+// })
+// export class ShopPage implements OnInit {
+
+//   constructor() { }
+
+//   ngOnInit() {
+//   }
+
+// }
+
+
 
 //env
-import { environment, SERVER_URL} from '../../../environments/environment';
+import { environment, SERVER_URL} from '../../environments/environment';
 //imports
 import { Component, OnInit, ViewChild  } from '@angular/core';
 import { Router } from '@angular/router';
@@ -10,7 +27,7 @@ import { IonInfiniteScroll,ToastController  } from '@ionic/angular';
 import { Platform } from '@ionic/angular';
 import { FCM } from "capacitor-fcm";
 //models 
-import { User } from '../../models/user.model';
+import { User } from '../models/user.model';
 
 import {
   Plugins,
@@ -23,12 +40,11 @@ const { PushNotifications } = Plugins;
 const fcm = new FCM();
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.page.html',
-  styleUrls: ['./dashboard.page.scss'],
+  selector: 'app-shop',
+  templateUrl: './shop.page.html',
+  styleUrls: ['./shop.page.scss'],
 })
-
-export class DashboardPage implements OnInit {
+export class ShopPage implements OnInit {
 
   @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
 
